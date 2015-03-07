@@ -1,0 +1,53 @@
+<?php
+
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage user : controller_template - admincp\index.phtml
+ * @version 1.0.0
+ * @copyright Netaviva (c) 2013. All Rights Reserved.
+ */
+?>
+
+<div class="row-fluid sortable">		
+    <div class="box span12">
+        <div class="box-header" data-original-title>
+            <h2><i class="icon-edit"></i><span class="break"></span>All Users</h2>
+        </div>
+        <form action="<?php echo Linko::Url()->make('self'); ?>" method="post">
+            <div class="box-content">
+                <table id="menu-item-list" class="table table-bordered">
+                    <thead>
+                    <th></th>
+                    <th>User ID#</th>
+                    <th>Photo</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>User Role</th>
+                    <th></th>
+                    </thead>   
+                    <tbody>
+                        <?php foreach($aUsers as $aUser): ?>
+                            <tr>
+                                <td><input type="checkbox" id="inlineCheckbox1" name="id[<?php echo $aUser['user_id']; ?>]"></td>
+                                <td><?php echo $aUser['user_id']; ?>#</td>
+                                <td><img src="<?php echo $this->getImage(array('user' => $aUser, 'size' => 50), 'user_image'); ?>" /></td>
+                                <td><?php echo $aUser['username']; ?></td>
+                                <td><?php echo $aUser['email']; ?></td>
+                                <td><?php echo $aUser['role_title']; ?></td>
+                               <td>
+					<a class="btn btn-info btn-mini" href="<?php echo Linko::Url()->make('user:admincp:action', array('action' => 'edit', 'id' => $aUser['user_id'])); ?>">Edit</a> | 					
+					<a class="btn btn-danger btn-mini" href="">Delete</a>
+				</td>
+                                
+                            </tr>  
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+<!--                <input class="btn btn-info btn-small" type="submit" value="Submit" />-->
+            </div>
+        </form>
+    </div><!--/span-->                   
+</div><!--/row-->

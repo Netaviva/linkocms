@@ -1,0 +1,52 @@
+<div class="activity-item">
+	<div class="figure">
+		<img src="<?php echo $this->getImage(array('user' => $aActivity, 'size' => 50), 'user_image'); ?>" />
+	</div>
+    <div class="item-data">
+	    <div class="item-meta activity-item-meta">
+		    <a href="<?php echo Linko::Url()->make('user:profile', array('username' => $aActivity['username'])); ?>">
+               <?php echo $aActivity['username']; ?>
+		    </a>
+	    </div>
+	    <div class="item-content activity-item-content">
+            <?php if($aActivity['activity_image'] != ''): ?>
+		    <img src="<?php echo $aActivity['activity_image']; ?>" />
+            <?php endif; ?>
+            <?php echo $aActivity['activity_text']; ?>
+	    </div>
+	    <div class="item-footer activity-extra">
+        <span class="activity-time-created" data-time="<?php echo $aActivity['time_created_unix']; ?>">
+            <?php echo $aActivity['time_created']; ?>
+        </span>
+
+            <?php if($bCommentEnabled): ?>
+		    .
+		    <span class="activity-extra-comment">
+                <a href="#activity-comment-<?php echo $aActivity['activity_id']; ?>">
+                    <?php echo Lang::t('activity.comment'); ?>
+                </a>
+            </span>
+            <?php endif; ?>
+	    </div>
+
+        <?php if($bCommentEnabled): ?>
+	    <div id="activity-comment-<?php echo $aActivity['activity_id']; ?>" class="activity-comments">
+            <?php /** Start List Comments */ ?>
+            <?php echo $this->getBlock('activity/comment', array(
+		        'activity_id' => $aActivity['activity_id'],
+		        'bShowAllComments' => (isset($bShowAllComments) ? $bShowAllComments : false)
+	        )); ?>
+            <?php /** End List Comments */ ?>
+            <?php if($bCanComment): ?>
+		    <div class="activity-js-comment-new-block"></div>
+		    <form method="post">
+			    <div>
+				    <textarea rows="1" style="height: 30px"></textarea>
+			    </div>
+		    </form>
+            <?php endif; ?>
+	    </div>
+        <?php endif; ?>
+    </div>
+</div>
+

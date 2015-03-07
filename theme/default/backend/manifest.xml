@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<extension:theme>
+	<title>LinkoPlatform AdminCP</title>
+	<description>Default Admin panel based on Twitter Bootstrap</description>
+	<author>LinkoDEV Team</author>
+	<author_url>http://linkodev.com</author_url>
+	<version>1.0</version>
+</extension:theme>

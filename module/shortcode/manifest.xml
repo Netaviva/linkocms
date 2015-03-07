@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension:module>
+	<title>Shortcodes Parser</title>
+	<version>1.0</version>
+	<description>This module when integrated with your theme will parse special shortcodes (built-in or custom) to display special types of content.</description>
+    <auto_enable>0</auto_enable>	
+</extension:module>

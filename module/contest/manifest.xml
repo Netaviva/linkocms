@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<extension:module>
+	<title>Sport Contest</title>
+	<version>1.0.0</version>
+	<description>Engage users in your community by creating a way for them to get points and spend them</description>
+	<core>0</core>
+    <auto_enable>0</auto_enable>
+
+	<author>Stanley Ojadovwa</author>
+	<author_url>http://linkodev.com</author_url>
+        
+        <component>
+		<controller label="Sport Contest"
+		            title="Sport Contest"
+		            path="contest/index"
+		            route_id="contest:index"
+                            route_url="contest(/[archive]/[slug])(/[page])"
+		            route_rule="page=:int&amp;archive=category|tag&amp;slug=:alnum"/>
+                            
+                  <controller label="Single Contest Post"
+		            title="Contest"
+		            path="contest/view"
+		            route_id="contest:view"
+		            route_url="contest/[slug]"/>
+                
+                <controller label="Contest History"
+		            title="Contest History"
+		            path="contest/history"
+		            route_id="contest:history"
+		            route_url="contest/history"></controller>
+                
+                <block label="Contest Countdown" path="contest/countdown">
+			<param var="contest_countdown" label="Contest Countdown" type="text">1</param>
+		</block>
+	</component>
+        
+        <settings>
+		<setting var="contest.contest_per_page"
+		         type="integer"
+		         title="Contest Per Page"
+		         description="The number of sport contest to display per page.">5</setting>
+
+		<setting var="contest.enable_default_comment"
+		         type="boolean"
+		         title="Enable default comment"
+		         description="Enable default comment. Note: This requires the 'comment' module to be available and installed to work.">1</setting>
+
+		<setting var="contest.members_only_comment"
+		         type="boolean"
+		         title="Members only commenting"
+		         description="Enable this to only allow  members to comment on contest posts.">0</setting>
+	</settings>
+        
+        <translations>
+		<translation var="contest.id">#ID</translation>
+		<translation var="contest.team_a">Team A</translation>
+		<translation var="contest.team_b">Team B</translation>
+		<translation var="contest.total_vote">Total Votes</translation>
+                <translation var="contest.status">Approved?</translation>
+                <translation var="contest.contest_start_date">Start Date</translation>
+                 <translation var="contest.contest_end_date">End Date</translation>
+                <translation var="contest.sport">Sport Contest</translation>
+                <translation var="contest.create">Create Contest</translation>
+                <translation var="contest.no_contest_created_yet">No Contest Created Yet</translation>
+                <translation var="contest.contest_edited_successfully">Contest Edited Successfully</translation>
+                <translation var="contest.contest_detail">Contest Detail</translation>
+                 <translation var="contest.contest_start_date">Contest Start Date</translation>
+                <translation var="contest.contest_start_time">Contest Start Time</translation>
+                <translation var="contest.contest_end_date">Contest End Date</translation>
+                <translation var="contest.contest_end_time">Contest End Time</translation>
+                <translation var="contest.team_a_logo">Team A Logo</translation>
+                <translation var="contest.team_b_logo">Team B Logo</translation>
+                <translation var="contest.is_approved">Is Approved</translation>
+                <translation var="contest.contest_start_date_description">The date you want the contest to go live on your site</translation>
+                <translation var="contest.contest_start_time_description">The time you want the contest to go live on your website</translation>
+                <translation var="contest.contest_end_date_description">The date you want the contest to end especially after the match</translation>
+                <translation var="contest.contest_end_time_description">The time you want the contest to end</translation>
+                <translation var="contest.contest_added_successfully">Contest Added Successfully</translation>
+                <translation var="contest.only_members_are_allowed_to_post_comment">Only members are allowed to post comment.</translation>
+                <translation var="contest.leave_a_comment">Leave a Comment.</translation>
+                <translation var="contest.contest_vs">VS</translation>
+                <translation var="contest.contest_draw_match">Draw Match</translation>
+                <translation var="contest.login_and_participate">Login and Partcipate</translation>
+                <translation var="contest.view_match_details">View Match Details</translation>
+        </translations>
+        
+        <requirement>
+		<module id="comment" optional="1"></module>
+	</requirement>
+        
+        <table><![CDATA[a:2:{s:7:"contest";a:9:{s:10:"contest_id";a:3:{s:4:"type";s:7:"int(10)";s:14:"auto_increment";b:1;s:11:"primary_key";b:1;}s:12:"contest_slug";a:1:{s:4:"type";s:12:"varchar(255)";}s:18:"contest_start_date";a:1:{s:4:"type";s:7:"int(11)";}s:16:"contest_end_date";a:1:{s:4:"type";s:7:"int(11)";}s:14:"contest_team_a";a:1:{s:4:"type";s:12:"varchar(255)";}s:19:"contest_team_a_logo";a:1:{s:4:"type";s:4:"text";}s:14:"contest_team_b";a:1:{s:4:"type";s:12:"varchar(255)";}s:19:"contest_team_b_logo";a:1:{s:4:"type";s:4:"text";}s:11:"is_approved";a:1:{s:4:"type";s:10:"tinyint(1)";}}s:10:"contestant";a:9:{s:2:"id";a:3:{s:4:"type";s:7:"int(11)";s:14:"auto_increment";b:1;s:11:"primary_key";b:1;}s:7:"user_id";a:1:{s:4:"type";s:7:"int(10)";}s:12:"point_amount";a:1:{s:4:"type";s:7:"int(10)";}s:10:"contest_id";a:1:{s:4:"type";s:7:"int(11)";}s:10:"team_guess";a:1:{s:4:"type";s:11:"varchar(20)";}s:14:"contest_team_a";a:1:{s:4:"type";s:7:"int(11)";}s:14:"contest_team_b";a:1:{s:4:"type";s:7:"int(10)";}s:12:"contest_draw";a:1:{s:4:"type";s:7:"int(10)";}s:9:"timestamp";a:1:{s:4:"type";s:7:"int(10)";}}}]]></table>
+
+</extension:module>

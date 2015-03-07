@@ -1,0 +1,18 @@
+.each-badges
+{
+    float:left;
+    margin: 3px;
+    text-align: center;
+}
+
+#gamification-point-block
+{
+
+    padding: 5px;
+}
+#gamification-point-block #point-icon
+{
+    width:40px;
+    float: left;
+    padding:4px;
+}

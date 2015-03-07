@@ -1,0 +1,47 @@
+<?php
+
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage blog : controller_template - entry.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+
+<?php Linko::Plugin()->call('blog.tpl_before_post', $iPostId); ?>
+
+<div id="post">
+	<h2 class="item-title post-title">
+		<?php echo $aPost['post_title']; ?>
+	</h2>
+    
+   <div class="item-meta post-meta">
+        <?php echo Lang::t('blog.posted_on_time_by_user', array(
+            'time' => Html::tag('a', $aPost['time_created_readable'], array('href' => $aPost['post_url'])),
+            'user' => Html::tag('a', $aPost['username'], array('href' => $aPost['user_url']))
+        )); ?>       
+    </div>
+      
+    <div class="item-content post-content">
+        <?php Linko::Plugin()->call('blog.tpl_before_post_text', $iPostId); ?>
+
+    	<?php echo $aPost['post_text']; ?>
+
+        <?php Linko::Plugin()->call('blog.tpl_after_post_text', $iPostId); ?>
+    </div>
+</div>
+
+<?php Linko::Plugin()->call('blog.tpl_after_post', $iPostId); ?>
+
+<?php if(Linko::Model('Blog')->isCommentEnabled()): ?>
+    <?php $this->plugin('comment', array(
+        'module_id' => 'blog',
+        'item_id' => $iPostId,
+        'comment_list' => true,
+        'comment_form' => $bCanComment ? true : $this->getTemplate('blog/block/_comment/not-allowed', array(), true),
+        'comment_form_header' => Lang::t('blog.leave_a_reply'),
+    )); ?>
+<?php endif; ?>

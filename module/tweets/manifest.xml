@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension:module>
+    <title>Twitter Widget</title>
+    <description>Show your last tweet with style</description>
+    <version>1.0</version>
+    <author>Stanley Ojadovwa</author>
+    <auto_enable>0</auto_enable>
+    
+    <component>
+        <block label="Recent Tweets" path="tweets/recent">
+            <param var="tweetable.username" label="Your Twitter Username" type="text">stanwarri</param>
+            <param var="tweetable.number_of_tweets" label="Set the total number of tweets to display" type="text">3</param>
+        </block>
+    </component>
+        
+</extension:module>

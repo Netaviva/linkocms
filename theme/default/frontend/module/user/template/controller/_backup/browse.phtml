@@ -1,0 +1,27 @@
+<?php
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage user : controller_template - browse.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+<?php foreach ($aUsers as $aUser): ?>
+    <div class="span3">                            
+        <div class="profile">
+            <div class="rounded">
+                <img src="<?php echo $this->getImage(array('user' => $aUser, 'size' => '100'), 'user_image'); ?>" />
+                <div class="inset_shadow"></div></div>
+            <div class="user-meta">
+                <a href="<?php echo Linko::Url()->make('user:profile', array('username' => $aUser['username'])); ?>">
+                    <?php echo $aUser['username']; ?>
+                </a>
+            </div>
+        </div>                        
+    </div>
+<?php endforeach; ?>
+
+<?php $this->plugin('pager'); ?>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<extension:module>
+	<title>Content Block</title>
+	<version>1.0.0</version>
+	<description>Allows you to create blocks with custom content.</description>
+    <auto_enable>1</auto_enable>
+
+	<author>LinkoDEV Team</author>
+	<author_url>http://linkodev.com</author_url>
+
+	<component>
+		<block label="Content Block" path="contentblock/view">
+			<param var="id" type="select" data="Contentblock:getBlocksHelper" label="ContentBlock"></param>
+		</block>
+	</component>
+
+	<table><![CDATA[a:1:{s:12:"contentblock";a:6:{s:15:"contentblock_id";a:4:{s:4:"type";s:7:"int(10)";s:8:"unsigned";b:1;s:14:"auto_increment";b:1;s:11:"primary_key";b:1;}s:12:"component_id";a:2:{s:4:"type";s:7:"int(10)";s:8:"unsigned";b:1;}s:4:"name";a:1:{s:4:"type";s:12:"varchar(255)";}s:5:"title";a:1:{s:4:"type";s:12:"varchar(255)";}s:4:"text";a:1:{s:4:"type";s:4:"text";}s:12:"time_created";a:2:{s:4:"type";s:7:"int(10)";s:8:"unsigned";b:1;}}}]]>
+	</table>
+
+</extension:module>

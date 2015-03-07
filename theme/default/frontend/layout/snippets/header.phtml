@@ -1,0 +1,76 @@
+<?php
+/**
+ * @var $this Linko_Application_Template|Linko_Template
+ */
+defined('LINKO') or exit;
+?>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title><?php echo $this->getTitle(); ?></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Allura' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
+
+        <?php echo $this->getHeader(); ?>
+        <script type="text/javascript">
+            $(document).ready(function(){	
+                //testimonials
+                $('#testimonials_carousel').carousel({
+                    pause: 'hover'
+                });							
+            });
+        </script>
+        <!--[if lt IE 9]>
+                <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->    
+    </head>
+    <!-- topbar starts -->
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="container">
+                <div class="pull-left" >
+                    <?php if(Linko::Module()->isModule('messages')): ?>
+                        <?php echo $this->plugin('messages', array('add_mini' => true, 'mini_limit' => 3)); ?>
+                    <?php endif; ?>
+                </div>
+                <!-- user dropdown starts -->
+                <div class="pull-right" >
+                    <?php echo $this->plugin('menu', array('location' => 'top_menu', 'container_class' => 'nav sf-menu', 'depth' => 0)); ?>
+                </div>
+                <!-- user dropdown ends -->
+            </div>
+        </div>
+    </div>
+    <!-- topbar ends -->
+    <!--header-->
+    <div class="header">
+        <div class="wrap">
+            <div class="navbar navbar_ clearfix">
+                <div class="container">
+                    <div class="row">
+                        <div class="span4">
+                            <div class="logo">
+                                <a href="<?php echo Linko::Url()->make('') ?>">SocialCMS</a>
+                            </div>                        
+                        </div>
+                        <div class="span8">
+                            <a class="btn dark_btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse_">MENU</a>                                                   
+                            <div class="nav-collapse nav-collapse_ collapse">
+                                <?php echo $this->plugin('menu', array('location' => 'main_menu', 'container_class' => 'nav sf-menu', 'item_with_children_class' => 'sub-menu', 'depth' => 1)); ?>
+                            </div>                            
+                        </div>
+                    </div>                
+                </div>
+            </div>
+        </div>    
+    </div>
+    <!--//header-->

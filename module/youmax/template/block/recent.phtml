@@ -1,0 +1,20 @@
+<?php defined('LINKO') or exit(); ?>
+<div class="twitter">
+    <?php if(count($tweets)): ?>
+	<ul>
+	    <?php foreach($tweets as $tweet): ?>
+		<li>
+	    	<?php echo $tweet->text; ?>
+		    <p class="date"><em><?php //echo Html::Tag('a', 'https://twitter.com/' . $username . '/status/' . $tweet->id_str, format_date($tweet->created_at, Settings::get('date_format') . ' h:i'), 'target="_blank"'); ?></em></p>
+		</li>
+	    <?php endforeach; ?>
+	</ul> 
+   <?php endif; ?>
+</div>
+<div class="twitter_bottom">
+	<p class="twitter_follow">
+		<a href="https://twitter.com/<?php echo $username; ?>" class="twitter-follow-button" data-show-count="false" data-lang="en" data-size="large"></a>
+		<script>
+			!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+	</p>
+</div>

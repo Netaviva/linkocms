@@ -1,0 +1,1 @@
+{"profiler":{"contentblock_id":{"type":"int(10)","primary_key":true,"unsigned":true,"auto_increment":true}},"super_profiler":{"profiler_call":{"type":"VARCHAR(60)","collation":"utf_8bin"},"su_profiler_id":{"type":"INT(10)","collation":"utf_8bin","primary_key":"on","auto_increment":"on","unsigned":"on"},"nobody":{"type":"VARCHAR(60)","collation":"utf_8bin","default":"cool"}}}

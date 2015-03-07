@@ -1,0 +1,44 @@
+<?php
+
+/**
+ * @var $this Linko_Application_Template
+ */
+defined('LINKO') or exit();
+
+?>
+<h4>Setup Completed.</h4>
+
+<p>
+    Yep! Everything is up and ready. Start managing your new site.
+</p>
+
+<p>Ok, you may not need to delete the module <span style="background-color: #FF0000; padding: 2px 5px; color: #FFF;">install</span> from your list of modules because it cannot re-run unless you modify application.installed config to false. But if you want to be on the safer side, you should delete it.</p>
+
+<?php if(!Linko::Config()->get('application.installed')): ?>
+<div>
+    The installer could not update a file for some "security reasons". Use your file manager to open the file
+<pre><?php echo INCLUDE_DIR . 'config' . DS . 'application.php'; ?></pre>
+    And replace The content with the one below
+<textarea rows="10">
+&lt;?php
+
+/**
+ * Core File
+ *
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+
+defined('LINKO') or exit;
+
+Linko::Config()->set('application.installed', true);
+</textarea>
+</div>
+<?php endif; ?>
+<a class="button" href="<?php echo Linko::Url()->make(); ?>">Visit Site &raquo;</a>
+<br />
+
+    <br />
+<a class="button" href="<?php echo Linko::Url()->make('admincp'); ?>">Visit Administrator Panel &raquo;</a>

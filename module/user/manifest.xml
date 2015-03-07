@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<extension:module>
+	<title>User</title>
+	<version>1.0.7</version>
+	<description>User Management</description>
+	<core>1</core>
+	<auto_enable>1</auto_enable>
+
+	<author>LinkoDEV Team</author>
+	<author_url>http://linkodev.com</author_url>
+
+	<component>
+		<controller label="User Login"
+		            title="Login"
+		            path="user/login"
+		            route_id="user:login"
+		            route_url="user/login"/>
+
+		<controller label="User Logout"
+		            title="Logout"
+		            path="user/logout"
+		            route_id="user:logout"
+		            route_url="user/logout"/>
+
+		<controller label="User Browse"
+		            title="Browse Users"
+		            path="user/browse"
+		            route_id="user:browse"
+		            route_url="user/browse(/[page])"/>
+
+		<controller label="User Register"
+		            title="Register"
+		            path="user/register"
+		            route_id="user:register"
+		            route_url="user/register"/>
+
+		<controller label="User Edit Account Setting"
+		            title="Edit Account Settings"
+		            path="user/setting/account"
+		            route_id="user:setting:account"
+		            route_url="user/setting/account"
+		            route_rule="" />
+
+		<controller label="User Edit Profile Settings"
+		            title="Edit Profile Settings"
+		            path="user/setting/profile"
+		            route_id="user:setting:profile"
+		            route_url="user/setting/profile"
+		            route_rule="" />
+
+		<controller label="User Edit Profile Picture"
+		            title="Edit Profile Picture"
+		            path="user/setting/photo"
+		            route_id="user:setting:photo"
+		            route_url="user/setting/photo"
+		            route_rule="" />
+
+		<controller label="User Password Reset"
+		            title="Reset Password"
+		            path="user/reset-password"
+		            route_id="user:reset-password"
+		            route_url="user/reset-password(/[key])"
+		            route_rule="key=:any" />
+
+		<controller label="User Verify Account"
+		            title="Verify Account"
+		            path="user/verify-account"
+		            route_id="user:verify-account"
+		            route_url="user/verify-account(/[hash])"
+		            route_rule="hash=:any" />
+
+		<controller label="User Profile"
+		            title="Profile"
+		            path="user/profile"
+		            route_id="user:profile"
+		            route_url="profile/[username]"
+		            route_rule="username=:alnum" />
+
+		<block label="Change Language" path="user/change-locale"/>
+		<block label="Login Mini" path="user/login"/>
+		<block label="Profile Picture" path="user/profile-pic">
+			<param var="picture_size" label="Picture Size" type="select" data="20,50,100,150,200">100</param>
+		</block>
+
+	</component>
+
+	<translations>
+		<translation var="user.user_with_that_name_or_email_already_exists">A user with that username or email already exists.</translation>
+		<translation var="user.username">Username</translation>
+		<translation var="user.fullname">Full name</translation>
+		<translation var="user.firstname">First name</translation>
+		<translation var="user.lastname">Last name</translation>
+		<translation var="user.email">Email</translation>
+		<translation var="user.password">Password</translation>
+		<translation var="user.re_enter_password">Re-enter Password</translation>
+		<translation var="user.birthday">Birthday</translation>
+		<translation var="user.register">Register</translation>
+		<translation var="user.login">Login</translation>
+		<translation var="user.logout">Logout</translation>
+		<translation var="user.timezone">Timezone</translation>
+		<translation var="user.language">Language</translation>
+		<translation var="user.location">Location</translation>
+		<translation var="user.update">Update</translation>
+		<translation var="user.role">Role</translation>
+		<translation var="user.incorrect_password">Your password is incorrect.</translation>
+		<translation var="user.error_sending_mail">Error sending mail message.</translation>
+		<translation var="user.profile_updated">Profile updated successfully.</translation>
+		<translation var="user.account_updated">Account updated successfully.</translation>
+		<translation var="user.no_record_with_email_found">No record with this email found.</translation>
+		<translation var="user.password_reset_key_expired">This password reset key has expired. You will have to request for a new one to reset your password.</translation>
+		<translation var="user.already_requested_for_password_reset">You have already requested to reset your password. Check your mail box for details on how to reset your password.</translation>
+		<translation var="user.profile_photo_uploaded">Profile Photo Uploaded.</translation>
+		<translation var="user.invalid_password_reset_key">Invalid password reset key.</translation>
+		<translation var="user.reset_password">Reset Password</translation>
+		<translation var="user.request_password_reset">Request Password Reset</translation>
+		<translation var="user.both_password_must_match">Both password must match.</translation>
+		<translation var="user.just_a_step_remaining_enter_your_password_below_to_set_a_new_password">Just one step remaining to reset your password. Enter your password below to set a new one.</translation>
+		<translation var="user.enter_email_used_during_registeration">Enter the email you used during registeration</translation>
+		<translation var="user.password_reset_sent_to_email">Password reset link sent to your mailbox and will only be valid for {expire_time} hour(s).</translation>
+		<translation var="user.logged_in_successfully">You have logged in successfully.</translation>
+		<translation var="user.account_verified">Account Verified</translation>
+		<translation var="user.successfully_registered">You have successfully registered.</translation>
+		<translation var="user.you_need_to_verify_your_account_to_access_all">You need to verify your account before you can have full access to this site.</translation>
+		<translation var="user.re_enter_email">Re-enter Email</translation>
+		<translation var="user.confirm_password">Confirm Password</translation>
+		<translation var="user.birthday">Birthday</translation>
+		<translation var="user.gender">Gender</translation>
+		<translation var="user.male">Male</translation>
+		<translation var="user.female">Female</translation>
+		<translation var="user.no_user_found_with_such_password">No user found with the combination of the username and password you entered.</translation>
+		<translation var="user.account_pending_verification_and_cannot_login">Your account is pending verification and cannot login</translation>
+		<translation var="user.old_password">Old Password</translation>
+		<translation var="user.password_cannot_be_empty">Password cannot be empty.</translation>
+		<translation var="user.password_changed">Password Changed.</translation>
+		<translation var="user.invalid_login_credentials">Invalid login credentials.</translation>
+	</translations>
+
+	<settings>
+		<setting var="user.allow_user_registeration"
+		         type="boolean"
+		         title="Allow User Registration"
+		         description="Enable this setting to allow public registration.">1
+		</setting>
+
+		<setting var="user.registeration_disabled_message"
+		         type="longtext"
+		         title="Registeration disabled message"
+		         description="If you disabled public registeration, you can set a message that will be displayed on the registeration page">Registeration Disabled.</setting>
+
+		<setting var="user.verify_account_on_signup"
+		         type="boolean"
+		         title="Verify Account At Signup"
+		         description="If enabled, When a guest signs up, they will have to verify their account (email address).
+		         They will be sent a special link to verify that this is their account (email address) is valid.">0</setting>
+
+		<setting var="user.enable_dob_on_signup"
+		         type="boolean"
+		         title="Date of birth select on Signup"
+		         description="Enable to allow users select their date of birth at signup.">1</setting>
+
+		<setting var="user.enable_location_on_signup"
+		         type="boolean"
+		         title="Location select on Signup"
+		         description="Enable to allow users select their country at signup.">0</setting>
+
+		<setting var="user.enable_gender_on_signup"
+		         type="boolean"
+		         title="Gender select on Signup"
+		         description="Enable to allow users select their gender/sex at signup.">1</setting>
+
+		<setting var="user.enable_location_select"
+		         type="boolean"
+		         title="User Enable Location Select"
+		         description="Enable this option to allow users to select their country when editing their account.">1
+		</setting>
+
+		<setting var="user.display_email_on_profile"
+		         type="boolean"
+		         title="Display Email On Profile"
+		         description="Should user emails be displayed when viewing the users profile.">0
+		</setting>
+
+		<setting var="user.page_redirect_after_login"
+		         type="select"
+		         data="User/Helper/Page:getPagesForSettings"
+		         title="Page to Redirect after login"
+		         description="After a user has logged in, you can set a default landing page they should be redirected to. If nothing is selected, the user will be redirected to the index page ">
+		</setting>
+
+		<setting var="user.page_redirect_after_signup"
+		         type="select"
+		         data="User/Helper/Page:getPagesForSettings"
+		         title="Page to Redirect after signup"
+		         description="Select the page you want to send users to after they signup. If you want the user to be redirected to the home page.">
+		</setting>
+
+		<setting var="user.auto_login_after_signup"
+		         type="boolean"
+		         title="Auto Login User After Signup"
+		         description="Enable this to automatically log in the user after signup">1
+		</setting>
+
+		<setting var="user.password_request_expire_time"
+		         type="integer"
+		         title="Password Request Expire Time"
+		         description="When a user request for a password reset, you can set how long request key to remains valid before they can make a new request. Note: The value is in hours and if set to zero (0) means there is no waiting/expiry time and user can request for password reset anytime. Note: You should consider setting this greater than 0 to reduce spam requests.">
+			1
+		</setting>
+
+		<setting var="user.re_enter_password_on_signup"
+		         type="boolean"
+		         title="Show Re-enter password on signup"
+		         description="Enable this to force users to re-enter their password during signup">1</setting>
+
+		<setting var="user.re_enter_email_on_signup"
+		         type="boolean"
+		         title="Show Re-enter email on signup"
+		         description="Enable this to force users to re-enter/confirm their email during signup">1</setting>
+
+	</settings>
+
+	<table><![CDATA[a:5:{s:4:"user";a:18:{s:7:"user_id";a:4:{s:4:"type";s:7:"int(10)";s:8:"unsigned";b:1;s:14:"auto_increment";b:1;s:11:"primary_key";b:1;}s:8:"username";a:1:{s:4:"type";s:11:"varchar(60)";}s:8:"password";a:1:{s:4:"type";s:12:"varchar(255)";}s:5:"email";a:2:{s:4:"type";s:12:"varchar(255)";s:3:"key";b:1;}s:6:"gender";a:3:{s:4:"type";s:7:"char(4)";s:7:"default";N;s:4:"null";b:1;}s:7:"role_id";a:3:{s:4:"type";s:7:"int(10)";s:8:"unsigned";b:1;s:7:"default";s:1:"2";}s:10:"user_photo";a:3:{s:4:"type";s:4:"text";s:7:"default";N;s:4:"null";b:1;}s:10:"login_hash";a:1:{s:4:"type";s:12:"varchar(140)";}s:9:"activated";a:3:{s:4:"type";s:10:"tinyint(1)";s:8:"unsigned";b:1;s:7:"default";s:1:"0";}s:15:"activation_hash";a:1:{s:4:"type";s:12:"varchar(255)";}s:10:"country_id";a:4:{s:4:"type";s:11:"varchar(10)";s:7:"default";N;s:3:"key";b:1;s:4:"null";b:1;}s:9:"locale_id";a:2:{s:4:"type";s:11:"varchar(20)";s:7:"default";s:5:"en_GB";}s:9:"time_zone";a:3:{s:4:"type";s:11:"varchar(50)";s:7:"default";N;s:4:"null";b:1;}s:14:"time_dst_check";a:3:{s:4:"type";s:10:"tinyint(1)";s:8:"unsigned";b:1;s:7:"default";s:1:"0";}s:11:"time_joined";a:3:{s:4:"type";s:7:"int(10)";s:8:"unsigned";b:1;s:7:"default";s:1:"0";}s:18:"password_reset_key";a:3:{s:4:"type";s:12:"varchar(255)";s:7:"default";N;s:4:"null";b:1;}s:19:"password_reset_time";a:3:{s:4:"type";s:7:"int(10)";s:8:"unsigned";b:1;s:7:"default";s:1:"0";}s:8:"birthday";a:1:{s:4:"type";s:7:"int(10)";}}s:9:"user_data";a:3:{s:7:"user_id";a:3:{s:4:"type";s:7:"int(10)";s:8:"unsigned";b:1;s:3:"key";b:1;}s:9:"firstname";a:3:{s:4:"type";s:12:"varchar(255)";s:7:"default";N;s:4:"null";b:1;}s:8:"lastname";a:3:{s:4:"type";s:12:"varchar(255)";s:7:"default";N;s:4:"null";b:1;}}s:9:"user_role";a:3:{s:7:"role_id";a:4:{s:4:"type";s:7:"int(10)";s:8:"unsigned";b:1;s:14:"auto_increment";b:1;s:11:"primary_key";b:1;}s:10:"role_title";a:1:{s:4:"type";s:11:"varchar(60)";}s:6:"system";a:3:{s:4:"type";s:10:"tinyint(1)";s:8:"unsigned";b:1;s:7:"default";s:1:"0";}}s:17:"user_role_setting";a:4:{s:10:"setting_id";a:4:{s:4:"type";s:7:"int(10)";s:8:"unsigned";b:1;s:14:"auto_increment";b:1;s:11:"primary_key";b:1;}s:9:"module_id";a:2:{s:4:"type";s:11:"varchar(60)";s:3:"key";b:1;}s:11:"setting_var";a:2:{s:4:"type";s:12:"varchar(255)";s:3:"key";b:1;}s:13:"setting_value";a:1:{s:4:"type";s:4:"text";}}s:22:"user_role_setting_data";a:4:{s:15:"setting_data_id";a:4:{s:4:"type";s:7:"int(10)";s:8:"unsigned";b:1;s:14:"auto_increment";b:1;s:11:"primary_key";b:1;}s:7:"role_id";a:3:{s:4:"type";s:7:"int(10)";s:8:"unsigned";b:1;s:3:"key";b:1;}s:11:"setting_var";a:1:{s:4:"type";s:12:"varchar(255)";}s:13:"setting_value";a:1:{s:4:"type";s:4:"text";}}}]]></table>
+</extension:module>

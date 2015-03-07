@@ -1,0 +1,102 @@
+<?php
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage theme : controller_template - admincp\view.phtml
+ * @version 1.0.0
+ * @copyright Netaviva (c) 2013. All Rights Reserved.
+ */
+?>
+<div class="row-fluid">
+    <div class="box span8" onTablet="span12" onDesktop="span8">
+        <form class="" action="<?php echo Linko::Url()->make('self'); ?>" method="post">
+            <div class="box-header">
+                <h2><i class="icon-edit"></i><span class="break"></span>Theme Options</h2>
+            </div>
+            <div class="box-content">
+                <?php if (count($aSettings)): ?>
+                    <?php foreach ($aSettings as $aSetting): ?>
+                        <div class="control-group">
+                            <label class="control-label" for="focusedInput"><?php echo $aSetting['label']; ?></label>
+                            <div class="controls">
+                                <?php echo $this->getTemplate('theme/block/setting_form', array('aForm' => $aSetting, 'aSetting' => $aTheme['setting'])); ?>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <div class="no-item"><h4>No Settings Available.</h4>
+                    </div>
+                <?php endif; ?>
+            </div>
+                <input type="submit" class="btn btn-info" value="Save" />
+        </form>
+    </div>
+    <div class="box span4 noMargin" onTablet="span12" onDesktop="span4">
+        <div class="box-header">
+            <h2><i class="icon-tasks"></i><span class="break"></span>Theme Detail</h2>
+        </div>
+        <div class="box-content">
+            <div class="control-group">
+                <label class="control-label" for="page"> Title:</label>
+                <div class="controls"><?php echo $aTheme['title']; ?></div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="page">Description:</label>
+                <div class="controls"><?php echo $aTheme['description']; ?></div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="page">Author:</label>
+                <div class="controls">  <?php if (isset($aTheme['author_url'])): ?>
+                        <a href="<?php echo $aTheme['author_url']; ?>">
+                            <?php echo $aTheme['author']; ?>
+                        </a>
+                    <?php else: ?>
+                        <?php echo $aTheme['author']; ?>
+                    <?php endif; ?>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="page">Version:</label>
+                <div class="controls"><?php echo $aTheme['version']; ?></div>
+            </div>
+            <?php if (isset($aTheme['url'])): ?>
+                <div class="control-group">
+                    <label class="control-label" for="page">Theme Url:</label>
+                    <div class="controls"><a href="<?php echo $aTheme['url']; ?>"> <?php echo $aTheme['url']; ?></a></div>
+                </div>
+            <?php endif; ?>
+            <?php if (isset($aTheme['license'])): ?>
+                <div class="control-group">
+                    <label class="control-label" for="page">License:</label>
+                    <div class="controls"><?php echo $aTheme['license']; ?></div>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>  
+
+    <div class="box span4 noMargin" onTablet="span12" onDesktop="span4">
+        <div class="box-header">
+            <h2><i class="icon-filter"></i><span class="break"></span>Theme Files</h2>
+        </div>
+        <div class="box-content">
+            <div class="control-group">
+                <label class="control-label" for="pagestatus">Layouts</label>
+                <div class="controls">
+                    <?php if (Dir::exists($this->getThemePath($sType, $sTheme) . 'layout')): ?>
+                        <ul>
+                            <?php foreach (Dir::getFiles($this->getThemePath($sType, $sTheme) . 'layout', true) as $sFile): ?>
+                                <li>
+                                    <?php echo str_replace(array($this->getThemePath($sType, $sTheme) . 'layout' . DS, DS), array('', '/'), $sFile); ?> &raquo; <span class="action edit">Edit</span>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    <?php else: ?>
+                        No Layout Found
+                    <?php endif; ?>    
+                </div>
+            </div>
+        </div>
+    </div> 
+</div>

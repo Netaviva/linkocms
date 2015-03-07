@@ -1,0 +1,22 @@
+<?php
+
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage page : block_template - list.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+
+<ul>
+    <?php foreach($aPages as $aPage): ?>
+    <li>
+        <a href="<?php echo Linko::Url()->make($aPage['page_url']); ?>">
+            <?php echo $aPage['page_title']; ?>
+        </a>
+    </li>
+    <?php endforeach; ?>
+</ul>

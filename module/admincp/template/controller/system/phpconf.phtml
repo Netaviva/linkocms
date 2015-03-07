@@ -1,0 +1,57 @@
+<?php
+
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage admincp : controller_template - system\phpconf.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+
+<div class="admincp-system-phpconf">
+	<div class="module">
+    	<div class="module-header"> 
+
+            <ul class="tabs">
+                <li class="active">
+                    <a href="#phpconf">Php Configuration</a>
+                </li>
+                <li>
+                    <a href="#ldext">Loaded Extensions</a>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="module-content">
+            <ul class="tabs-content">
+                <li class="active" id="phpconf">
+                    <?php foreach($aPhp as $sTitle => $sValue): ?>
+                        <div class="control-item">
+                            <div class="control-item-label">
+                                <?php echo $sTitle; ?>
+                            </div>
+                            <div class="control-item-data">
+                                <?php echo $sValue; ?>
+                            </div>                
+                        </div>
+                     <?php endforeach; ?> 
+                </li>
+                <li id="ldext">
+              		<?php foreach($aExtension as $sTitle => $sValue): ?>
+                    <div class="control-item">
+                        <div class="control-item-label left">
+                            <?php echo $sTitle; ?>
+                        </div>
+                        <div class="control-item-data">
+                            <?php echo $sValue; ?>
+                        </div>                
+                    </div>
+                    <?php endforeach; ?>
+                </li>
+            </ul>      
+        </div>
+     </div>
+</div>

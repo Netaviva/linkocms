@@ -1,0 +1,66 @@
+<?php
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage theme : controller_template - admincp\index.phtml
+ * @version 1.0.0
+ * @copyright Netaviva (c) 2013. All Rights Reserved.
+ */
+?>
+
+<div class="row-fluid sortable">		
+    <div class="box span12">
+        <div class="box-header" data-original-title>
+            <h2><i class="icon-edit"></i><span class="break"></span>Themes</h2>
+        </div>
+        <div class="box-content">
+            <table id="menu-item-list" class="table table-striped table-bordered">
+                <thead>
+                <th></th>
+                <th></th>
+                <th>Theme Details</th>
+                <th></th>
+                </thead>   
+                <tbody>
+                    <?php foreach ($aThemes as $sType => $aTheme): ?>
+                        <?php foreach ($aTheme as $sTheme => $aManifest): ?>
+                            <tr>
+                                <td><?php echo $aManifest['title']; ?></td>
+                                <td><img width="180" height="140" src="<?php echo $aManifest['screenshot']; ?>" /></td>
+                                <td>
+                                    <ul class="theme-info">
+                                        <li>
+                                            <span>Version:</span> <?php echo $aManifest['version']; ?>
+                                        </li>
+                                        <li>
+                                            <span>Type:</span> <?php echo $sType; ?>
+                                        </li>
+                                        <li>
+                                            <span>Author:</span> <?php echo $aManifest['author']; ?>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>
+                                   <ul class="button-group radius">
+                                        <a class="button small" href="<?php echo Linko::Url()->make('theme:admincp:view', array('theme' => $sTheme, 'type' => $sType)); ?>">View Theme</a><br/>
+                                        <?php if ($aManifest['default'] === false): ?>
+                                            <form action="<?php echo Linko::Url()->make('self'); ?>" method="post">
+                                                <input type="hidden" name="default[theme]" value="<?php echo $sTheme; ?>" />
+                                                <input type="hidden" name="default[type]" value="<?php echo $sType; ?>" />
+                                                <input type="submit" value="Set Default" class="btn btn-info btn-small" />
+                                            </form>
+                                        <?php else: ?>
+                                            <input type="submit" disabled="disabled" value="Default <?php echo ucwords($sType); ?>" class="btn small success" />
+                                        <?php endif; ?>
+                                </ul>
+                                </td>
+                            </tr>  
+                        <?php endforeach; ?>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div><!--/span-->                   
+</div><!--/row-->

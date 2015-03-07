@@ -1,0 +1,95 @@
+<?php
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage contest : controller_template - admincp\index.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+
+<?php if(count($aContests)):  ?>
+
+<form action="<?php echo Linko::Url()->make('self'); ?>" method="post">
+    <div class="module">
+        <div class="module-header">
+            <h3><?php echo Lang::t('contest.sport'); ?></h3>
+            <ul>
+                <li>
+                    <a class="button small" href="<?php echo Linko::Url()->make('contest:admincp:action', array('action' => 'add')); ?>"><?php echo Lang::t('contest.create'); ?></a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="module-content">
+            <table>
+                <thead>
+                <th></th>
+                <th style="width: 25%;"><?php echo Lang::t('contest.team_a'); ?></th>
+                <th style="width: 25%;"><?php echo Lang::t('contest.team_b'); ?></th>
+                <th style="width: 15%;"><?php echo Lang::t('contest.contest_start_date'); ?></th>
+                <th style="width: 15%;"><?php echo Lang::t('contest.contest_end_date'); ?></th>
+                <th style="width: 10%;"><?php echo Lang::t('contest.total_vote'); ?></th>
+                <th style="width: 5%;"><?php echo Lang::t('contest.status'); ?></th>
+                <th style="width: 25%;"></th>   
+                </thead>
+                <tbody>
+                    <?php foreach($aContests as $aContest): ?>
+                    <tr>
+                        <td><input type="checkbox" name="id[<?php echo $aContest['contest_id']; ?>]" /></td>
+                        <td><?php echo $aContest['contest_team_a']; ?></td>
+                        <td><?php echo $aContest['contest_team_b']; ?></td>
+                        <td><?php echo $aContest['contest_start_date']; ?></td>
+                         <td><?php echo $aContest['contest_end_date']; ?></td>
+                        <td></td>
+                        <td>
+                            <input type="hidden" name="idtest[]" value="<?php echo $aContest['contest_id']; ?>" />
+                            <input name="approve[<?php echo $aContest['contest_id']; ?>]" type="hidden"<?php echo($aContest['is_approved'] ? ' checked="checked"' : ''); ?> />
+                             <?php echo($aContest['is_approved'] ? 'Yes' : 'No'); ?>
+                        </td>
+                         <td>
+                            <a href="<?php echo Linko::Url()->make('contest:admincp:action', array('action' => 'edit', 'id' => $aContest['contest_id'])); ?>">Edit</a> | 
+                            <a href="<?php echo Linko::Url()->make('contest:admincp:action', array('action' => 'delete', 'id' => $aContest['contest_id'])); ?>">Delete</a>
+                          </td>
+                    </tr>
+                     <?php endforeach; ?>
+                </tbody>
+            </table>
+
+            <?php $this->plugin('pager'); ?>  
+        </div>
+
+        <div class="module-footer">
+            <select class="three" name="post_action">
+                <option> -- Select Action -- </option>
+                <option value="approve">Approve Selected</option>
+                <option value="unapprove">Unapprove Selected</option>
+                <option value="delete">Delete Selected</option>
+            </select>
+            <input type="submit" class="button" value="Submit" />    
+        </div>
+    </div>
+</form> 
+
+
+<?php else:  ?>
+
+
+<div class="module">
+    <div class="module-header">
+        <h3><?php echo Lang::t('contest.sport'); ?></h3>
+    </div>
+    <div class="module-content">
+        <div class="no-item">
+            <h4><?php echo Lang::t('contest.no_contest_created_yet'); ?></h4>
+            <h6>
+                <a href="<?php echo Linko::Url()->make('contest:admincp:action', array('action' => 'add')); ?>"><?php echo Lang::t('contest.create'); ?></a>.
+            </h6>
+        </div>    
+    </div>
+    <div class="module-footer">
+    </div>
+</div>
+<?php endif;  ?>

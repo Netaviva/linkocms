@@ -1,0 +1,155 @@
+<?php
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage user : controller_template - register.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+<div class="well">
+    <?php if (Linko::Module()->getSetting('user.allow_user_registeration')): ?>
+        <form id="signup" class="form-horizontal" method="post" action="<?php echo Linko::Url()->make('self'); ?>">
+            <legend><?php echo Lang::t('user.create_an_account'); ?></legend>
+            <div class="control-group ">
+                <label class="control-label"><?php echo Lang::t('user.username'); ?>: <?php echo Html::required(); ?></label>
+                <div class="controls">
+                    <div class="input-prepend">
+                        <span class="add-on"><i class="icon-user"></i></span>
+                        <input type="text" class="input-xlarge" id="input-username" name="val[username]" value="<?php echo Arr::get($aVals, 'username', ''); ?>" placeholder="Username">
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label"><?php echo Lang::t('user.email'); ?>: <?php echo Html::required(); ?></label>
+                <div class="controls">
+                    <div class="input-prepend">
+                        <span class="add-on"><i class="icon-envelope"></i></span>
+                        <input type="text" class="input-xlarge" id="input-email" value="<?php echo Arr::get($aVals, 'email', ''); ?>" name="val[email]" placeholder="Email">
+                    </div>
+                </div>
+            </div>
+
+            <?php if (Linko::Module()->getSetting('user.re_enter_email_on_signup')): ?>
+                <div class="control-group">
+                    <label class="control-label"><?php echo Lang::t('user.re_enter_email'); ?>: <?php echo Html::required(); ?></label>
+                    <div class="controls">
+                        <div class="input-prepend">
+                            <span class="add-on"><i class="icon-envelope"></i></span>
+                            <input type="text" class="input-xlarge" id="input-confirm-email" value="<?php echo Arr::get($aVals, 'confirm-email', ''); ?>" name="val[confirm-email]" placeholder="Confirm Email">
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
+
+            <div class="control-group">
+                <label class="control-label"><?php echo Lang::t('user.password'); ?>: <?php echo Html::required(); ?></label>
+                <div class="controls">
+                    <div class="input-prepend">
+                        <span class="add-on"><i class="icon-lock"></i></span>
+                        <input type="Password" id="input-password" class="input-xlarge" name="val[password]" placeholder="Password">
+                    </div>
+                </div>
+            </div>
+
+            <?php if (Linko::Module()->getSetting('user.re_enter_password_on_signup')): ?>
+                <div class="control-group">
+                    <label class="control-label"><?php echo Lang::t('user.confirm_password'); ?>: <?php echo Html::required(); ?></label>
+                    <div class="controls">
+                        <div class="input-prepend">
+                            <span class="add-on"><i class="icon-lock"></i></span>
+                            <input type="Password" id="input-confirm-password" class="input-xlarge" name="val[confirm-password]" value="<?php echo Arr::get($aVals, 'confirm-password', ''); ?>" placeholder="Confirm Password">
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
+
+            <?php if (Linko::Module()->getSetting('user.enable_location_on_signup')): ?>
+                <div class="control-group">
+                    <label class="control-label"><?php echo Lang::t('user.location'); ?></label>
+                    <div class="controls">
+                        <select name="val[country_id]">
+                            <option value="">Select:</option>
+                            <?php
+                            $this->plugin('option', array(
+                                'data' => Linko::Model('Locale/Country')->getCountries(),
+                                'value_key' => 'country_id',
+                                'title_key' => 'country_title',
+                                'default' => Arr::get($aVals, 'dob_month', '')
+                            ));
+                            ?>
+                        </select>
+                    </div>
+                </div>
+            <?php endif; ?>
+
+            <?php if (Linko::Module()->getSetting('user.enable_dob_on_signup')): ?>
+                <div class="control-group">
+                    <label class="control-label"><?php echo Lang::t('user.birthday'); ?></label>
+                    <div class="controls">
+                        <select name="val[dob_month]" style="width:120px;">
+                            <option value="">Month:</option>
+                            <?php
+                            $this->plugin('option', array(
+                                'data' => Linko::Model('Locale/Date')->getMonths(),
+                                'default' => Arr::get($aVals, 'dob_month', '')
+                            ));
+                            ?>
+                        </select>
+                        <select name="val[dob_day]" style="width:70px;">
+                            <option value="">Day:</option>
+                            <?php
+                            $this->plugin('option', array(
+                                'data' => implode(', ', range(1, 31)),
+                                'default' => Arr::get($aVals, 'dob_day', '')
+                            ));
+                            ?>
+                        </select>
+                        <select name="val[dob_year]" style="width:90px;">
+                            <option value="">Year:</option>
+                            <?php
+                            $this->plugin('option', array(
+                                'data' => implode(', ', range(1970, (date('Y') - 10))),
+                                'default' => Arr::get($aVals, 'dob_year', '')
+                            ));
+                            ?>
+                        </select>
+                    </div>
+                </div>
+            <?php endif; ?>
+
+            <?php if (Linko::Module()->getSetting('user.enable_gender_on_signup')): ?>
+                <div class="control-group">
+                    <label class="control-label"><?php echo Lang::t('user.gender'); ?></label>
+                    <div class="controls">
+                        <select name="val[gender]">
+                            <option value="">Select:</option>
+                            <?php
+                            $this->plugin('option', array(
+                                'data' => array(
+                                    'M' => Lang::t('user.male'),
+                                    'F' => Lang::t('user.female')
+                                ),
+                                'default' => Arr::get($aVals, 'gender', '')
+                            ));
+                            ?>
+                        </select>
+                    </div>
+                </div>
+            <?php endif; ?>
+
+            <div class="control-group">
+                <label class="control-label"></label>
+                <div class="controls">
+                    <button type="submit" class="btn btn-success" ><?php echo Lang::t('user.create_an_account'); ?></button>
+                </div>
+
+            </div>
+        </form>
+    <?php else: ?>
+        <?php echo Linko::Module()->getSetting('user.registeration_disabled_message'); ?>
+    <?php endif; ?>
+</div>
+

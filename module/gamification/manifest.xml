@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<extension:module>
+	<title>Gamificatoin</title>
+	<version>1.0</version>
+	<description>Extension Module that gamify your website points and badges.</description>
+
+    <auto_enable>1</auto_enable>
+    <settings>
+        <setting var="gamification.enable_point_system"
+                 type="boolean"
+                 data="default_pagination"
+                 title="Activate Point System with Gamification"
+                 description="Gives user points base on each gamification activities on the site">0
+        </setting>
+
+        <setting var="gamification.default_point"
+                 type="string"
+                 title="Default Amount of point"
+                 description="Default Amount of point for users for example 100">0
+        </setting>
+
+
+    </settings>
+
+    <component>
+        <block label="User Badges" path="gamification/badges">
+            <param var="badges_limit" label="Number of badges to display" type="text" >5</param>
+            <param var="badges_user_id" data="current-login-user,profile-owner" label="Whose badges to display either the current login user or profile owner" type="select" >current-login-user</param>
+        </block>
+        <block label="Gamification Point" path="gamification/point"/>
+
+    </component>
+
+
+    <table><![CDATA[a:4:{s:12:"gamification";a:4:{s:7:"user_id";a:2:{s:4:"type";s:7:"int(11)";s:11:"primary_key";b:1;}s:5:"point";a:2:{s:4:"type";s:7:"int(11)";s:7:"default";s:3:"500";}s:9:"module_id";a:1:{s:4:"type";s:12:"varchar(100)";}s:4:"time";a:1:{s:4:"type";s:7:"int(11)";}}s:21:"gamification_activity";a:5:{s:2:"id";a:3:{s:4:"type";s:7:"int(11)";s:14:"auto_increment";b:1;s:11:"primary_key";b:1;}s:7:"user_id";a:1:{s:4:"type";s:7:"int(11)";}s:4:"type";a:1:{s:4:"type";s:12:"varchar(100)";}s:7:"counter";a:2:{s:4:"type";s:7:"int(11)";s:7:"default";s:1:"0";}s:4:"time";a:1:{s:4:"type";s:7:"int(11)";}}s:18:"gamification_badge";a:3:{s:7:"user_id";a:1:{s:4:"type";s:7:"int(11)";}s:8:"badge_id";a:1:{s:4:"type";s:12:"varchar(110)";}s:4:"time";a:1:{s:4:"type";s:7:"int(11)";}}s:23:"gamification_badge_list";a:8:{s:8:"badge_id";a:3:{s:4:"type";s:7:"int(11)";s:14:"auto_increment";b:1;s:11:"primary_key";b:1;}s:9:"badge_ref";a:1:{s:4:"type";s:12:"varchar(100)";}s:10:"badge_icon";a:1:{s:4:"type";s:4:"text";}s:10:"badge_name";a:1:{s:4:"type";s:12:"varchar(100)";}s:14:"badge_lang_var";a:1:{s:4:"type";s:12:"varchar(100)";}s:11:"badge_point";a:1:{s:4:"type";s:7:"int(11)";}s:14:"activity_limit";a:1:{s:4:"type";s:7:"int(11)";}s:4:"time";a:1:{s:4:"type";s:7:"int(11)";}}}]]></table>
+</extension:module>

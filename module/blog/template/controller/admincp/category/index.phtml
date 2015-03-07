@@ -1,0 +1,45 @@
+<?php
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage blog : controller_template - admincp\category\index.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+<a class="btn small" href="<?php echo Linko::Url()->make('blog:admincp:category:action', array('action' => 'add')); ?>">Add a Category</a>
+<div class="row-fluid sortable">		
+    <div class="box span12">
+        <div class="box-header" data-original-title>
+            <h2><i class="icon-edit"></i><span class="break"></span>All Post</h2>
+        </div>
+        <div class="box-content">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Slug</th>
+                        <th>Total Post</th>
+                    </tr>
+                </thead>   
+                <tbody>
+                    <?php foreach ($aCategories as $aCategory): ?>
+                        <tr>
+                            <td class="center"><?php echo $aCategory['category_title']; ?></td>
+                            <td class="center"><?php echo $aCategory['category_slug']; ?></td>
+                            <td class="center"><?php echo $aCategory['total_post']; ?></td>
+                            <td class="center">
+                                <a class="btn btn-mini btn-inverse" href="<?php echo Linko::Url()->make('blog:admincp:category:action', array('action' => 'edit', 'id' => $aCategory['category_id'])); ?>">
+                                    <i class="">Edit</i>  
+                                </a>
+                                <a class="btn btn-mini btn-danger" onclick="return confirm('Are you sure you want to delete this category?');" href="<?php echo Linko::Url()->make('blog:admincp:category:action', array('action' => 'delete', 'id' => $aCategory['category_id'])); ?>">Delete</a>
+                            </td>
+                        </tr>  
+                    <?php endforeach; ?>
+                </tbody>
+            </table>  
+        </div>
+    </div><!--/span-->                   
+</div><!--/row-->

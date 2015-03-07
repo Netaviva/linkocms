@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<extension:module>
+    <title>Follow</title>
+    <version>1.0</version>
+    <description>A module that enable users to interact with objects on the site.</description>
+    <core>0</core>
+    <auto_enable>1</auto_enable>
+
+    <component>
+
+        <block label="User Recent Following" path="follow/recent/follow">
+            <param var="recent_limit_follow" label="Number of recently following to show" type="text" >5</param>
+        </block>
+        <block label="User Recent Followers" path="follow/recent/follower">
+            <param var="recent_limit_followers" label="Number of recent followers to show" type="text" >5</param>
+        </block>
+
+    </component>
+    <table><![CDATA[a:1:{s:6:"follow";a:5:{s:9:"follow_id";a:3:{s:4:"type";s:7:"int(11)";s:14:"auto_increment";b:1;s:11:"primary_key";b:1;}s:7:"user_id";a:1:{s:4:"type";s:7:"int(11)";}s:12:"reference_id";a:1:{s:4:"type";s:12:"varchar(100)";}s:9:"module_id";a:1:{s:4:"type";s:12:"varchar(100)";}s:12:"time_created";a:1:{s:4:"type";s:7:"int(11)";}}}}]]></table>
+</extension:module>

@@ -1,0 +1,52 @@
+<?php
+
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage comment : block_template - form.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+
+<form id="add-comment-form" action="<?php echo Linko::Url()->make('comment:process'); ?>" method="post">
+    <div id="comment-form-params">
+        <input type="hidden" name="val[module_id]" value="<?php echo $sModule; ?>" />
+        <input type="hidden" name="val[item_id]" value="<?php echo $iItemId; ?>" />
+        <input type="hidden" name="val[return_to]" value="<?php echo Linko::Url()->make('self'); ?>" />
+    </div>
+
+    <div class="controls">
+
+        <?php if(!$bIsUser): ?>
+        <div class="control-item">
+            <div class="control-item-label">
+                <label>Name:</label>
+            </div>
+            <div class="control-item-data">
+                <input type="text" name="val[name]" value="" />
+            </div>
+        </div>
+
+        <div class="control-item">
+            <div class="control-item-label">
+                <label>Email:</label>
+            </div>
+            <div class="control-item-data">
+                <input type="text" name="val[email]" value="" />
+            </div>
+        </div>
+
+        <?php endif; ?>
+
+        <div class="control-item no-label">
+            <textarea rows="7" name="val[comment]"><?php echo Arr::get(Input::post('val'), 'text'); ?></textarea>
+        </div>
+    </div>
+    <div class="control-bottom no-label">
+        <input id="add-comment-button" type="submit" class="button" value="Submit Comment" />
+        <a rel="no-follow" id="cancel-comment-reply" style="display: none;" href="javascript:void(0);">Cancel Reply</a>
+    </div>
+</form>

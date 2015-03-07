@@ -1,0 +1,19 @@
+<?php
+
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage user : block_template - change-locale.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+
+<form action="<?php echo Linko::Url()->make('self'); ?>" method="post">
+    <select name="change_locale">
+        <?php $this->plugin('option', array('data' => $aLanguages, 'value_key' => 'locale_id', 'title_key' => 'title', 'default' => Linko::Model('Locale/Language')->getLanguageId())); ?>
+    </select>
+    <input class="button" type="submit" value="Select" />
+</form>

@@ -1,0 +1,22 @@
+.admincp-dashboard-middle-left
+{
+    width: 49%; 
+    float: left;
+    margin-right: 1%;   
+}
+
+.admincp-dashboard-middle-right
+{
+    width: 49%; 
+    float: right;
+}
+
+.dashboard-box-title h5
+{
+    color: #666666;
+    float: left;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 10px 12px 7px;
+    text-shadow: 0 1px 0 #FFFFFF;
+}

@@ -1,0 +1,41 @@
+<?php
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage user : controller_template - admincp\action.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+
+
+<div class="row-fluid">
+    <form class="form-horizontal" action="<?php echo Linko::Url()->make('self'); ?>" method="post">
+        <div class="box span8" onTablet="span12" onDesktop="span8">
+            <div class="box-header">
+                <h2><i class="icon-edit"></i><span class="break"></span><?php echo $bEdit ? 'Edit' : 'Add'; ?> User</h2>
+            </div>
+
+            <div class="box-content">               
+                <div class="control-group">
+                    <label class="control-label" for="username">Username:</label>
+                    <div class="controls">
+                        <input id="username" class="span12 focused" type="text"  name="val[username]" value="<?php echo Arr::get($aUser, 'username', Arr::get($aVals, 'username', '')); ?>"/>
+                    </div>
+                </div>
+                
+                 <div class="control-group">
+                    <label class="control-label" for="username">Email:</label>
+                    <div class="controls">
+                        <input id="username" class="span12 focused" type="text"  name="val[email]" value="<?php echo Arr::get($aUser, 'email', Arr::get($aVals, 'email', '')); ?>"/>
+                    </div>
+                </div>
+                
+                 <input class="btn btn-info btn-small" type="submit" value="<?php echo $bEdit ? 'Update' : 'Create'; ?> User" />
+
+            </div>
+    </form>
+</div>
+</div>

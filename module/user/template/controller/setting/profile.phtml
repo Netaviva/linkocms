@@ -1,0 +1,59 @@
+<?php
+
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage user : controller_template - setting\profile.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+
+<div class="user-setting-profile">
+    <form action="<?php echo Linko::Url()->make('self'); ?>" method="post">
+        <div class="controls">
+
+	        <div class="control-item">
+		        <div class="control-item-label">
+			        <label><?php echo Lang::t('user.firstname'); ?>: </label>
+		        </div>
+		        <div class="control-item-data">
+			        <input type="text" name="val[firstname]" value="<?php echo $aUser['firstname']; ?>" />
+		        </div>
+	        </div>
+
+	        <div class="control-item">
+		        <div class="control-item-label">
+			        <label><?php echo Lang::t('user.lastname'); ?>: </label>
+		        </div>
+		        <div class="control-item-data">
+			        <input type="text" name="val[lastname]" value="<?php echo $aUser['lastname']; ?>" />
+		        </div>
+	        </div>
+
+            <?php if(Linko::Module()->getSetting('user.enable_location_select')): ?>
+            <div class="control-item">
+                <div class="control-item-label">
+	                <label><?php echo Lang::t('user.location'); ?>: </label>
+                </div>
+                <div class="control-item-data">
+	                <select name="val[country_id]">
+                        <?php $this->plugin('option', array(
+                            'data' => $aCountries,
+                            'value_key' => 'country_id',
+                            'title_key' => 'country_title',
+                            'default' => $aUser['country_id']
+                        )); ?>
+	                </select>
+                </div>
+            </div>
+            <?php endif; ?>
+
+            <div class="control-bottom">
+                <input type="submit" class="button" value="<?php echo Lang::t('user.update'); ?>">
+            </div>
+        </div>
+    </form>
+</div>

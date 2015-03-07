@@ -1,0 +1,42 @@
+/**
+* Try to fix css for other modules to work properly on
+* this mobile version of site.
+*/
+
+/** Activity Module **/
+.activity-item .figure img
+{
+	width: 98%;
+}
+
+.activity-comments form textarea
+{
+	width: 98%;
+	height: 100%;
+}
+
+.activity-item-content
+{
+	margin-bottom: 0;
+}
+
+.activity-comment-extra
+{
+	padding: 0;
+}
+/**** Blog Module****/
+#comments-form textarea
+{
+	width: 98%;
+}
+
+/*** Comment Module ***/
+.comment-list .figure img
+{
+	width: 98%;
+}
+
+.comment-avatar
+{
+	margin-right: 5px;
+}

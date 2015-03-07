@@ -1,0 +1,125 @@
+<?php defined('LINKO') or exit; ?>
+
+<div class="row">
+    <div class="twelve columns">
+        <p>Ok, heres the gig. Lets do some server and configuration check to make sure your server environment is compatible with linkocms before we proceed to installation.</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="six columns">
+        <h4>Required Settings</h4>
+        <hr />
+        <table class="twelve">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($aRequirements as $aRequirement): ?>
+                <tr>
+                    <td>
+                        <?php echo $aRequirement['title']; ?>
+                    </td>
+                    <td>
+                        <span class="requirement-<?php echo $aRequirement['value'] ? 'success' : 'failed'; ?>">
+                            <?php echo $aRequirement['value'] ? 'Passed' : 'Failed'; ?>
+                        </span> 
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    <div class="six columns">
+        <h4>Recommeded Server Settings</h4>
+        <hr />
+        <table class="twelve">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Recommended</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($aPhpSettings as $aPhpSetting): ?>
+                <tr>
+                    <td>
+                        <?php echo $aPhpSetting['title']; ?>
+                    </td>
+                    <td>
+                        <?php echo $aPhpSetting['recommend']; ?>
+                    </td>
+                    <td>
+                        <span class="recommend-<?php echo (($aPhpSetting['recommend'] == $aPhpSetting['value']) ? 'success' : 'failed'); ?>">
+                            <?php echo $aPhpSetting['value']; ?>
+                        </span> 
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>    
+    </div>
+</div>
+
+<div class="row">
+	<div class="twelve columns">
+		<h4>Directory Access</h4>
+		<hr />
+		<table class="twelve">
+			<thead>
+			<tr>
+				<th style="width: 70%"></th>
+				<th style="width: 20%"></th>
+                <!--<th style="width: 10%"></th>-->
+			</tr>
+			</thead>
+			<tbody>
+			<?php foreach($aDirs as $sDir => $sVal): ?>
+			<tr>
+				<td>
+					<?php echo $sDir; ?>
+				</td>
+				<td>
+                    <span class="requirement-<?php echo ($sVal == 'passed' ? 'success' : 'failed'); ?>">
+                        <?php echo ($sVal == 'passed' ? 'Writable' : 'Not Writable'); ?>
+                    </span>
+				</td>
+                <!--<td>
+                    <?php if($sVal != 'passed'): ?>
+                        <span class="ajax-chmod-file" style="display: none;"><?php echo $sDir; ?></span>
+                        <button class="button small ajax-chmod-trigger">chmod</button>
+                    <?php endif; ?>
+                </td>-->
+			</tr>
+				<?php endforeach; ?>
+			</tbody>
+		</table>
+		<p>
+			Chmod any directory that is not writable to 777 for this script work properly.
+<pre style="background-color: #000; color: #FFF ; padding: 10px;">
+<span style="color: #009900;">$</span> chmod 0777 -R /path/to/file/or/directory/
+</pre>
+        Or just use your file manager to change the permissions of the files or directory to 0777.
+		</p>
+	</div>
+</div>
+
+<br />
+
+<div class="row">
+    <div class="twelve columns text-right">
+        <?php if($iFailed): ?>
+        <form action="<?php echo Linko::Url()->make('self'); ?>" method="post">
+            <input type="submit" class="button secondary" name="recheck" value="Check Again" />
+        </form>
+        <?php else: ?>
+        <form action="<?php echo Linko::Url()->make('self'); ?>" method="post">
+            <input type="submit" class="button" name="proceed" value="Next &raquo;" />
+        </form>           
+        <?php endif; ?>
+    </div>
+</div>

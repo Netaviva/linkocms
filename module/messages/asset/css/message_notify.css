@@ -1,0 +1,101 @@
+.message-notification{    
+    float: left;
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 50px;
+
+}
+.message-notification .count{
+    background: url("../image/icon_mail.png");
+    background-repeat: no-repeat;
+    color: #CC170E;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    margin-right: 10px;
+    padding: 8px 13px;
+ }
+
+#message-notification-link
+{
+    color: white;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.message-noticontent{
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 2px 2px 2px 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 48px;
+    width: 300px;
+    z-index: 500;
+    display: none;
+}
+
+/*#message-mini-container
+{
+    position: absolute;
+    background: white;
+    z-index: 500;
+    border-radius: 5px;
+    border: solid 3px black;
+    top: 47px;
+    width: 350px;
+    display: none;
+}*/
+
+.min-message-entity
+{
+    position: relative;
+    padding: 3px;
+    margin: 4px;    
+    border-bottom: 1px solid #EEEEEE;
+    line-height: 16px;
+}
+
+.min-message-entity:hover
+{
+    background: #d3d3d3;
+}
+
+#message-mini-container .message-unread
+{
+    background: lightgrey;
+}
+.min-message-entity .avatar
+{
+    float: left;
+    width: 20%;
+}
+.min-message-entity .avatar img
+{
+    border-radius: 5px;
+}
+.min-message-entity .min-message-entity-data
+{
+    float:left;
+    width: 75%;
+}
+.min-message-entity .min-message-entity-data h5
+{
+    margin: 3px;
+}
+
+.min-message-entity .min-message-entity-data span
+{
+    color: gray;
+    font-size: 12px;
+}
+#message-mini-view-all
+{
+    background: none repeat scroll 0 0 #EEEEEE;
+    border-radius: 2px 2px 2px 2px;
+    display: inline-block;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 5px 10px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}

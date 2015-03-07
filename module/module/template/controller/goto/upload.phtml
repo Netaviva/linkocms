@@ -1,0 +1,186 @@
+<div id="module-install-goto-upload">
+    <div class="row-fluid">         
+        <div class="box span4">
+            <div class="box-header">
+                Install a Module packaged in .zip files.
+            </div>
+            <form class="form-inline" action="" method="post" enctype="multipart/form-data">
+                <div class="box-content">
+                    <div class="control-group">
+                        <div class="controls">
+                            <input id="upload-module-file-js" type="file" name="package" />
+                            <p>
+                                Select a linkocms .zip module package to install.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="control-bottom">
+                        <input name="upload" id="upload-module-button-js" class="btn btn-medium btn-primary" type="submit" value="Upload Module" disabled="disabled">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <?php if ($bModulePage): ?>
+            <div class="box span8">
+                <form class="form-inline" action="" method="post"> 
+                    <input type="hidden" name="module" value="<?php echo $sModule; ?>">
+                    <div class="box-header">Module Information: <?php echo $sModule; ?></div>
+                    <div class="box-content">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th colspan="2">General</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($aInstallInfo['general'] as $sKey => $sValue): ?>
+                                    <tr>
+                                        <td>
+                                            <?php echo Inflector::humanize($sKey); ?>:
+                                        </td>
+                                        <td>
+                                            <?php echo $sValue; ?>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Requirement</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php if (count($aInstallInfo['requirement'])): ?>
+                                    <?php foreach ($aInstallInfo['requirement'] as $aRequirement): ?>
+                                        <tr>
+                                            <td>
+                                                <?php echo $aRequirement['type']; ?>: <b><?php echo $aRequirement['id']; ?></b>
+                                            </td>
+                                            <td>
+                                                <?php if ($aRequirement['type'] == 'module'): ?>
+                                                    <?php if ($aRequirement['module_pass']): ?>
+                                                        <span class="module-requirement-pass">Installed</span>
+                                                    <?php else: ?>
+                                                        <span class="module-requirement-fail">Not Installed</span>
+                                                    <?php endif; ?>
+
+                                                    <?php if (isset($aRequirement['version_pass'])): ?>
+                                                        <?php if ($aRequirement['version_pass'] == true): ?>
+                                                            <span class="module-requirement-pass"> Requires at least version <?php echo $aRequirement['version']; ?></span>
+                                                        <?php else: ?>
+                                                            <span class="module-requirement-fail">Requires at least version <?php echo $aRequirement['version']; ?></span>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
+
+                                                    <?php if (isset($aRequirement['optional'])): ?>
+                                                        <span class="module-requirement-optional">Optional</span>
+                                                    <?php endif; ?>
+                                                <?php endif; ?>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                <?php else: ?>
+                                    <tr>
+                                        <td>
+                                            <div class="no-item">
+                                                <h4>No Requirements.</h4>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                <?php endif; ?>
+                            </tbody>
+                        </table>
+
+                        <?php if ($bIsUpgrade): ?>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">Upgrade Info:</th>
+                                    </tr>
+                                </thead>
+                                <tr>
+                                    <td>
+                                        Current Version
+                                    </td>
+                                    <td>
+                                        <?php echo $aUpgradeModule['version']; ?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        New Version
+                                    </td>
+                                    <td>
+                                        <?php echo $aModule['version']; ?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Status
+                                    </td>
+                                    <td>
+                                        <?php if (version_compare($aModule['version'], $aUpgradeModule['version'], '<')): ?>
+                                            <span class="module-requirement-fail">
+                                                You are trying to install a version lower than your current version.
+                                            </span>
+                                        <?php elseif (version_compare($aModule['version'], $aUpgradeModule['version'], '==')): ?>
+                                            <span class="module-requirement-optional">
+                                                You are using the same version as the one you want to install. Upgrade is not necessary
+                                            </span>
+                                        <?php else: ?>
+                                            <span class="module-requirement-pass">
+                                                This is a new version. Upgrade
+                                            </span>
+                                        <?php endif; ?>
+                                    </td>
+                                </tr>
+                            </table>
+                        <?php endif; ?>
+                        <table>
+                            <thead></thead>
+                            <?php if ($bFail): ?>
+                                <tr>
+                                    <td>
+                                        <span class="module-requirement-fail">Cannot proceed. Requirements are not met.</span>
+                                    </td>
+                                </tr>
+                            <?php endif; ?>
+
+                            <?php if ($bIsUpgrade): ?>
+                                <tr class="pull-right">
+                                    <td class="pull-right">
+                                        <input name="upgrade" class="btn btn-primary" type="submit" value="Upgrade Module">
+                                    </td>
+                                <?php else: ?>
+                                    <td>
+                                        <input name="install" class="btn btn-primary pull-right" type="submit" value="Install Module">
+                                    </td>
+                                </tr>
+                            <?php endif; ?>
+
+                        </table>
+                    </div>
+                </form>
+            </div>
+        <?php endif; ?>
+    </div>
+</div>
+<script type="text/javascript">
+    $('#upload-module-file-js').on('change', function()
+    {
+        var file = $(this).val();
+
+        if(file != '')
+        {
+            $('#upload-module-button-js').removeAttr('disabled');
+        }
+        else
+        {
+            $('#upload-module-button-js').attr('disabled', 'disabled');
+        }
+    });
+</script>

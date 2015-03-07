@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<extension:module>
+	<title>Module Manager</title>
+	<version>1.0.2</version>
+	<description>Module Manager provides api methods and interface for managing modules.</description>
+	<core>1</core>
+    <auto_enable>1</auto_enable>
+
+	<author>LinkoDEV Team</author>
+	<author_url>http://linkodev.com</author_url>
+
+    <table><![CDATA[a:2:{s:6:"module";a:3:{s:9:"module_id";a:2:{s:4:"type";s:11:"varchar(60)";s:11:"primary_key";b:1;}s:7:"enabled";a:2:{s:4:"type";s:10:"tinyint(1)";s:7:"default";s:1:"0";}s:7:"version";a:2:{s:4:"type";s:12:"varchar(100)";s:7:"default";s:1:"0";}}s:16:"module_component";a:8:{s:12:"component_id";a:4:{s:4:"type";s:7:"int(10)";s:8:"unsigned";b:1;s:14:"auto_increment";b:1;s:11:"primary_key";b:1;}s:9:"module_id";a:1:{s:4:"type";s:12:"varchar(100)";}s:8:"route_id";a:3:{s:4:"type";s:12:"varchar(255)";s:7:"default";N;s:4:"null";b:1;}s:10:"route_rule";a:3:{s:4:"type";s:4:"text";s:7:"default";N;s:4:"null";b:1;}s:14:"component_type";a:2:{s:4:"type";s:26:"enum('controller','block')";s:7:"default";s:5:"block";}s:14:"component_file";a:1:{s:4:"type";s:4:"text";}s:15:"component_label";a:1:{s:4:"type";s:12:"varchar(255)";}s:15:"component_param";a:3:{s:4:"type";s:4:"text";s:7:"default";N;s:4:"null";b:1;}}} ]]></table>
+</extension:module>

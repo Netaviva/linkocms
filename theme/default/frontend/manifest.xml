@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<extension:theme>
+    <title>Social</title>
+    <description>A simple theme based on twitter bootstrap for social community.</description>
+    <author>LinkoDEV Team</author>
+    <author_url>http://linkodev.com</author_url>
+    <version>1.0.0</version>
+    <license>Copyright (c) Netaviva 2013. All Rights Reserved.</license>
+
+    <layouts>
+        <layout name="home" title="Homepage Template" type="full">
+            <position name="slider">Carousel Slider</position>
+            <position name="welcome">Welcome Tagline</position>
+            <position name="services">Home Services Block</position>
+            <position name="home-left">Home Left Block</position>
+            <position name="home-right">Home Right Block</position>
+        </layout>
+        <layout name="template" title="Main Template" type="full">
+            <position name="sidebar">Sidebar</position>
+        </layout>
+        <layout name="full" title="Full Width" type="full">
+        
+        </layout>
+        <layout name="two_col_left" title="Two Columns Left Sidebar" type="full">
+            <position name="sidebar">Sidebar</position>
+        </layout>
+        <layout name="three_columns" title="Three Columns" type="full">
+            <position name="leftSidebar">Left Sidebar</position>
+            <position name="rightSidebar">Right Sidebar</position>
+        </layout>
+        <layout name="footer" title="Footer Four Columns" type="partial">
+            <position name="footer_block_1">Footer Block 1</position>
+            <position name="footer_block_2">Footer Block 2</position>
+            <position name="footer_block_3">Footer Block 3</position>
+            <position name="footer_block_4">Footer Block 4`</position>
+        </layout>
+    </layouts>
+        
+    <menu>
+        <location var="main_menu">Main Menu</location>
+        <location var="top_menu">Top Menu</location>
+    </menu>
+
+    <settings>
+        <setting var="facebook_url" type="text" label="Facebook Url" description="The link to your facebook profile">http://facebook.com</setting>
+        <setting var="twitter_url" type="text" label="Twitter Url" description="The link to your twitter profile">http://twitter.com</setting>
+        <setting var="googleplus_url" type="text" label="Google Plus Url" description="The link to your google plus profile">http://plus.google.com</setting>
+        <setting var="footer_text" type="text" label="Footer Text" description=""><![CDATA[@copy; Copyright 2013. powered by LinkoCMS]]>
+        </setting>
+    </settings>
+
+</extension:theme>

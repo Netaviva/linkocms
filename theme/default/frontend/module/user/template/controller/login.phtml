@@ -1,0 +1,45 @@
+<?php
+
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage user : controller_template - login.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+<div class="well">
+        <form id="signup" class="form-horizontal" method="post" action="<?php echo Linko::Url()->make('self'); ?>">
+            <legend><?php echo Lang::t('user.login_to_account'); ?></legend>
+            <div class="control-group ">
+                <label class="control-label"><?php echo Lang::t('user.username'); ?>: <?php echo Html::required(); ?></label>
+                <div class="controls">
+                    <div class="input-prepend">
+                        <span class="add-on"><i class="icon-user"></i></span>
+                        <input type="text" class="input-xlarge" id="username" name="val[username]" placeholder="Username">
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label"><?php echo Lang::t('user.password'); ?>: <?php echo Html::required(); ?></label>
+                <div class="controls">
+                    <div class="input-prepend">
+                        <span class="add-on"><i class="icon-lock"></i></span>
+                        <input type="Password" id="passwd" class="input-xlarge" name="val[password]" placeholder="Password">
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label"></label>
+                <div class="controls">
+                    <button type="submit" class="btn btn-success" ><?php echo Lang::t('user.login'); ?></button>
+                    <a href="<?php echo Linko::Url()->make('user:reset-password'); ?>" class="btn btn-warning" ><?php echo Lang::t('user.reset_password'); ?></a>
+                </div>
+
+            </div>
+        </form>
+    </div>

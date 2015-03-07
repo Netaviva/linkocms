@@ -1,0 +1,35 @@
+<?php
+
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage admincp : controller_template - system\server.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+
+<div class="admincp-system-server">
+	<div class="module">
+    	<div class="module-header">
+        	<h3>Server Information</h3>
+        </div>
+        
+        <div class="module-content">
+            <div class="controls">
+                <?php foreach($aServer as $sTitle => $sValue): ?>
+                <div class="control-item">
+                    <div class="control-item-label">
+                        <?php echo $sTitle; ?>
+                    </div>
+                    <div class="control-item-data">
+                        <?php echo $sValue; ?>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            </controls>
+        </div>                
+    </div>
+</div>

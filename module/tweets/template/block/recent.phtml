@@ -1,0 +1,21 @@
+<?php defined('LINKO') or exit(); ?>
+<div id="tweets">
+</div>
+<script type="text/javascript">
+    $(function(){
+        $('#tweets').tweetable({
+            username: '<?php echo $username; ?>', 
+            time: true,
+            rotate: false,
+            speed: 4000, 
+            limit: <?php echo $limit; ?>,
+            replies: false,
+            position: 'append',
+            failed: "Sorry, twitter is currently unavailable for this user.",
+            html5: true,
+            onComplete:function($ul){
+                $('time').timeago();
+            }
+        });
+    });
+</script>

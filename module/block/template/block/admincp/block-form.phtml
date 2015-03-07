@@ -1,0 +1,62 @@
+<?php
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage page : block_template - admincp\block-form.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+
+<div class="box-header"><?php echo $aComponent['module_id']; ?>: <span><?php echo $aComponent['component_label']; ?></span></div>
+<form action="" method="post">
+    <div class="box-content">
+        <div class="control-group">
+            <label class="control-label" for="block-title">Block Title:</label>
+            <div class="controls">
+                <input type="text" name="title" value="<?php echo Arr::get($aComponent, 'block_title', ''); ?>" />
+            </div>
+        </div>
+
+        <?php foreach ($aParam as $mParam): ?>
+            <div class="control-group">
+                <label class="control-label" for="focusedInput"><?php echo $mParam['label']; ?>:</label>
+                <div class="controls">
+                    <?php if ($mParam['type'] == 'select'): ?>
+                        <select name="param[<?php echo $mParam['var']; ?>]">
+                            <?php
+                            $this->plugin('option', array(
+                                'data' => $mParam['data'],
+                                'default' => Arr::get($aComponent['block_param'], $mParam['var'], '')
+                            ));
+                            ?>
+                        </select>
+                    <?php elseif ($mParam['type'] == 'text'): ?>
+                        <input type="text" name="param[<?php echo $mParam['var']; ?>]" value="<?php echo Arr::get($aComponent['block_param'], $mParam['var'], ''); ?>" />
+                    <?php endif; ?>
+                </div>
+            </div>
+        <?php endforeach; ?>
+
+        <div class="control-group">
+            <label class="control-label" for="user-roles">Dissallow User Roles:</label>
+            <div class="controls">
+                <ul class="option-list">
+                    <?php foreach ($aUserRoles as $aRole): ?>
+                        <label for="role-<?php echo $aRole['role_id']; ?>">
+                            <input type="checkbox" name="dissallow_access[]"<?php echo(in_array($aRole['role_id'], Arr::get($aComponent, 'dissallow_access', array())) ? ' checked="checked"' : null); ?> value="<?php echo $aRole['role_id']; ?>" />
+                            <?php echo $aRole['role_title']; ?>
+                        </label>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        </div>
+
+        <div class="control-bottom">
+            <input type="submit" class="btn btn-info small" value="<?php echo $bEdit ? 'Save' : 'Assign'; ?>" />
+            <a href="#" class="btn cancel small">Cancel</a>
+        </div>
+    </div>
+</form>

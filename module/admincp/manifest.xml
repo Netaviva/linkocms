@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<extension:module>
+    <title>AdminCP</title>
+    <version>1.0</version>
+    <description>Official LinkoCMS Administrator Panel.</description>
+    <core>1</core>
+    <auto_enable>1</auto_enable>
+    <author>LinkoDEV Team</author>
+    <author_url>http://linkodev.com</author_url>
+        
+    <translations>
+        <translation var="admincp.login_to_admincp">Login to Admincp</translation>
+    </translations>
+        
+</extension:module>

@@ -1,0 +1,117 @@
+<div class="row-fluid">
+    <div class="box span12">
+        <div class="box-header" data-original-title>
+            <h2><i class="icon-edit"></i><span class="break"></span>Gamification Activities</h2>
+        </div>
+        <div class="box-content">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th style="width:30%">Info</th>
+                        <th style="width:70%">Badges</th>
+                    </tr>
+                </thead>   
+                <tbody>
+                    <?php
+                    $iCnt = 0;
+                    foreach ($aActivities as $sActivity => $aDetails): $iCnt++
+                        ?>
+                        <tr class="<?php echo($iCnt % 2) ? 'odd' : 'even'; ?>">
+                            <td class="activity-info">
+                                <h6>Name:</h6> <?php echo $aDetails['name'] ?><br/>
+                                <h6>Description:</h6> <?php echo $aDetails['description'] ?>
+                            </td>
+                            <td class="activity-badges">
+                                <?php if (isset($aDetails['badge-limit'])): ?>
+                                    <?php if (count($aDetails['badges']) < $aDetails['badge-limit']): ?>
+                                        <button id="<?php echo $sActivity ?>" class="activity-add-badge-button button">Add Badge</button>
+                                    <?php endif ?>
+                                <?php else: ?>
+                                    <button id="<?php echo $sActivity ?>" class="activity-add-badge-button btn btn-success">Add Badge</button>
+                                <?php endif ?>
+                                <form class="form-horizontal" enctype="multipart/form-data" action="<?php echo Linko::Url()->make('gamification:admincp') ?>" style="display: none" method="post" id="<?php echo $sActivity ?>-badge-forms">
+                                    <div class="control-group">
+                                        <label class="control-label" for="focusedInput">Badge Name</label>
+                                        <div class="controls">
+                                            <input type="text" name="val[badge-name]" class="input" size="40">
+                                            <input type="hidden" name="val[badge-ref]" value="<?php echo $sActivity ?>" class="input" size="40">
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="focusedInput">Activity Count Limit(eg 10)</label>
+                                        <div class="controls">
+                                            <?php if ($aDetails['use-activity'] == 1): ?>
+                                                <input type="text" name="val[activity-limit]" class="input" size="40">
+                                            <?php else: ?>
+                                                <input type="text" disabled="disabled" value="1" name="val[activity-limit]" class="input" size="40">
+                                            <?php endif ?>
+                                        </div>
+                                    </div>
+                                    <?php if (Linko::Model('gamification/point')->usePointSystem()): ?>
+                                        <div class="control-group">
+                                            <label class="control-label" for="focusedInput">Point To Award User</label>
+                                            <div class="controls">
+                                                <input type="text" name="val[point]" class="input" size="40">
+                                            </div>
+                                        </div>
+                                    <?php endif ?>
+                                    <div class="control-group">
+                                        <label class="control-label" for="focusedInput">Badge Icon</label>
+                                        <div class="controls">
+                                            <input type="file" name="image" class="input" size="30">
+                                        </div>
+                                    </div>
+                                      <div class="control-group">
+                                        <label class="control-label" for="focusedInput"></label>
+                                        <div class="controls">
+                                            <input type="submit" value="Add" class="btn btn-primary" size="30">
+                                            <button id="<?php echo $sActivity ?>"  class="activity-cancel-button btn btn-danger" >Cancel</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <!--badge listing -->
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th style="width:10%">Icon</th>
+                                            <th style="width:70%">Info</th>
+                                            <th style="width:20%">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $iBadgeCnt = 0;
+                                        foreach ($aDetails['badges'] as $aBadge): $iBadgeCnt++;
+                                            ?>
+
+                                            <tr class="<?php echo($iBadgeCnt % 2) ? 'odd' : 'even'; ?>">
+
+                                                <td>
+
+                                                    <img src="<?php echo ($this->getImage(array('path' => $aBadge['badge_icon'], 'size' => 20), 'gamification_image')); ?>" />
+                                                </td>
+                                                <td>
+                                                    <b>Name : </b> <?php echo $aBadge['badge_name'] ?><br/>
+                                                    <b>Activity count limit:</b>  <?php echo $aBadge['activity_limit'] ?><br/>
+                                                    <?php if (!empty($aBadge['badge_point'])): ?>
+                                                        <b>Point:</b> <?php echo $aBadge['badge_point'] ?>
+                                                    <?php endif ?>
+
+                                                </td>
+                                                <td>
+                                                    <a href="<?php echo Linko::Url()->make('gamification:admincp:badge', array('action' => 'edit', 'id' => $aBadge['badge_id'])) ?>">Edit</a>
+                                                    <a href="<?php echo Linko::Url()->make('gamification:admincp:badge', array('action' => 'delete', 'id' => $aBadge['badge_id'])) ?>">Delete</a>
+                                                </td>
+                                            </tr>
+
+                                        <?php endforeach ?>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>  
+                    <?php endforeach; ?>
+                </tbody>
+            </table>  
+        </div>
+    </div>
+</div>

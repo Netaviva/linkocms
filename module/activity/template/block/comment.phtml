@@ -1,0 +1,10 @@
+<?php foreach($aActivityComments as $aComment): ?>
+    <?php $this->getTemplate('activity/block/_extra/comment-item', array('aComment' => $aComment)); ?>
+<?php endforeach; ?>
+
+
+<?php if($iTotalComments > 5 && !$bShowAllComments): ?>
+    <a href="<?php echo Linko::Url()->make('activity:view', array('id' => $iActivity)); ?>">
+		<?php echo Lang::t('activity.see_more_comments'); ?>
+    </a>
+<?php endif; ?>

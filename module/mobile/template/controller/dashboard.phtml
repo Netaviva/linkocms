@@ -1,0 +1,32 @@
+<?php defined('LINKO') or exit;
+
+/**
+ * @package Mobile
+ * @author Morrison Laju <morrelinko@gmail.com>
+ * @var $this Linko_Application_Template
+ * @todo Add Setting to display dashboard items as "Grid" or "List"
+ */
+?>
+
+<div id="mobile-controller-dashboard">
+    <?php if(count($aItems)): ?>
+    <div class="mobile-dashboard-menu clearfix">
+        <?php $iCnt = 0; foreach($aItems as $aItem): $iCnt++; ?>
+            <div class="dashboard-item">
+                <a href="<?php echo $aItem['item_url']; ?>">
+                    <img src="<?php echo $aItem['item_image']; ?>" />
+                    <span><?php echo $aItem['item_title']; ?></span>
+                </a>
+            </div>
+            <?php if(false == ($iCnt % 3)): ?>
+            <div class="clear"></div>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </div>
+    <?php else: ?>
+    <div id="no-dashboard">
+        Your Dashboard. <br />
+        <small>Admin. Place Dashboard Items Here using the Mobile >> Dashboard Manager</small>
+    </div>
+    <?php endif; ?>
+</div>

@@ -1,0 +1,27 @@
+<div id="profile-tools-container">
+    <h1 id="profile-username-title"><?php echo ucwords(Linko::Model('Profile')->get('firstname').' '. Linko::Model('Profile')->get('lastname'))?></h1>
+    <?php Linko::Plugin()->call('profile.tools_start')?>
+
+    <?php echo $this->getTemplate('profile/controller/stats',null, true)?>
+
+
+    <img id="profile-avatar" src="<?php echo $this->getImage(array('user' => Linko::Model('profile')->get(), 'size' => 200), 'user_image')?>"/>
+
+
+
+<ul id="profile-menu" class="btn">
+
+    <?php foreach(Linko::Model('profile')->getMenus() as $name => $param): ?>
+
+    <li <?php echo ($param['id'] == '') ? "class='profile-current'" : null ?> >
+        <a href="<?php echo $param['link']?>"> <?php echo $name?> </a>
+    </li>
+
+    <?php  endforeach; ?>
+</ul>
+
+
+
+<?php Linko::Plugin()->call('profile.tools_end')?>
+
+</div>

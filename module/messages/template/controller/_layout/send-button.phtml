@@ -1,0 +1,3 @@
+<?php if(Linko::Model('User/Auth')->isUser()):?>
+    <button class="btn  " userid="<?php echo $iUserId?>" id="send-message-button"><?php echo Lang::t('messages.send_message')?></button>
+<?php endif?>

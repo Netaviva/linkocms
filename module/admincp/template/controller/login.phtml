@@ -1,0 +1,33 @@
+<?php
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage admincp : controller_template - login.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+
+<div class="row-fluid">
+    <div class="login-box">
+        <h2><strong><?php echo Lang::t('admincp.login_to_admincp') ?></strong></h2>
+        <form class="form-horizontal" action="<?php Linko::Url()->make('self'); ?>" method="post">
+            <div class="input-prepend" title="Email Address">
+                <span class="add-on"><i class="icon-user"></i></span>
+                <input class="input-large span10" name="val[email]" id="email" type="text" placeholder="Email Address"/>
+            </div>
+            <div class="clearfix"></div>
+            <div class="input-prepend" title="Password">
+                <span class="add-on"><i class="icon-lock"></i></span>
+                <input class="input-large span10" name="val[password]" id="password" type="password" placeholder="Password"/>
+            </div>
+            <div class="clearfix"></div>
+            <div class="button-login">	
+                <input type="submit" class="btn btn-primary" name="post[login]" value="Login" />
+            </div>
+            <div class="clearfix"></div>
+        </form>
+    </div>
+</div>

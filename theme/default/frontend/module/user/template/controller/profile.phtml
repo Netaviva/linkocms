@@ -1,0 +1,27 @@
+<?php
+
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage user : controller_template - profile.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+
+<div id="user-profile">
+    <div class="user-profile-info">
+        <img src="<?php echo $this->getImage(array('user' => $aUser, 'size' => 150), 'user_image'); ?>" />
+    </div>
+    <div class="user-profile-data">
+        <ul>
+            <?php foreach($aDetails as $sKey => $sValue): ?>
+            <li>
+                <span><?php echo $sKey; ?>:</span> <?php echo $sValue; ?>
+            </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+</div>

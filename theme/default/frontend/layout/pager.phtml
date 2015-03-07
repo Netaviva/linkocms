@@ -1,0 +1,37 @@
+<?php $aPager = Linko::Pager()->get(); ?>
+
+<div class="pagination">
+<ul id="pagination">
+	<?php if(isset($aPager['first_page'])): ?>
+        <li<?php echo(($aPager['current_page'] == $aPager['first_page']) ? ' class="previous-off"' : ''); ?>>
+        	<a href="<?php echo $aPager['first_page_url']; ?>">First</a>
+        </li>
+    <?php endif; ?>
+
+	<?php if(isset($aPager['prev_page'])): ?>
+        <li<?php echo(($aPager['current_page'] == $aPager['prev_page']) ? ' class="previous-off"' : ''); ?>>
+        	<a href="<?php echo $aPager['prev_page_url']; ?>">Previous</a>
+        </li>
+    <?php endif; ?>
+	
+    <?php if(isset($aPager['links'])): ?>
+    <?php foreach($aPager['links'] as $sLink => $iLink): ?>
+    	<li<?php echo(($aPager['current_page'] == $iLink) ? ' class="active"' : ''); ?>>
+        	<a href="<?php echo $sLink; ?>"><?php echo $iLink; ?></a>
+        </li>
+    <?php endforeach; ?>
+    <?php endif; ?>
+    
+	<?php if(isset($aPager['next_page'])): ?>
+        <li<?php echo(($aPager['current_page'] == $aPager['next_page']) ? ' class="next"' : ''); ?>>
+        	<a href="<?php echo $aPager['next_page_url']; ?>">Next</a>
+        </li>
+    <?php endif; ?>
+    
+	<?php if(isset($aPager['last_page'])): ?>
+        <li<?php echo(($aPager['current_page'] == $aPager['last_page']) ? ' class="next"' : ''); ?>>
+        	<a href="<?php echo $aPager['last_page_url']; ?>">Last</a>
+        </li>
+    <?php endif; ?>
+</ul>
+</div>

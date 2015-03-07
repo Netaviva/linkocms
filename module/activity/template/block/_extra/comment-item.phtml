@@ -1,0 +1,20 @@
+<div id="activity-comment-item-<?php $aComment['comment_id']; ?>" class="activity-comment-item">
+    <div class="figure activity-comment-image">
+        <img src="<?php echo $this->getImage(array('user' => $aComment, 'size' => 20), 'user_image'); ?>" />
+    </div>
+    <div class="item-data activity-comment-data">
+        <div class="item-content activity-comment-content">
+            <a href="<?php echo Linko::Url()->make('user:profile', array('username' => $aComment['username'])); ?>">
+                <?php //echo Linko::Model('User')->getFullname($aComment); ?>
+                <?php echo $aComment['username']; ?>
+            </a>
+            <?php echo $aComment['comment_text']; ?>
+        </div>
+        <div class="item-footer activity-comment-extra">
+            <span class="activity-comment-time" data-time="<?php echo $aComment['time_created_unix']; ?>">
+                <?php echo $aComment['time_created']; ?>
+            </span>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>

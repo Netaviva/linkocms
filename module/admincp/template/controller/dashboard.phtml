@@ -1,0 +1,29 @@
+<?php
+
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage admincp : controller_template - dashboard.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+
+<div class="admincp-dashboard-top">
+    <?php echo Linko::Model('Admincp')->getDashboard('dashboard_top'); ?>
+</div>
+
+<div class="admincp-dashboard-middle clearfix">
+    <div class="admincp-dashboard-middle-left">
+        <?php echo Linko::Model('Admincp')->getDashboard('dashboard_middle_left'); ?>
+    </div>
+    <div class="admincp-dashboard-middle-right">
+        <?php echo Linko::Model('Admincp')->getDashboard('dashboard_middle_right'); ?>
+    </div>
+</div>
+
+<div class="admincp-dashboard-bottom">
+    <?php echo Linko::Model('Admincp')->getDashboard('dashboard_bottom'); ?>
+</div>

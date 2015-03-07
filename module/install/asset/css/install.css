@@ -1,0 +1,40 @@
+.license
+{
+    border: 1px solid #DDDDDD;
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+    display: block;
+    line-height: 20px;
+    padding: 4px;
+    min-height: 300px;
+}
+
+.requirement-success,
+.requirement-failed,
+.recommend-success,
+.recommend-failed
+{
+    font-weight: bold;
+    font-size: 11px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.requirement-success,
+.recommend-success
+{
+    background-color: #468847;
+    color: #FFF;   
+}
+
+.requirement-failed
+{
+    background-color: #B94A48;
+    color: #FFF;
+}
+
+.recommend-failed
+{
+    background-color: #E39406;
+    color: #FFF;
+}

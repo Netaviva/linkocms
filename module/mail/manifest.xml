@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<extension:module>
+	<title>Mail</title>
+	<version>1.0</version>
+	<description>Takes care of sending email messages.</description>
+	<core>1</core>
+	<auto_enable>1</auto_enable>
+
+	<author>LinkoDEV Team</author>
+	<author_url>http://linkodev.com</author_url>
+
+	<settings>
+		<setting var="mail.global_from_name"
+	         type="string"
+	         title="Name"
+	         description="This is the name displayed when users receive emails from this site.">LinkoDEV</setting>
+		<setting var="mail.global_from_email"
+		         type="string"
+		         title="Email"
+		         description="This is the default email used when sending out emails and it will be the email users will see in their email. ">morrelinko@linkodev.com</setting>
+		<setting var="mail.signature"
+		         type="longstring"
+		         title="Signature"
+		         description="This will be used for the {signature} mail tag if used."></setting>
+
+		<setting var="mail.mail_transport"
+		         type="select"
+		         title="Mail Transport"
+		         data="smtp,mail"
+		         description="Select the transport to use for sending mails. SMTP is recommended but you will have to fill the settings SMTP Host, SMTP Port, SMTP Username and SMTP Password for it to work.">smtp</setting>
+
+		<setting var="mail.smtp_host"
+		         type="string"
+		         title="SMTP Host"
+		         description="SMTP Host">localhost</setting>
+
+		<setting var="mail.smtp_port"
+		         type="integer"
+		         title="SMTP Port"
+		         description="SMTP Port">25</setting>
+
+		<setting var="mail.smtp_username"
+		         type="string"
+		         title="SMTP Username"
+		         description="SMTP Username"></setting>
+
+		<setting var="mail.smtp_password"
+		         type="string"
+		         title="SMTP Password"
+		         description="SMTP Password"></setting>
+	</settings>
+
+	<table><![CDATA[a:1:{s:4:"mail";a:7:{s:7:"mail_id";a:4:{s:4:"type";s:7:"int(10)";s:8:"unsigned";b:1;s:14:"auto_increment";b:1;s:11:"primary_key";b:1;}s:10:"mail_title";a:3:{s:4:"type";s:12:"varchar(255)";s:7:"default";N;s:4:"null";b:1;}s:16:"mail_description";a:3:{s:4:"type";s:12:"varchar(255)";s:7:"default";N;s:4:"null";b:1;}s:8:"mail_var";a:2:{s:4:"type";s:12:"varchar(255)";s:3:"key";b:1;}s:12:"mail_subject";a:1:{s:4:"type";s:12:"varchar(255)";}s:9:"mail_body";a:1:{s:4:"type";s:4:"text";}s:5:"param";a:3:{s:4:"type";s:12:"varchar(500)";s:7:"default";N;s:4:"null";b:1;}}}]]></table>
+</extension:module>

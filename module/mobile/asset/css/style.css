@@ -1,0 +1,242 @@
+/**
+ * @package Mobile Module
+ * @author Morrison Laju <morrelinko@gmail.com>
+ *
+ * These styles are not meant to be modified.
+ * Download or create themes with "mobile" support instead.
+ */
+body
+{
+	background: #3C3C3C;
+	color: #20201F;
+	font-family: Arial;
+	font-size: 15px;
+	line-height: 150%;
+	margin: 0;
+	padding: 0;
+}
+
+a:link, a:visited, a:hover
+{
+	color: #BB0A0A;
+	text-decoration: none;
+}
+
+#header
+{
+	background: #000 url(../image/layout/headerbg.png);
+	border-bottom: 4px solid #CCC;
+	margin-bottom: 0;
+	position: relative;
+	height: 40px;
+	line-height: 40px;
+	z-index: 100;
+}
+
+#wrapper
+{
+	margin: 0 auto;
+}
+
+#logo
+{
+	color: #FFF;
+	text-shadow: 1px 2px 2px #000;
+	width: 100%;
+	display: block;
+	text-decoration: none;
+}
+
+#logo h1
+{
+	margin: 2px 0 0;
+	font-family: Arial;
+	float: left;
+	margin-left: 10px;
+}
+
+#content
+{
+	border-top: 5px solid #900;
+	background: #FFFFFF;
+	clear: both;
+	padding: 10px;
+	margin: 5px;
+}
+
+.button
+{
+	background: #BE0E0E;
+	border: medium none;
+	border-radius: 5px 5px 5px 5px;
+	box-shadow: 0 1px 1px #BFC1C1;
+	color: #FFFFFF;
+	cursor: pointer;
+	font-size: 18px;
+	font-style: normal;
+	line-height: normal;
+	padding: 9px 20px;
+	text-shadow: 0 1px 0 #585E61;
+}
+
+input, textarea, select
+{
+	color: #84898C;
+	font-family: Georgia,"Times New Roman",Times,serif;
+	font-size: 18px;
+	font-style: italic;
+	line-height: normal;
+}
+
+input[type=password],
+input[type=text],
+textarea,
+select
+{
+	border: 1px solid #9A9A9A;
+	padding: 5px;
+}
+
+.item-title
+{
+	margin-bottom: 5px;
+
+}
+
+.item-meta, .post-extra
+{
+	background-color: #F4F4F4;
+	border: 1px solid #CCCCCC;
+	padding: 4px;
+}
+
+.item-content
+{
+	padding: 5px;
+}
+
+/***** Blog *****/
+.post-item
+{
+	border: 1px solid #CCCCCC;
+	margin-bottom: 10px;
+}
+
+.post-item .post-meta, .post-item .post-extra
+{
+	border-left: none;
+	border-right: none;
+}
+
+.post-extra
+{
+	border-bottom: none;
+}
+
+.post-title
+{
+	padding: 5px;
+}
+
+#comments li:last-child
+{
+	margin-bottom: 0;
+}
+
+#comments
+{
+	border-top: 1px solid #CCC;
+}
+#comments-form, #comments
+{
+	background: #E3E4E2;
+	margin-left: -10px;
+	margin-right: -10px;
+	overflow: hidden;
+	padding: 10px 10px;
+}
+
+div.control-item-data
+{
+	margin: 0;
+	padding: 3px 8px 5px;
+}
+
+.control-item-data
+{
+	background: #FFFFFF;
+	border-radius: 5px 5px 5px 5px;
+	margin: 0 0 15px;
+}
+
+/*********** Dashboard ************/
+#no-dashboard
+{
+	padding: 20px;
+	text-align: center;
+	line-height: 50px;
+	font-size: 17px;
+	color: #9D9D9D;
+	text-transform: uppercase;
+}
+
+.dashboard-item
+{
+	float: left;
+	margin-bottom: 10px;
+	text-align: center;
+	width: 32%;
+}
+
+.dashboard-item > a
+{
+	display: block;
+	font-weight: bold;
+	position: relative;
+	text-align: center;
+	text-decoration: none;
+}
+
+.dashboard-item span
+{
+	display: block;
+}
+
+#footer
+{
+	font-size: 11px;
+	font-weight: 700;
+	overflow: hidden;
+	padding: 10px;
+	color: #FFF;
+	font-style: italic;
+	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.9);
+}
+
+#footer p.copyright
+{
+	float: left;
+	margin: 0;
+	padding: 0;
+}
+
+#footer .footer-links
+{
+	float: right;
+	margin: 0;
+	padding: 0;
+}
+
+#footer a.footer-full-site
+{
+	color: #999;
+}
+
+#footer .powered-by
+{
+	clear: both;
+	font-size: 10px;
+	margin-top: 25px;
+	padding-top: 3px;
+	text-align: center;
+}

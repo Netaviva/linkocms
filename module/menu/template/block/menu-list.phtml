@@ -1,0 +1,9 @@
+<ul id="menu-block-list">
+    <?php foreach($aMenuItems as $aItem): ?>
+    <li>
+        <a href="<?php echo $aItem['menu_item_url']; ?>">
+            <?php echo $aItem['menu_item_title']; ?>
+        </a>
+    </li>
+    <?php endforeach; ?>
+</ul>

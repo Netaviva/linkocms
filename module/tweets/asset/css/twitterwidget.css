@@ -1,0 +1,24 @@
+#tweets {
+	width:280px;	 
+	padding:10px;	
+}
+
+#tweets li {
+	padding: 5px;
+	color:#2AA4CF;
+	line-height:150%;
+}
+
+#tweets li.tweet_content_0 {
+	border-top:0px none;
+}
+#tweets p.tweet_link_0 {
+    margin-bottom: -10px;
+}
+#tweets li:last-child{
+	border-bottom:10px none;
+        margin-bottom: -10px;
+}
+
+#tweets .hash { color:#EF3F79; } 
+#tweets .reply { color:#EF3F79; } 

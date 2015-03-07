@@ -1,0 +1,9 @@
+<?php foreach($aBadges as  $key=>$badge):?>
+
+<?php $aBadgeDetails = Linko::Model('gamification/badge')->get($badge['badge_id'])?>
+
+<div class="each-badges">
+    <img title="<?php echo $aBadgeDetails['badge_name']?>" src="<?php  echo ($this->getImage(array('path' => $aBadgeDetails['badge_icon'], 'size' => 50), 'gamification_image')); ?>" />
+</div>
+<?php endforeach?>
+<div class="clear"></div>

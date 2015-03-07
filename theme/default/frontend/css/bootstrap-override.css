@@ -1,0 +1,28 @@
+/*
+  This file contains few overrides of 
+  - media queries (overwrites .container class [for @media (min-width: 1200px)] with 960px )
+  - some others like ul, ol
+*/
+body {
+  background:#fff;
+}
+.carousel-inner {
+    height: 370px;
+}
+.navbar{
+    margin-bottom:0px;
+}
+.navbar-inner {
+    background-color: #FAFAFA;
+    background-image: -moz-linear-gradient(center top , #FFFFFF, #F2F2F2);
+    background-repeat: repeat-x;
+    border: 1px solid #D4D4D4;
+    border-radius: 0px 0px 0px 0px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+    min-height: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.dropdown-menu{
+	left:110px;
+}

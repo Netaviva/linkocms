@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @var $this Linko_Application_Template
+ */
+
+?>
+
+<?php if(Linko::Model('User/Auth')->isUser() && !$iUser && !Input::isAjax()): ?>
+<?php echo $this->getBlock('activity/status-form'); ?>
+<?php endif; ?>
+
+<?php echo $this->getBlock('activity/display', array('user_id' => $iUser)); ?>

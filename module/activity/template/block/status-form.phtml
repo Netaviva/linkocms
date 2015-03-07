@@ -1,0 +1,38 @@
+<div id="activity-feeds-form">
+    <div id="activity-feeds-box">
+        <form action="javascript:void(0);" enctype="multipart/form-data" method="post">
+            <div class="controls">
+                <div class="activity-feed-form-holder">
+                    <div id="activity-feed-item-status" class="activity-feed-item">
+                        <input type="hidden" />
+                        <div class="control-item">
+                            <div class="control-item-data no-label">
+                                <textarea name="status_text" placeholder="<?php echo Lang::t('activity.whats_on_your_mind'); ?>"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div id="activity-feed-toolbox">
+                    <ul>
+                        <li class="share-label">
+	                        <?php echo Lang::t('activity.share'); ?>
+                        </li>
+                        <li class="active">
+                            <a class="status" href="#activity-feed-item-status" rel="activity/addStatus">
+	                            <?php echo Lang::t('activity.status'); ?>
+                            </a>
+                        </li>
+                        <div class="clear"></div>
+                    </ul>
+                </div>
+
+                <div class="activity-feed-bottom">
+                    <input type="submit" id="activity-feeds-button-post" value="<?php echo Lang::t('activity.share'); ?>" class="button small" />
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

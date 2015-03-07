@@ -1,0 +1,34 @@
+<?php defined('LINKO') or exit;
+
+/**
+ * @author Morrison Laju <morrelinko@gmail.com>
+ * @package linkocms
+ */
+?>
+
+<div id="smb-admincp">
+    <form action="<?php echo Linko::Url()->make('self'); ?>" method="post" enctype="multipart/form-data">
+	<div class="module">
+		<div class="module-header">
+			<h3>Select a backup archive to import</h3>
+		</div>
+		<div class="module-content">
+            <div class="controls">
+                <div class="control-item">
+                    <div class="control-item-label">
+                        &nbsp;
+                    </div>
+                    <div class="control-item-data">
+	                    <input type="file" name="backup" />
+                    </div>
+                </div>
+            </div>
+
+		</div>
+
+        <div class="module-footer">
+            <input type="submit" class="button" name="import" value="Import">
+        </div>
+	</div>
+    </form>
+</div>

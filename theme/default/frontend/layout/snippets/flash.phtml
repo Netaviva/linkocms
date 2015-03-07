@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * @var $this Linko_Application_Template|Linko_Template
+ */
+
+defined('LINKO') or exit;
+
+?>
+<?php if(Linko::Flash()->hasMessage()): ?>
+<div id="global-message" class="<?php echo Linko::Flash()->getType(); ?>">
+    <?php echo Linko::Flash()->getMessage(); ?>
+</div>
+<?php endif; ?>

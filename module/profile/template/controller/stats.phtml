@@ -1,0 +1,9 @@
+<div id="profile-stats">
+
+   <?php foreach(Linko::Model('profile')->getStatistic() as $aStats):?>
+
+
+        <a href="<?php echo $aStats['link']?>"><span><?php echo $aStats['number']?></span>  <?php echo $aStats['name']?></a>
+    <?php endforeach?>
+    <div class="clear"></div>
+</div>

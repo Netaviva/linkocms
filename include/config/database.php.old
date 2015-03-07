@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * Core File
+ *
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+
+defined('LINKO') or exit();
+
+Linko::Config()->set('Database.connection', array(
+		'default' => array(
+			'driver' => '[DB_DRIVER]',
+			'host' => '[DB_HOST]',
+			'username' => '[DB_USER]',
+			'password' => '[DB_PASS]',
+			'database' => '[DB_NAME]',
+			'prefix' => '[DB_PREFIX]',
+			'charset' => 'utf8_bin'
+		),
+	)
+);

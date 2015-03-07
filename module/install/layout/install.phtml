@@ -1,0 +1,53 @@
+<?php
+
+/**
+ * @var $this Linko_Application_Template
+ */
+defined('LINKO') or exit();
+
+?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><?php echo $this->getTitle(); ?></title>
+
+<?php echo $this->getHeader(); ?>
+</head>
+
+<body>
+
+<div class="row">
+    <div class="twelve columns">
+        <h2>
+            LinkoCMS Installer
+        </h2>
+        <h6 class="subheader">Welcome to the <strong>Linko</strong> developers cradle core. </h6>  
+         <hr />      
+    </div>  
+</div>
+
+<div class="row">
+    <div class="twelve columns">
+        <ul class="tabs contained">
+            <?php foreach($aSteps as $sStep => $sTitle): ?>
+            <li class="<?php echo ($sStep == $sCurrentStep ? 'active' : null); ?>">
+                <a href="#">
+                    <?php echo $sTitle; ?>
+                </a>
+            </li>
+            <?php endforeach; ?>
+        </ul>
+        
+        <ul class="tabs-content contained">
+            <li class="active">
+	            <?php $this->plugin('error', array('class' => 'alert')); ?>
+                <?php $this->getLayout($sLayout); ?>
+            </li>
+        </ul>
+        
+    </div> 
+</div>
+
+</body>
+</html>

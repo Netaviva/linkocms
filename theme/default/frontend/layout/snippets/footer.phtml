@@ -1,0 +1,51 @@
+<?php
+
+/**
+ * @var $this Linko_Application_Template|Linko_Template
+ */
+
+defined('LINKO') or exit;
+
+?>
+ <!--footer-->
+   <div id="footer">
+    	<div class="wrap">
+    		<div class="container">
+            	<div class="row">
+                    <div class="span3">
+                      <?php $this->plugin('block', array('position' => 'footer_block_1', 'title' => false)); ?>                     
+                    </div>
+                    <div class="span3">
+                    	<?php $this->plugin('block', array('position' => 'footer_block_2', 'title' => false)); ?>
+                    </div>
+                    <div class="span3">
+                    	<?php $this->plugin('block', array('position' => 'footer_block_3', 'title' => false)); ?>                       
+                    </div>
+                    <div class="span3">
+                        <?php $this->plugin('block', array('position' => 'footer_block_4', 'title' => false)); ?> 
+                    </div>                	
+            	</div>
+        	</div>            
+        </div>
+        <div class="footer_bottom">
+            <div class="wrap">
+            	<div class="container">
+                	<div class="row">
+                	<div class="span6"><div class="copyright"><?php echo $this->getSetting('footer_text'); ?></div></div>
+                        <div class="span6 follow_us">
+                            <ul>
+                                <li><span>Follow Us:</span></li>
+                                <li><a href="<?php echo $this->getSetting('twitter_url'); ?>" class="twitter">Twitter</a></li>
+                                <li><a href="<?php echo $this->getSetting('facebook_url'); ?>" class="facebook">Facebook</a></li>
+                                <li><a href="<?php echo $this->getSetting('googleplus_url'); ?>" class="google">Google</a></li>
+                            </ul>
+                        </div>
+                    </div>	
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--//footer-->    
+<?php echo $this->getFooter(); ?>
+</body>
+</html>

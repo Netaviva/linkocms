@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<extension:module>
+	<title>Assetic</title>
+	<version>1.0.0</version>
+	<description>Cache and compress almost all your javascript and css into one file. Which gives your site less load  when loading and speed up user access.</description>
+	<auto_enable>1</auto_enable>
+
+	<author>Morrison Laju</author>
+	<author_url>http://morrelinko.com</author_url>
+
+	<component>
+		<controller label="Assets Url"
+		            path="assetic/load-asset"
+		            route_id="assetic:url"
+		            route_url="assetic/[type]/[cache].[extension]"
+		            route_rule="type=script|style&amp;cache=:alnum&amp;extension=js|css"
+		  >
+		</controller>
+	</component>
+
+</extension:module>

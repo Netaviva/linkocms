@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<extension:module>
+	<title>Theme Manager</title>
+	<version>1.0.1</version>
+	<description>Theme Manager provides api methods and interface for managing themes.</description>
+	<core>1</core>
+    <auto_enable>1</auto_enable>
+
+	<author>LinkoDEV Team</author>
+	<author_url>http://linkodev.com</author_url>
+
+    <table><![CDATA[a:1:{s:5:"theme";a:5:{s:8:"theme_id";a:4:{s:4:"type";s:7:"int(10)";s:8:"unsigned";b:1;s:14:"auto_increment";b:1;s:11:"primary_key";b:1;}s:12:"theme_folder";a:1:{s:4:"type";s:12:"varchar(100)";}s:10:"theme_type";a:1:{s:4:"type";s:11:"varchar(50)";}s:13:"theme_default";a:2:{s:4:"type";s:10:"tinyint(1)";s:7:"default";s:1:"0";}s:13:"theme_setting";a:1:{s:4:"type";s:10:"mediumtext";}}}]]></table>
+</extension:module>

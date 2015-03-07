@@ -1,0 +1,58 @@
+<?php
+
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage blog : controller_template - index.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+<div id="blog-index" class="list post-list">
+	<?php foreach($aPosts as $aPost): ?>
+	<div id="post-<?php echo $aPost['post_id']; ?>" class="post-item list-item <?php echo $this->plugin('cycle', array('name' => 'blog_post', 'value' => 'row-odd,row-even')); ?>">
+    	<h2 class="post-title item-title">
+        	<a rel="bookmark" title="Link to <?php echo $aPost['post_title']; ?>" href="<?php echo Linko::Url()->make('blog:entry', array('slug' => $aPost['post_slug'])); ?>">
+                <?php echo $aPost['post_title']; ?>
+            </a>
+        </h2>
+ 
+        <div class="post-meta item-meta">
+            <?php echo Lang::t('blog.posted_on_time_by_user', array(
+                'time' => Html::tag('a', $aPost['time_created_readable'], array('href' => $aPost['post_url'])),
+                'user' => Html::tag('a', $aPost['username'], array('href' => $aPost['user_url']))
+            )); ?>       
+        </div>
+        
+        <div class="post-data item-content">
+	        <p>
+		        <?php echo $aPost['post_text']; ?>
+	        </p>
+            <p>
+            	<a class="more" href="<?php echo $aPost['post_url']; ?>">Read More</a>
+            </p>
+        </div>
+        
+        <div class="post-extra item-extra">
+
+            <?php if(count($aPost['category'])): ?>
+                <span><?php echo Lang::t('blog.posted_in'); ?> </span>
+                <?php $iCnt = 0; foreach($aPost['category'] as $aCategory): $iCnt++; ?>
+                <a href="<?php echo Linko::Url()->make('blog:index', array('archive' => 'category', 'slug' => $aCategory['category_slug'])); ?>"><?php echo $aCategory['category_title']; ?></a><?php echo $iCnt != count($aPost['category']) ? ', ' : ''; ?>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <a>No Categories</a>
+            <?php endif; ?>
+
+            <?php if(Linko::Model('Blog')->isCommentEnabled()): ?>
+            | <a href=""> <?php echo $aPost['total_comments']; ?> Comment</a>
+            <?php endif; ?>
+        </div>
+        
+    </div>    
+    <?php endforeach; ?>
+    
+    <?php $this->plugin('pager'); ?> 
+</div>

@@ -1,0 +1,65 @@
+<?php
+
+/**
+ * @var $this Linko_Application_Template|Linko_Template
+ */
+
+defined('LINKO') or exit;
+
+?>
+<?php $this->getLayout('snippets/header'); ?>
+    <!--page_container-->
+    <div class="page_container">
+ 
+        <!--slider-->
+        <?php if(Linko::Module()->hasBlocks('slider')): ?>
+        <div id="main_slider">
+            <div class="wrap">
+                <div class="container">
+                        <?php $this->plugin('block', array('position' => 'slider', 'title' => false)); ?>
+                </div>
+            </div>    	
+        </div>
+         <?php endif; ?>
+         
+        <!--//slider-->
+        <?php if(Linko::Module()->hasBlocks('welcome')): ?>
+        <!--Welcome-->
+        <div class="separator"></div>
+        <div class="wrap">
+            <div class="container welcome_block"><?php $this->plugin('block', array('position' => 'welcome', 'title' => false)); ?></div>
+        </div>
+        <?php endif; ?>
+        <!--//Welcome Tagline-->
+       
+        <!--Home Services block-->
+        <?php if(Linko::Module()->hasBlocks('services')): ?>
+        <div class="wrap services">
+            <div class="container">
+                <div class="row">
+                    <?php $this->plugin('block', array('position' => 'services', 'title' => false)); ?>     	
+                </div>
+            </div>
+        </div>
+         <?php endif; ?>
+        <!--//Home services block-->
+     
+        <!--Left & Right Home Blocks-->
+        <?php if(Linko::Module()->hasBlocks('home-left') || Linko::Module()->hasBlocks('home-right')): ?>
+        <div class="wrap blockWrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="span6">
+                        <?php $this->plugin('block', array('position' => 'home-left', 'title' => false)); ?>                  
+                    </div>
+                    <div class="span6">
+                      <?php $this->plugin('block', array('position' => 'home-right', 'title' => false)); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+       <?php endif; ?>
+        <!--//Left and Right Home Blocks-->
+    </div>
+    <!--//page_container-->
+   <?php $this->getLayout('snippets/footer'); ?>

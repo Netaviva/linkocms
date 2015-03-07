@@ -1,0 +1,45 @@
+<?php
+/**
+ * @var $this Linko_Application_Template
+ */
+defined('LINKO') or exit();
+
+Linko::Template()
+
+        ->setStyle(array('style-responsive.css'), 'theme_css');
+?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><?php echo $this->getTitle(); ?></title>
+        <!-- start: Mobile Specific -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- end: Mobile Specific -->
+        <link rel="stylesheet" type="text/css" href="<?php echo $this->getThemeUrl(); ?>css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo $this->getThemeUrl(); ?>css/bootstrap-responsive.min.css">
+                <style type="text/css">
+            body { 
+                background: #ccc !important; 
+            }
+        </style>
+            <?php echo $this->getHeader(); ?>
+
+
+    </head>
+    <body>
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+
+                <?php $this->plugin('flash'); ?>
+                <?php $this->plugin('error'); ?>
+                <?php echo $this->getContent(); ?>
+
+            </div>
+        </div>
+
+        <script type="text/javascript" src="<?php echo $this->getThemeUrl(); ?>js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="<?php echo $this->getThemeUrl(); ?>js/jquery.uniform.min.js"></script>
+        <?php echo $this->getFooter(); ?>
+    </body>
+</html>

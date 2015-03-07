@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<extension:module>
+	<title>Blog</title>
+	<version>0.9.1</version>
+	<description>A blog system to publish aricles.</description>
+	<core>0</core>
+	<auto_enable>1</auto_enable>
+
+	<author>LinkoDEV Team</author>
+	<author_url>http://linkodev.com</author_url>
+
+	<component>
+		<controller label="Blog List"
+		            title="Blog"
+		            path="blog/index"
+		            route_id="blog:index"
+		            route_url="blog(/[archive]/[slug])(/[page])"
+		            route_rule="page=:int&amp;archive=category|tag&amp;slug=:alnum"/>
+
+		<controller label="Blog Single Post"
+		            title="Blog"
+		            path="blog/entry"
+		            route_id="blog:entry"
+		            route_url="blog/[slug]"></controller>
+
+		<block label="Recent Post"
+		       path="blog/recent-post"></block>
+
+		<block label="Categories"
+		       path="blog/category"></block>
+
+	</component>
+
+	<settings>
+		<setting var="blog.post_per_page"
+		         type="integer"
+		         title="Post Per Page"
+		         description="The number of blog post to display per page.">5</setting>
+
+		<setting var="blog.recent_post_limit"
+		         type="integer"
+		         title="Recent Post Limit"
+		         description="Set the total number of posts to be displayed in the recent posts block.">5</setting>
+
+		<setting var="blog.enable_default_comment"
+		         type="boolean"
+		         title="Enable default comment"
+		         description="Enable default comment. Note: This requires the 'comment' module to be available and installed to work.">1</setting>
+
+		<setting var="blog.members_only_comment"
+		         type="boolean"
+		         title="Members only commenting"
+		         description="Enable this to only allow  members to comment on blog posts.">0</setting>
+	</settings>
+
+	<translations>
+		<translation var="blog.posted_on_time_by_user">Posted - {time} by {user}</translation>
+		<translation var="blog.leave_a_reply">Leave a reply.</translation>
+		<translation var="blog.posted_in">Posted In</translation>
+		<translation var="blog.only_members_are_allowed_to_post_comment">Only members are allowed to post comment.</translation>
+                <translation var="blog.blog_post_title">Post Title</translation>
+                <translation var="blog.blog_url_slug">Post Slug</translation>
+                <translation var="blog.blog_post_content">Post Content</translation>
+                <translation var="blog.blog_options">Options</translation>
+                <translation var="blog.blog_is_approved">Is Approved?</translation>
+                <translation var="blog.categories">Post Categoris</translation>
+                <translation var="blog.featured_image">Featured Image</translation>
+	</translations>
+
+	<requirement>
+		<module id="comment" optional="1"></module>
+	</requirement>
+
+	<table>
+		<![CDATA[a:3:{s:9:"blog_post";a:8:{s:7:"post_id";a:4:{s:4:"type";s:7:"int(10)";s:8:"unsigned";b:1;s:14:"auto_increment";b:1;s:11:"primary_key";b:1;}s:10:"post_title";a:2:{s:4:"type";s:12:"varchar(255)";s:3:"key";b:1;}s:9:"post_slug";a:1:{s:4:"type";s:12:"varchar(255)";}s:9:"post_text";a:1:{s:4:"type";s:4:"text";}s:12:"time_created";a:2:{s:4:"type";s:7:"int(10)";s:8:"unsigned";b:1;}s:12:"time_updated";a:2:{s:4:"type";s:7:"int(10)";s:8:"unsigned";b:1;}s:9:"author_id";a:2:{s:4:"type";s:7:"int(10)";s:8:"unsigned";b:1;}s:11:"is_approved";a:3:{s:4:"type";s:10:"tinyint(1)";s:8:"unsigned";b:1;s:7:"default";s:1:"0";}}s:13:"blog_category";a:3:{s:11:"category_id";a:4:{s:4:"type";s:7:"int(10)";s:8:"unsigned";b:1;s:14:"auto_increment";b:1;s:11:"primary_key";b:1;}s:14:"category_title";a:1:{s:4:"type";s:12:"varchar(100)";}s:13:"category_slug";a:1:{s:4:"type";s:12:"varchar(100)";}}s:18:"blog_category_post";a:2:{s:7:"post_id";a:3:{s:4:"type";s:7:"int(10)";s:8:"unsigned";b:1;s:3:"key";b:1;}s:11:"category_id";a:3:{s:4:"type";s:7:"int(10)";s:8:"unsigned";b:1;s:3:"key";b:1;}}}]]></table>
+
+</extension:module>

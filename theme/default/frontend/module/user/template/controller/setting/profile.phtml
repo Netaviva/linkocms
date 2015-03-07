@@ -1,0 +1,59 @@
+<?php
+
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage user : controller_template - setting\profile.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+
+<div class="well">
+        <form id="signup" class="form-horizontal" method="post" action="<?php echo Linko::Url()->make('self'); ?>">
+            <legend><?php echo Lang::t('user.update_your_account'); ?></legend>
+            <div class="control-group ">
+                <label class="control-label"><?php echo Lang::t('user.firstname'); ?></label>
+                <div class="controls">
+                    <div class="input-prepend">
+                        <span class="add-on"><i class="icon-user"></i></span>
+                        <input type="text" class="input-xlarge" id="firstname" name="val[firstname]" value="<?php echo $aUser['firstname']; ?>" placeholder="First Name">
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label"><?php echo Lang::t('user.lastname'); ?></label>
+                <div class="controls">
+                    <div class="input-prepend">
+                        <span class="add-on"><i class="icon-user"></i></span>
+                        <input type="text" class="input-xlarge" id="lastname"  name="val[lastname]" value="<?php echo $aUser['lastname']; ?>" placeholder="Last Name">
+                    </div>
+                </div>
+            </div>
+            <?php if(Linko::Module()->getSetting('user.enable_location_select')): ?>
+            <div class="control-group">
+                <label class="control-label"><?php echo Lang::t('user.location'); ?>:</label>
+                <div class="controls">
+                      <select name="val[country_id]">
+                        <?php $this->plugin('option', array(
+                            'data' => $aCountries,
+                            'value_key' => 'country_id',
+                            'title_key' => 'country_title',
+                            'default' => $aUser['country_id']
+                        )); ?>
+	                </select>
+                </div>
+            </div>
+            <?php endif; ?>
+
+            <div class="control-group">
+                <label class="control-label"></label>
+                <div class="controls">
+                    <button type="submit" class="btn btn-success" ><?php echo Lang::t('user.update'); ?></button>
+                </div>
+
+            </div>
+        </form>
+    </div>

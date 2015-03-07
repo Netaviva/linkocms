@@ -1,0 +1,103 @@
+<?php
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage blog : controller_template - admincp\action.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+
+<form class="" action="<?php echo Linko::Url()->make('self'); ?>" method="post" enctype="multipart/form-data">
+    <div class="row-fluid">
+        <div class="pull-right">
+            <input type="submit" class="btn btn-primary admin-submit-button" value="<?php echo $bEdit ? 'Update' : 'Publish'; ?>" />
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="box span8" onTablet="span12" onDesktop="span8">
+            <div class="box-header">
+                <h2><i class="icon-edit"></i><span class="break"></span><?php echo $bEdit ? 'Edit Post' : 'New Post'; ?></h2>
+            </div>
+            <div class="box-content">
+                <div class="control-group">
+                    <label class="control-label" for="focusedInput"><?php echo Lang::t('blog.blog_post_title'); ?>:</label>
+                    <div class="controls">
+                        <input id="js-input-title" class="span12 focused" type="text" name="val[title]" value="<?php echo Arr::get($aVals, 'title', Arr::get($aPost, 'post_title', '')); ?>">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="focusedInput"><?php echo Lang::t('blog.blog_url_slug'); ?>:</label>
+                    <div class="controls">
+                        <input id="js-input-slug" class="span12 focused" type="text" name="val[slug]" value="<?php echo Arr::get($aVals, 'slug', Arr::get($aPost, 'post_slug', '')); ?>">
+                    </div>
+                </div>
+                <div class="control-group hidden-phone">
+                    <label class="control-label" for="textarea2"><?php echo Lang::t('blog.blog_post_content'); ?>:</label>
+                    <div class="controls">
+                        <textarea class="post-content" id="textarea2" rows="25" name="val[content]"><?php echo Arr::get($aVals, 'content', Arr::get($aPost, 'post_text', '')); ?></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box span4 noMargin" onTablet="span12" onDesktop="span4">
+            <div class="box-header">
+                <h2><i class="icon-tasks"></i><span class="break"></span><?php echo Lang::t('blog.blog_options'); ?></h2>
+            </div>
+            <div class="box-content">
+                <div class="control-group">
+                    <div class="controls">
+                        <ul class="select-blog-categories">
+                            <input type="checkbox" name="val[approve]" class="input-checkbox"<?php echo (Arr::get($aVals, 'approve', Arr::get($aPost, 'is_approved', '')) ? ' checked="checked"' : ''); ?> />
+                            <?php echo Lang::t('blog.blog_is_approved'); ?>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>  
+
+        <div class="box span4 noMargin" onTablet="span12" onDesktop="span4">
+            <div class="box-header">
+                <h2><i class="icon-filter"></i><span class="break"></span><?php echo Lang::t('blog.categories'); ?></h2>
+            </div>
+            <div class="box-content">
+                <div class="control-group">
+                    <div class="controls">
+                        <ul class="select-blog-categories">
+                            <?php foreach ($aCategories as $aCategory): ?>
+                                <label for="category-<?php echo $aCategory['category_id']; ?>">
+                                    <input id="category-<?php echo $aCategory['category_id']; ?>" type="checkbox" name="val[category][]" value="<?php echo $aCategory['category_id']; ?>" <?php echo (in_array($aCategory['category_id'], $aPostCategories) ? 'checked="checked"' : ''); ?> />
+                                    <?php echo $aCategory['category_title']; ?>
+                                </label>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div> 
+
+        <div class="box span4 noMargin" onTablet="span12" onDesktop="span4">
+            <div class="box-header">
+                <h2><i class="icon-picture"></i><span class="break"></span><?php echo Lang::t('blog.featured_image'); ?></h2>
+            </div>
+            <div class="box-content">
+                <div class="control-group">
+                    <div class="controls">
+                        <input type="file" class="input-file uniform_on" name="post_image" />
+                    </div>
+                    <img src="<?php echo $this->getImage(array('post' => $aPost), 'blog_image'); ?>" />
+                </div>
+            </div>
+        </div>  
+
+    </div>
+</form>
+
+<script type="text/javascript">
+    var $input_slug = $('#js-input-slug');
+    $('#js-input-title').on('keyup', function(){
+        $input_slug.val(Linko.util.slugify($(this).val()));
+    });
+</script>

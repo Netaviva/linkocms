@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<extension:module>
+    <title>Activity</title>
+    <version>1.0</version>
+    <description>A module that keep users activities on the site.</description>
+    <core>0</core>
+    <auto_enable>1</auto_enable>
+
+    <component>
+        <controller label="User Activity"
+                    title="Activity Feed"
+                    path="activity/index"
+                    route_id="activity:index"
+                    route_url="activity(/[page])"
+                    route_rule="page=:int"
+                />
+	    <controller label="View Single Activity"
+	                title="Activity Feed"
+	                path="activity/view"
+	                route_id="activity:view"
+	                route_url="activity/view/[id]"
+	                route_rule="id=:int"
+	      />
+    </component>
+
+    <settings>
+	    <setting var="activity.page_limit"
+	             type="select"
+	             data="5,10,15,20,25,30,35,40,45,50"
+	             title="Number to Display Per Page"
+	             description="Enter a number of activities to be shown per page">10</setting>
+
+	    <setting var="activity.live_timer_count"
+	             type="boolean"
+	             title="Live Timer Count"
+	             description="Enable this to update the time of activities LIVE.">1</setting>
+
+	    <setting var="activity.allow_guest"
+	             type="boolean"
+	             title="Allow guests"
+	             description="Should guest be able to see activities on your site. Note: This setting will override the settings you defined on page manager.">1</setting>
+
+	    <setting var="activity.enable_comment"
+	             type="boolean"
+	             title="Allow comments on activities."
+	             description="Set this to true to enable members to post comments to activities. Note: this will not be available if the comment module is not installed.">1</setting>
+    </settings>
+
+	<translations>
+		<translation var="activity.status">Status</translation>
+		<translation var="activity.share">Share</translation>
+		<translation var="activity.whats_on_your_mind">What's on your mind?</translation>
+		<translation var="activity.see_more_comments">See more comments.</translation>
+		<translation var="activity.comment">Comment</translation>
+		<translation var="activity.cannot_post_empty_comment">Cannot post empty comment.</translation>
+		<translation var="activity.cannot_post_empty_message">Cannot post empty message.</translation>
+		<translation var="activity.no_more_activity">No more activity.</translation>
+		<translation var="activity.comment_added">Comment Added</translation>
+		<translation var="activity.you_cannot_view_activities">You cannot view activities.</translation>
+		<translation var="activity.invalid_activity">Invalid activity.</translation>
+		<translation var="activity.posted_a_comment_on_userlink_s_activitylink">Posted a comment on {user_link}'s {activity_link}</translation>
+		<translation var="activity.added_a_new_blog_bloglink">Added a new blog {blog_link}</translation>
+	</translations>
+
+	<requirement>
+		<module id="comment" optional="1"></module>
+	</requirement>
+
+    <table><![CDATA[a:2:{s:13:"activity_feed";a:6:{s:11:"activity_id";a:4:{s:4:"type";s:7:"int(10)";s:8:"unsigned";b:1;s:14:"auto_increment";b:1;s:11:"primary_key";b:1;}s:7:"user_id";a:2:{s:4:"type";s:7:"int(10)";s:8:"unsigned";b:1;}s:9:"module_id";a:2:{s:4:"type";s:11:"varchar(60)";s:3:"key";b:1;}s:8:"feed_var";a:1:{s:4:"type";s:12:"varchar(255)";}s:12:"time_created";a:2:{s:4:"type";s:7:"int(10)";s:8:"unsigned";b:1;}s:7:"item_id";a:3:{s:4:"type";s:7:"int(10)";s:8:"unsigned";b:1;s:3:"key";b:1;}}s:15:"activity_status";a:4:{s:9:"status_id";a:4:{s:4:"type";s:7:"int(10)";s:8:"unsigned";b:1;s:14:"auto_increment";b:1;s:11:"primary_key";b:1;}s:7:"user_id";a:3:{s:4:"type";s:7:"int(10)";s:8:"unsigned";b:1;s:3:"key";b:1;}s:6:"status";a:1:{s:4:"type";s:4:"text";}s:12:"time_created";a:2:{s:4:"type";s:7:"int(10)";s:8:"unsigned";b:1;}}}]]></table>
+</extension:module>

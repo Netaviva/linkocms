@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<extension:module>
+	<title>Super Module Backup</title>
+	<version>0.5.0</version>
+	<description>Complete backup system that backups your module including database tables used by that module.</description>
+	<auto_enable>1</auto_enable>
+
+	<author>Morrison Laju</author>
+	<author_url>http://morrelinko.com</author_url>
+
+	<table><![CDATA[]]></table>
+
+</extension:module>

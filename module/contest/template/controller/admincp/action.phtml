@@ -1,0 +1,263 @@
+<?php
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage contest : controller_template - admincp\action.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+<?php if ($bEdit) { ?>
+ <form action="<?php echo Linko::Url()->make('self'); ?>" method="post" enctype="multipart/form-data">
+        <div class="page-wrap">
+            <div class="option-sec" style="margin-bottom:0;">
+                <div class="opt-conts">
+                    <ul class="form-elements">
+                        <li class="to-label">
+                            <label><?php echo Lang::t('contest.contest_start_date'); ?>:</label>
+                        </li>
+                        <li class="to-field">
+                            <input id="contest_start_date" type="text" name="val[contest_start_date]" value="<?php echo $contest_start_date; ?>" class="pickable"/>
+                        </li>
+                        <li class="to-desc">
+                            <p>
+                               <?php echo Lang::t('contest.contest_start_date_description'); ?>
+                            </p>
+                        </li> 
+                    </ul>
+                    <ul class="form-elements">
+                        <li class="to-label">
+                            <label><?php echo Lang::t('contest.contest_start_time'); ?>:</label>
+                        </li>
+                        <li class="to-field">
+                            <input id="contest_start_time" type="text" name="val[contest_start_time]" value="<?php echo $contest_start_time; ?>" size="10" readonly="readonly"/>
+                        </li>
+                        <li class="to-desc">
+                            <p>
+                              <?php echo Lang::t('contest.contest_start_time_description'); ?>
+                            </p>
+                        </li> 
+                    </ul>
+                    <ul class="form-elements">
+                        <li class="to-label">
+                            <label><?php echo Lang::t('contest.contest_end_date'); ?>:</label>
+                        </li>
+                        <li class="to-field">
+                            <input id="contest_end_date" type="text" name="val[contest_end_date]" value="<?php echo $contest_end_date; ?>" class="input-text pickable"/>
+                        </li>
+                        <li class="to-desc">
+                            <p>
+                                <?php echo Lang::t('contest.contest_end_date_description'); ?>
+                            </p>
+                        </li> 
+                    </ul>
+                    <ul class="form-elements">
+                        <li class="to-label">
+                            <label><?php echo Lang::t('contest.contest_end_time'); ?>:</label>
+                        </li>
+                        <li class="to-field">
+                            <input id="contest_end_time" type="text" name="val[contest_end_time]" value="<?php echo $contest_end_time; ?>" class="input-text" size="10" readonly="readonly"/>
+                        </li>
+                        <li class="to-desc">
+                            <p>
+                                  <?php echo Lang::t('contest.contest_end_time_description'); ?>
+                            </p>
+                        </li> 
+                    </ul>
+                    <ul class="form-elements">
+                        <li class="to-label">
+                            <?php echo Lang::t('contest.team_a'); ?>:
+                        </li>
+                        <li class="to-field">
+                            <input type="text" name="val[contest_team_a]" value="<?php echo $aDetails['contest_team_a']?>" class="input-text"/>
+                        </li>
+                        <li class="to-desc"><p></p></li> 
+                    </ul>
+                    <ul class="form-elements">
+                        <li class="to-label">
+                            <?php echo Lang::t('contest.team_a_logo'); ?>
+                        </li>
+                        <li class="to-field">
+                            <img src="<?php echo $this->getImage(array('post' => array('post_image' => $team_a_logo), 'size' =>100), 'contest_image')?>"/>
+                            <input type="file" name="team_logo[]" />
+                        </li>
+                          <li class="to-desc"><p></p></li>  
+                    </ul>
+                    <ul class="form-elements">
+                        <li class="to-label">
+                            <?php echo Lang::t('contest.team_b'); ?>:
+                        </li>
+                        <li class="to-field">
+                            <input type="text" name="val[contest_team_b]" value="<?php echo $aDetails['contest_team_b']?>"  class="input-text"/>
+                        </li>
+                          <li class="to-desc"><p></p></li>  
+                    </ul>
+                    <ul class="form-elements">
+                        <li class="to-label">
+                            <?php echo Lang::t('contest.team_b_logo'); ?>
+                        </li>
+                        <li class="to-field">
+                            <img src="<?php echo $this->getImage(array('post' => array('post_image' => $team_b_logo), 'size' =>100), 'contest_image')?>"/>
+                            <input type="file" name="team_logo[]" />
+                        </li>
+                         <li class="to-desc"><p></p></li>  
+                    </ul>
+                    <ul class="form-elements">
+                        <li class="to-label">
+                            <label><?php echo Lang::t('contest.is_approved'); ?>:</label>
+                        </li>
+                        <li class="to-field">
+                            <input type="checkbox" name="val[approve]" class="input-checkbox"<?php echo (isset($aDetails['is_approved']) ? "value='1'":"value='0'")?> 
+ <?php echo (isset($aDetails['is_approved']) ? "checked" : "") ?> />
+                        </li>
+                          <li class="to-desc"><p></p></li>  
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="right submit-button">
+            <input type="submit" class="button" value="Update" />
+        </div>
+    </form>
+<?php } else { ?>
+    <form action="<?php echo Linko::Url()->make('self'); ?>" method="post" enctype="multipart/form-data">
+        <div class="page-wrap">
+            <div class="option-sec" style="margin-bottom:0;">
+                <div class="opt-conts">
+                    <ul class="form-elements">
+                        <li class="to-label">
+                            <label><?php echo Lang::t('contest.contest_start_date'); ?>:</label>
+                        </li>
+                        <li class="to-field">
+                            <input id="contest_start_date" type="text" name="val[contest_start_date]" class="pickable"/>
+                        </li>
+                        <li class="to-desc">
+                            <p>
+                               <?php echo Lang::t('contest.contest_start_date_description'); ?>
+                            </p>
+                        </li> 
+                    </ul>
+                    <ul class="form-elements">
+                        <li class="to-label">
+                            <label><?php echo Lang::t('contest.contest_start_time'); ?>:</label>
+                        </li>
+                        <li class="to-field">
+                            <input id="contest_start_time" type="text" name="val[contest_start_time]" size="10" readonly="readonly"/>
+                        </li>
+                        <li class="to-desc">
+                            <p>
+                              <?php echo Lang::t('contest.contest_start_time_description'); ?>
+                            </p>
+                        </li> 
+                    </ul>
+                    <ul class="form-elements">
+                        <li class="to-label">
+                            <label><?php echo Lang::t('contest.contest_end_date'); ?>:</label>
+                        </li>
+                        <li class="to-field">
+                            <input id="contest_end_date" type="text" name="val[contest_end_date]" class="input-text pickable"/>
+                        </li>
+                        <li class="to-desc">
+                            <p>
+                                <?php echo Lang::t('contest.contest_end_date_description'); ?>
+                            </p>
+                        </li> 
+                    </ul>
+                    <ul class="form-elements">
+                        <li class="to-label">
+                            <label><?php echo Lang::t('contest.contest_end_time'); ?>:</label>
+                        </li>
+                        <li class="to-field">
+                            <input id="contest_end_time" type="text" name="val[contest_end_time]" class="input-text" size="10" readonly="readonly"/>
+                        </li>
+                        <li class="to-desc">
+                            <p>
+                                  <?php echo Lang::t('contest.contest_end_time_description'); ?>
+                            </p>
+                        </li> 
+                    </ul>
+                    <ul class="form-elements">
+                        <li class="to-label">
+                            <?php echo Lang::t('contest.team_a'); ?>:
+                        </li>
+                        <li class="to-field">
+                            <input type="text" name="val[contest_team_a]" class="input-text"/>
+                        </li>
+                        <li class="to-desc"><p></p></li> 
+                    </ul>
+                    <ul class="form-elements">
+                        <li class="to-label">
+                            <?php echo Lang::t('contest.team_a_logo'); ?>
+                        </li>
+                        <li class="to-field">
+                            <input type="file" name="team_logo[]" />
+                        </li>
+                          <li class="to-desc"><p></p></li>  
+                    </ul>
+                    <ul class="form-elements">
+                        <li class="to-label">
+                            <?php echo Lang::t('contest.team_b'); ?>:
+                        </li>
+                        <li class="to-field">
+                            <input type="text" name="val[contest_team_b]" class="input-text"/>
+                        </li>
+                          <li class="to-desc"><p></p></li>  
+                    </ul>
+                    <ul class="form-elements">
+                        <li class="to-label">
+                            <?php echo Lang::t('contest.team_b_logo'); ?>
+                        </li>
+                        <li class="to-field">
+                            <input type="file" name="team_logo[]" />
+                        </li>
+                         <li class="to-desc"><p></p></li>  
+                    </ul>
+                    <ul class="form-elements">
+                        <li class="to-label">
+                            <label><?php echo Lang::t('contest.is_approved'); ?>:</label>
+                        </li>
+                        <li class="to-field">
+                            <input type="checkbox" name="val[approve]" class="input-checkbox"/>
+                        </li>
+                          <li class="to-desc"><p></p></li>  
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="right submit-button">
+            <input type="submit" class="button" value=" Create" />
+        </div>
+    </form>
+<?php } ?>
+<script type="text/javascript">
+    jQuery(function() {
+        jQuery('#contest_start_time').timepicker({
+            step: 15
+        });
+        jQuery('#contest_end_time').timepicker({
+            step: 15
+        });
+    });
+    jQuery(function() {
+        jQuery( "#contest_start_date" ).datepicker({
+            dateFormat: "MM d, yy",
+            changeMonth: true,
+            numberOfMonths: 1,
+            altFormat: "yy-mm-dd",
+            onSelect: function( selectedDate ) {
+                jQuery( "#contest_end_date" ).datepicker( "option", "minDate", selectedDate );
+            }
+        });
+        jQuery( "#contest_end_date" ).datepicker({
+            dateFormat: "MM d, yy",
+            changeMonth: true,
+            numberOfMonths: 1,
+            altFormat: "yy-mm-dd",
+            onSelect: function( selectedDate ) {
+                jQuery( "#contest_start_date" ).datepicker( "option", "maxDate", selectedDate );
+            }
+        });
+    });
+</script>

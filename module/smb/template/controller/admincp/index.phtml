@@ -1,0 +1,52 @@
+<?php defined('LINKO') or exit;
+
+/**
+ * @author Morrison Laju <morrelinko@gmail.com>
+ * @package linkocms
+ */
+?>
+
+<div id="smb-admincp">
+
+    <div class="module">
+        <div class="module-header">
+            <h3>Module Backups</h3>
+            <ul>
+                <li>
+                    <a href="<?php echo Linko::Url()->make('smb:admincp:import'); ?>" class="button">
+                        Import Backup
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="module-content">
+	        <table>
+		        <thead>
+		        <tr>
+			        <th style="width: 90%;">
+				        Module
+			        </th>
+			        <th style="width: 10%;">
+				        Action
+			        </th>
+		        </tr>
+		        </thead>
+		        <tbody>
+                    <?php foreach($aModules as $aModule): ?>
+                    <form action="<?php echo Linko::Url()->make('smb:admincp', array('archive' => $aModule['module_id'])); ?>" method="post">
+                    <tr>
+                        <td>
+                            <?php echo $aModule['title']; ?>
+                        </td>
+                        <td>
+                            <input name="backup[<?php echo $aModule['module_id']; ?>]" type="submit" class="button" value="Backup">
+                        </td>
+                    </tr>
+                    </form>
+                    <?php endforeach; ?>
+		        </tbody>
+	        </table>
+        </div>
+    </div>
+
+</div>

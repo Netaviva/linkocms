@@ -1,0 +1,24 @@
+<?php
+
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage blog : block_template - recent-post.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+
+<?php if(count($aPosts)): ?>
+<ul id="recent-post">
+    <?php foreach($aPosts as $aPost): ?>
+	<li>
+		<a href="<?php echo Linko::Url()->make('blog:entry', array('slug' => $aPost['post_slug'])); ?>">
+			<?php echo $aPost['post_title']; ?>
+		</a>
+	</li>
+    <?php endforeach; ?>
+</ul>
+<?php endif; ?>

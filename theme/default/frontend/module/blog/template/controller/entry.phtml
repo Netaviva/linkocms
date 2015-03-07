@@ -1,0 +1,47 @@
+<?php
+
+/**
+ * @var $this Linko_Application_Template
+ *  $aPost['post_title'] -> Title of the blog post
+ *  $aPost['post_text'] -> Content of blog post
+ *
+ */
+
+defined('LINKO') or exit;
+
+?>
+<div class="post">
+    <h2 class="title"><span>
+            <a title="Link to <?php echo $aPost['post_title']; ?>" href="<?php echo Linko::Url()->make('blog:entry', array('slug' => $aPost['post_slug'])); ?>">
+                <?php echo $aPost['post_title']; ?>
+            </a>
+      </span></h2>
+       <?php if($aPost['post_image'] != ''): ?>
+                <img src="<?php echo $this->getImage(array('post' => $aPost, 'size' => 700), 'blog_image'); ?>" alt="<?php echo $aPost['post_title']; ?>">
+        <?php endif; ?>
+    
+   <div class="post_info">
+            <?php echo Lang::t('posted_on_time_by_user', array(
+                'time' => Html::tag('a', $aPost['time_created'], array('href' => $aPost['post_url'])),
+                'user' => Html::tag('a', $aPost['username'], array('href' => $aPost['user_url']))
+            )); ?>  
+            <div class="fright">Posted In <?php $iCnt = 0; foreach($aPost['category'] as $aCategory): $iCnt++; ?><a href="<?php echo Linko::Url()->make('blog:index', array('archive' => 'category', 'slug' => $aCategory['category_slug'])); ?>"><?php echo $aCategory['category_title']; ?></a><?php echo $iCnt != count($aPost['category']) ? ', ' : ''; ?> <?php endforeach; ?></div>                                    
+             <div class="clear"></div>
+        </div>
+            <p>
+       	    	<?php echo $aPost['post_text']; ?>
+            </p>
+</div>
+
+<?php if(Linko::Module()->isModule('comment')): ?>
+
+<?php $this->plugin('comment', array(
+        'module_id' => 'blog',
+        'item_id' => $iPostId,
+        'comment_list' => true,
+        'comment_form' => true,
+        'comment_form_header' => 'Leave a reply',
+    ));
+    ?>
+
+<?php endif; ?>

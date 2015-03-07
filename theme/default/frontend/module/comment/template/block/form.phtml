@@ -1,0 +1,32 @@
+<?php
+
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage comment : block_template - form.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+
+<form id="add-comment-form" action="<?php echo Linko::Url()->make('comment:process'); ?>" method="post">
+    <div id="comment-form-params">
+        <input type="hidden" name="val[module_id]" value="<?php echo $sModule; ?>" />
+        <input type="hidden" name="val[item_id]" value="<?php echo $iItemId; ?>" />
+        <input type="hidden" name="val[return_to]" value="<?php echo Linko::Url()->make('self'); ?>" />
+    </div>
+
+        <?php if(!$bIsUser): ?>
+        <input class="span5" type="text" name="val[name]" value="" onFocus="if (this.value == 'Name') this.value = '';" onBlur="if (this.value == '') this.value = 'Name';" />
+        
+        <input class="span5" type="text" name="val[email]" value="" onFocus="if (this.value == 'Email') this.value = '';" onBlur="if (this.value == '') this.value = 'Email';" />
+        <?php endif; ?>
+        <textarea name="val[comment]" class="span7" onFocus="if (this.value == 'Message...') this.value = '';" onBlur="if (this.value == '') this.value = 'Message...';" ><?php echo Arr::get(Input::post('val'), 'text'); ?></textarea>
+           <div class="clear"></div>
+            <a rel="no-follow" class="btn dark_btn" id="cancel-comment-reply" style="display: none;" href="javascript:void(0);">Cancel Reply</a>
+             <input type="reset" class="btn dark_btn" value="Clear form" />
+             <input id="add-comment-button" type="submit" class="btn btn-success" value="Post Comment" />
+        <div class="clear"></div>
+</form>

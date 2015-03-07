@@ -1,0 +1,10 @@
+<div>
+    <form id="message-post-reply-form" action="" method="post">
+        <div class="controls">
+            <textarea name="text" id="message-text"></textarea>
+            <input type="hidden" id="from-user-id" value="<?php echo (!empty($aUser)) ? $aUser['user_id'] : 0?>">
+            <input type="submit" class="button" value="<?php echo Lang::t('messages.post_reply')?>">
+            <span id="message-post-reply-indicator"></span>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,97 @@
+<?php
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage menu : controller_template - admincp\index.phtml
+ * @version 1.0.0
+ * @copyright Netaviva (c) 2013. All Rights Reserved.
+ */
+?>
+
+<?php if ($bMenuItems): ?>
+    <a class="btn small" href="<?php echo $this->url('menu:admincp:item:action', array('menu_id' => $aMenu['menu_id'], 'action' => 'add')); ?>">Add Menu Link</a>
+    <div class="row-fluid sortable">		
+        <div class="box span12">
+            <div class="box-header" data-original-title>
+                <h2><i class="icon-edit"></i><span class="break"></span>Menu (<?php echo $aMenu['menu_title']; ?>)</h2>
+            </div>
+            <div class="box-content">
+                <?php if (count($aMenuItems)): ?>
+                    <table id="menu-item-list" class="table table-striped table-bordered">
+                        <thead>
+                           
+                                <th></th>
+                                <th>Title</th>
+                                <th>Actions</th>
+                           
+                        </thead>   
+                        <tbody>
+                            <?php foreach ($aMenuItems as $aMenu): ?>
+                                <tr id="menu-item-<?php echo $aMenu['menu_item_id']; ?>" style="cursor: move;">
+                                    <td><img src="<?php echo $this->getImage('icon/drag_handle.gif', 'asset_image'); ?>" /></td>
+                                    <td><?php echo $aMenu['menu_item_title']; ?></td>
+                                    <td>
+                                        <a class="btn btn-mini btn-inverse" href="<?php echo Linko::Url()->make('menu:admincp:item:action', array('item_id' => $aMenu['menu_item_id'], 'menu_id' => $aMenu['menu_id'], 'action' => 'edit')); ?>">
+                                            <i class="">Edit</i>
+                                        </a>
+                                        <a class="btn btn-mini btn-danger" href="<?php echo Linko::Url()->make('menu:admincp:item:action', array('item_id' => $aMenu['menu_item_id'], 'menu_id' => $aMenu['menu_id'], 'action' => 'delete')); ?>">
+                                            <i class="">Delete</i> 
+                                        </a>
+                                    </td>
+                                </tr>  
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                <?php else: ?>
+                    <div class="no-item">
+                        <h4>No menu items</h4>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div><!--/span-->                   
+    </div><!--/row-->
+<?php else: ?>
+    <a class="btn small" href="<?php echo $this->url('menu:admincp:action', array('action' => 'add')); ?>">Add Menu</a>
+    <div class="row-fluid sortable">		
+        <div class="box span12">
+            <div class="box-header" data-original-title>
+                <h2><i class="icon-edit"></i><span class="break"></span>Menus</h2>
+            </div>
+            <div class="box-content">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Menu Title</th>
+                            <th> Total Menu Items</th>
+                            <th>Location</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>   
+                    <tbody>
+                        <?php foreach ($aMenus as $aMenu): ?>
+                            <tr>
+                                <td><a href="<?php echo $this->url('menu:admincp', array('menu_id' => $aMenu['menu_id'])); ?>">
+                                        <?php echo $aMenu['menu_title']; ?></a></td>
+                                <td class="center"><?php echo $aMenu['total_menu_item']; ?></td>
+                                <td class="center"><?php echo $aMenu['menu_location']; ?></td>
+                                <td class="center">
+                                    <a class="btn btn-mini btn-inverse" href="<?php echo $this->url('menu:admincp:action', array('action' => 'edit', 'id' => $aMenu['menu_id'])); ?>">
+                                        <i class="">Edit</i>
+                                    </a>
+                                    <a class="btn btn-mini btn-danger" href="<?php echo $this->url('menu:admincp:action', array('action' => 'delete', 'id' => $aMenu['menu_id'])); ?>">
+                                        <i class="">Delete</i> 
+                                    </a>
+                                </td>
+                            </tr>  
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div><!--/span-->                   
+    </div><!--/row-->
+    <p>
+        <b>Tip: </b> Click on the menu to add menu links
+    </p>
+<?php endif; ?>

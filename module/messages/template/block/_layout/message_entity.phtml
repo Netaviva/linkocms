@@ -1,0 +1,20 @@
+<div class="min-message-entity clearfix <?php echo ($aEntity['message-details']['message_read'] == 0 && $aEntity['message-details']['from_user_id'] != Linko::Model('user/auth')->getUserId()) ? ' message-unread' : null?>">
+    <a class="min-message-entity-link" userid="<?php echo ($aEntity['message-details']['message_from_admin'] == 1) ? '0' : $aEntity['user-details']['user_id']?>" href="<?php echo Linko::Url()->make('messages:index', array('userid' => ($aEntity['message-details']['message_from_admin'] == 1) ? 'admin' : $aEntity['user-details']['username']))?>">
+        <div class="avatar">
+            <?php if($aEntity['message-details']['message_from_admin'] == 1):?>
+
+            <?php else:?>
+            <img src="<?php echo $this->getImage(array('user' => $aEntity['user-details'], 'size' => 50), 'user_image')?>">
+            <?php endif?>
+        </div>
+        <div class="min-message-entity-data">
+            <h5><?php echo ($aEntity['message-details']['message_from_admin'] == 1) ? Lang::t('messages.administrator-title') : ucwords($aEntity['user-details']['firstname']. ' '.$aEntity['user-details']['lastname'])?></h5>
+
+        </a>
+            <span><?php echo substr($aEntity['message-details']['message_content'],0,50)?></span><br/>
+            <span class="message_time_format"><?php echo Date::timeAgo($aEntity['message-details']['message_time']);?></span>
+        </div>
+
+
+</div>
+

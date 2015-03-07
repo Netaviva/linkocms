@@ -1,0 +1,91 @@
+<?php
+
+/**
+ * @var $this Linko_Application_Template
+ */
+defined('LINKO') or exit();
+
+?>
+
+<form action="<?php echo Linko::Url()->make('self'); ?>" method="post">
+
+	<div class="eight columns">
+		<fieldset>
+			<legend>Database Configuration</legend>
+			<div class="three columns text-right">
+				<label>Database Type: </label>
+			</div>
+			<div class="nine columns">
+				<input type="text" name="db[driver]" value="mysqli" class="seven" />
+				<p>The database engine.</p>
+			</div>
+
+			<div class="three columns text-right">
+				<label>Host Name:</label>
+			</div>
+			<div class="nine columns">
+				<input type="text" name="db[hostname]" value="localhost" class="seven" />
+				<p>Database host name. Usually 'localhost' if database is on the same computer.</p>
+			</div>
+
+			<div class="three columns text-right">
+				<label>Username:</label>
+			</div>
+			<div class="nine columns">
+				<input type="text" name="db[username]" placeholder="root" class="seven" value="morrelinko" />
+				<p>The database username given by the host.</p>
+			</div>
+
+
+			<div class="three columns text-right">
+				<label>Password:</label>
+			</div>
+			<div class="nine columns">
+				<input type="text" name="db[password]" class="seven" value="123456" />
+				<p>The database password.</p>
+			</div>
+
+
+			<div class="three columns text-right">
+				<label>Database Name:</label>
+			</div>
+			<div class="nine columns">
+				<input type="text" name="db[database]" class="seven" value="linkocms" />
+				<p>The name of the database.</p>
+			</div>
+
+
+			<div class="three columns text-right">
+				<label>Table Prefix:</label>
+			</div>
+			<div class="nine columns">
+				<input type="text" name="db[prefix]" class="seven" value="app_" />
+				<p>If you wish to install multiple instances of linkocms on the same database. use this to distinguish the tables. should contain only contain alphanumeric characters .</p>
+			</div>
+
+		</fieldset>
+	</div>
+
+	<div class="four columns">
+		<fieldset>
+			<legend>Modules</legend>
+
+			<p>Select Modules to install.</p>
+
+			<?php foreach($aModules as $sModule => $aParam): ?>
+			<div class="twelve columns">
+				<?php if((bool)$aParam['core']): ?>
+				<input type="hidden" name="module[]" value="<?php echo $sModule; ?>" />
+				<?php endif; ?>
+				<input type="checkbox" name="module[]" value="<?php echo $sModule; ?>" <?php echo($aParam['core'] == 1 ? 'checked="checked" disabled="disabled"' : ''); ?>> <?php echo $sModule; ?>
+			</div>
+			<?php endforeach; ?>
+		</fieldset>
+	</div>
+
+    <div class="row">
+        <div class="twelve columns text-right">
+            <input type="submit" class="button" value="Next &raquo;" />
+        </div>
+    </div>
+</form>

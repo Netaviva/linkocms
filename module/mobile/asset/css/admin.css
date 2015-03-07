@@ -1,0 +1,102 @@
+/**
+* @package Mobile Module
+* @author Morrison Laju
+*
+* Prefixed each css style with mobile-
+* So as not to inherit style declarations
+*/
+
+ul.mobile-dashboard-list, ul.mobile-dashboard-list li
+{
+	margin: 0;
+	padding: 0;
+}
+
+ul.mobile-dashboard-list li
+{
+	margin-bottom: 10px;
+	display: block;
+	border: 1px solid #ddd;
+	overflow: hidden;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	-moz-box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+	line-height: 21.5px;
+	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+	box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+
+.mobile-dashboard-item
+{
+	height: 80px;
+	display: block;
+	position: relative;
+	background: #FFFFFF;
+}
+
+.mobile-dashboard-figure
+{
+	width: 12%;
+	line-height: 70px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	text-align: center;
+}
+
+.mobile-dashboard-content
+{
+	padding-top: 10px;
+	margin-left: 13%;
+}
+
+.mobile-dashboard-content h3
+{
+	margin: 0;
+	margin-bottom: 3px;
+	padding-bottom: 5px;
+	color: #252525;
+	cursor:pointer;
+	display: block;
+	font-size: 14px;
+	font-family: inherit;
+	font-weight: bold;
+	display: block;
+}
+
+.mobile-dashboard-content p
+{
+	margin-bottom: 0;
+}
+
+.mobile-dashboard-content span
+{
+	color: #CCC;
+	font-size: 10px;
+}
+
+.mobile-dashboard-action
+{
+	width: 25%;
+	position: absolute;
+	right: 11%;
+	height: 80px;
+	line-height: 80px;
+	top: 0;
+	text-align: center;
+}
+
+.mobile-dashboard-handle
+{
+	background: #DDD;
+	min-height: 100px;
+	margin-top: -10px;
+	line-height: 90px;
+	width: 10%;
+	position: absolute;
+	right: 0;
+	top: 0;
+	text-align: center;
+	cursor: move;
+}

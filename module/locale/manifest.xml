@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<extension:module>
+	<title>Locale</title>
+	<version>1.0.2</version>
+	<description>Handles localization and internationalization of your apps for users within and all over the world. (Just Saying!).</description>
+	<core>1</core>
+    <auto_enable>1</auto_enable>
+
+	<author>LinkoDEV Team</author>
+	<author_url>http://linkodev.com</author_url>
+
+	<translations>
+		<translation var="date.just_now">Just now</translation>
+		<translation var="date.x_seconds_ago">{x} seconds ago</translation>
+		<translation var="date.a_minute_ago">A minute ago</translation>
+		<translation var="date.a_minute_ago">A minute ago</translation>
+		<translation var="date.x_minutes_ago">{x} minutes ago</translation>
+		<translation var="date.an_hour_ago">An hour ago</translation>
+		<translation var="date.x_hours_ago">{x} hours ago</translation>
+		<translation var="date.yesterday">Yesterday</translation>
+		<translation var="date.x_days_ago">{x} days ago</translation>
+
+		<translation var="date.am">AM</translation>
+		<translation var="date.pm">PM</translation>
+
+		<translation var="date.january">January</translation>
+		<translation var="date.february">February</translation>
+		<translation var="date.march">March</translation>
+		<translation var="date.april">April</translation>
+		<translation var="date.may">May</translation>
+		<translation var="date.june">June</translation>
+		<translation var="date.july">July</translation>
+		<translation var="date.august">August</translation>
+		<translation var="date.september">September</translation>
+		<translation var="date.october">October</translation>
+		<translation var="date.november">November</translation>
+		<translation var="date.december">December</translation>
+
+	</translations>
+
+	<settings>
+		<setting var="locale.language_debug"
+		         type="boolean"
+		         title="Language Debug"
+		         description="Enable/Disables Debugging of languages. It allow viewing translated and untranslated language text and also the variable parameters passed to it. This mode is most useful for lanaguage pack developers.">0</setting>
+		<setting var="locale.default_timezone"
+		         type="select"
+		         title="Default Timezone"
+		         data="Locale/Date:getTimezones"
+		         description="Select the default timezone.">Europe/Berlin</setting>
+	</settings>
+
+    <table><![CDATA[a:4:{s:8:"language";a:4:{s:9:"locale_id";a:2:{s:4:"type";s:11:"varchar(20)";s:11:"primary_key";b:1;}s:5:"title";a:1:{s:4:"type";s:12:"varchar(255)";}s:7:"charset";a:1:{s:4:"type";s:11:"varchar(30)";}s:9:"direction";a:1:{s:4:"type";s:11:"varchar(10)";}}s:20:"language_translation";a:5:{s:14:"translation_id";a:4:{s:4:"type";s:7:"int(10)";s:8:"unsigned";b:1;s:14:"auto_increment";b:1;s:11:"primary_key";b:1;}s:9:"locale_id";a:1:{s:4:"type";s:11:"varchar(10)";}s:9:"module_id";a:1:{s:4:"type";s:11:"varchar(60)";}s:15:"translation_var";a:1:{s:4:"type";s:12:"varchar(255)";}s:17:"translation_value";a:1:{s:4:"type";s:4:"text";}}s:25:"language_translation_rule";a:7:{s:7:"rule_id";a:4:{s:4:"type";s:7:"int(10)";s:8:"unsigned";b:1;s:14:"auto_increment";b:1;s:11:"primary_key";b:1;}s:9:"locale_id";a:1:{s:4:"type";s:11:"varchar(10)";}s:9:"module_id";a:1:{s:4:"type";s:11:"varchar(60)";}s:15:"translation_var";a:1:{s:4:"type";s:12:"varchar(255)";}s:14:"rule_condition";a:1:{s:4:"type";s:4:"text";}s:17:"translation_value";a:1:{s:4:"type";s:4:"text";}s:10:"rule_order";a:3:{s:4:"type";s:7:"int(10)";s:8:"unsigned";b:1;s:7:"default";s:1:"0";}}s:7:"country";a:3:{s:10:"country_id";a:2:{s:4:"type";s:7:"char(8)";s:11:"primary_key";b:1;}s:13:"country_title";a:1:{s:4:"type";s:12:"varchar(255)";}s:8:"ordering";a:3:{s:4:"type";s:6:"int(3)";s:8:"unsigned";b:1;s:7:"default";s:1:"0";}}}]]></table>
+</extension:module>

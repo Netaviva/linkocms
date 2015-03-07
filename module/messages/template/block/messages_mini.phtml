@@ -1,0 +1,6 @@
+
+<?php foreach($aMiniMessages as $key=>$aValue):?>
+<?php echo $this->getTemplate('messages/block/_layout/message_entity',array('aEntity' => $aValue),true)?>
+<?php endforeach?>
+
+<a id="message-mini-view-all" href="<?php echo Linko::Url()->make('messages:index')?>"><?php echo Lang::t('messages.view_all_message')?></a>

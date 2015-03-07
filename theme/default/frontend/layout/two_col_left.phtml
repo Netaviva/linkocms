@@ -1,0 +1,38 @@
+<?php
+/**
+ * @var $this Linko_Application_Template|Linko_Template
+ */
+defined('LINKO') or exit;
+?>
+
+<?php $this->getLayout('snippets/header'); ?>
+<!--page_container-->
+<div class="page_container">
+    <!--    <div class="breadcrumb">
+            <div class="wrap">
+                <div class="container">
+    <?php echo $this->plugin('breadcrumb'); ?>
+                </div>
+            </div>
+        </div>-->
+    <div class="wrap">
+        <div class="container">
+            <section>
+                <div class="row">
+                    <div class="span4">
+                        <div class="separator"></div>
+                        <?php $this->plugin('block', array('position' => 'sidebar')); ?> 
+                    </div>
+                    <div class="span8">                        
+                        <?php $this->getLayout('snippets/flash'); ?>
+                        <?php $this->plugin('error'); ?>
+                        <div class="separator"></div>
+                        <?php echo $this->getContent(); ?>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<?php $this->getLayout('snippets/footer'); ?>

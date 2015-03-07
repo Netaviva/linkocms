@@ -1,0 +1,15 @@
+.js-ui-homepage-drop-active
+{
+    border: 1px dashed #ccc;
+    background: #f4f4f4;
+    width: 20px;
+    height: 20px;
+}
+
+.js-ui-homepage-drop
+{
+    border: 1px dashed #CCC;
+    background: #fff;
+    width: 20px;
+    height: 20px;
+}

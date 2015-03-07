@@ -1,0 +1,67 @@
+<?php
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage setting : controller_template - admincp\index.phtml
+ * @version 1.0.0
+ * @copyright Netaviva (c) 2013. All Rights Reserved.
+ */
+?>
+
+<div class="row-fluid sortable">		
+    <div class="box span12">
+        <div class="box-header" data-original-title>
+            <h2><i class="icon-edit"></i><span class="break"></span>Module Settings</h2>
+        </div>
+        <div class="box-content">
+            <table id="menu-item-list" class="table table-striped table-bordered">
+                <thead>
+                <th style="width:50%">Module</th>
+                <th style="width:50%">Total Settings</th>           
+                </thead>   
+                <tbody>
+                    <?php foreach ($aModuleSettings as $aModuleSetting): ?>
+                        <tr>
+                            <td>
+                                <a href="<?php echo Linko::Url()->make('setting:admincp', array('category' => 'module-' . $aModuleSetting['module_id'])); ?>">
+                                    <?php echo ucwords($aModuleSetting['module_id']); ?></a>
+                            </td>
+                            <td><?php echo $aModuleSetting['total_module_setting']; ?></td>
+                        </tr>  
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div><!--/span-->                   
+</div><!--/row-->
+
+
+<div class="row-fluid sortable">		
+    <div class="box span12">
+        <div class="box-header" data-original-title>
+            <h2><i class="icon-edit"></i><span class="break"></span>Categorised Settings</h2>
+        </div>
+        <div class="box-content">
+            <table id="menu-item-list" class="table table-striped table-bordered">
+                <thead>
+                <th style="width:50%">Category</th>
+                <th style="width:50%">Total Settings</th>           
+                </thead>   
+                <tbody>
+                       <?php foreach ($aCategorySettings as $aCategorySetting): ?>
+                        <tr>
+                            <td>
+                                <a href="<?php echo Linko::Url()->make('setting:admincp', array('category' => 'category-' . $aCategorySetting['category_id'])); ?>">
+                                    <?php echo ucwords($aCategorySetting['category_title']); ?>
+                                </a>
+                            </td>
+                            <td><?php echo $aCategorySetting['total_category_setting']; ?></td>
+                        </tr>  
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div><!--/span-->                   
+</div><!--/row-->

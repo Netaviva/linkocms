@@ -1,0 +1,12 @@
+ErrorDocument 404 index.php
+Options -indexes
+
+<IfModule mod_rewrite.c>
+Options +FollowSymLinks
+RewriteEngine On
+RewriteBase /linkocms/
+# Everything else that isn't a file gets routed through the index page
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [NC,L,QSA]
+</IfModule>

@@ -1,0 +1,88 @@
+
+
+.component-drag
+{
+	opacity: 0.4;
+}
+
+.available-blocks
+{
+	padding: 5px;
+}
+
+.available-blocks ul li:last-child
+{
+	margin-bottom: 0;
+}
+
+.component-item, .block-item
+{
+	color: #6a6a6a;
+	background-color: #F2F2F2;
+	border-color: #DDDDDD;
+	margin-bottom: 5px;
+	padding: 10px 10px;
+	position: relative;
+	cursor: move;
+	z-index: 9999;
+}
+
+.component-item span.component-label
+{
+	color: #484848;
+	font-weight: bold;
+}
+
+.component-item:hover
+{
+	background-color: #e6e6e6;
+}
+
+.block-position
+{
+	font-size: 15px;
+	border-bottom: 1px solid #DEDEDE;
+}
+
+.block-position-label
+{
+	background-color: #D6D6D6;
+	border-bottom: 1px solid #AAA;
+	font-weight: bold;
+	font-size: 15px;
+	padding: 10px 15px;
+}
+
+.block-position-blocks
+{
+	padding: 5px;
+}
+
+.block-position ol
+{
+	margin: 0;
+}
+
+.block-form
+{
+	background-color: #F2F2F2;
+	border: 1px solid #DEDEDE;
+}
+
+.block-form-header
+{
+	font-weight: bold;
+	padding: 5px 10px;
+}
+.block-form form
+{
+	padding: 10px;
+}
+
+
+.drop-block-helper
+{
+	width: 100%;
+	border: 2px dashed #CCC;
+	height: 40px;
+}

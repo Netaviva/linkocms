@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<extension:module>
+	<title>Ediror</title>
+	<version>1.0</version>
+	<description>What You See Is What You Get (WYSIWYG).</description>
+	<core>0</core>
+    <auto_enable>1</auto_enable>
+
+	<author>LinkoDEV Team</author>
+	<author_url>http://linkodev.com</author_url>
+</extension:module>

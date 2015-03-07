@@ -1,0 +1,69 @@
+<?php
+
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage comment : block_template - display.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+
+<?php if(count($aComments)): ?>
+<ol class="comment-list">
+    <?php foreach($aComments as $aComment): ?>
+    <li id="comment-list-<?php echo $aComment['comment_id']; ?>" class="comment-item <?php $this->plugin('cycle', array('value' => 'odd,even')); ?>">
+        <div id="comment-<?php echo $aComment['comment_id']; ?>" class="comment-body clearfix">
+            <div class="figure comment-avatar">
+                <img src="<?php echo $this->getImage(array('user' => $aComment, 'size' => 50), 'user_image'); ?>" />
+            </div>
+            <div class="comment-data">
+                <h6 class="comment-meta">
+                    <?php echo Lang::t('comment.by_user_on_time', array(
+                    'username' => $aComment['user_id'] == 0 ? $aComment['author_name'] : Html::link($aComment['username'], Linko::Url()->make('user:profile', array('username' => $aComment['username']))),
+                    'time' => $aComment['time_created']
+                )); ?>
+                </h6>
+                <p class="comment-text">
+                    <?php echo $aComment['comment_text']; ?>
+                </p>
+                <div class="comment-extra">
+                    <a class="reply-link" href="#"><?php echo Lang::t('comment.reply'); ?></a>
+                </div>
+            </div>
+            
+        </div>
+        <?php /**/ ?>
+        <?php if(count($aComment['replies'])): ?>
+        <ol class="comment-reply-list">
+            <?php foreach($aComment['replies'] as $aReply): ?>
+            <li id="comment-list-<?php echo $aReply['comment_id']; ?>" class="comment-reply-item <?php $this->plugin('cycle', array('name' => 'comment-reply-' . $aReply['comment_id'], 'value' => 'odd,even')); ?>">
+                <div id="comment-reply-<?php echo $aReply['comment_id']; ?>" class="clearfix">
+                    <div class="figure comment-reply-avatar">
+                        <img src="<?php echo $this->getImage(array('user' => $aReply, 'size' => 20), 'user_image'); ?>" />
+                    </div>
+                    <div class="comment-reply-data">
+                        <h6 class="comment-reply-meta">
+                            <?php echo Lang::t('comment.by_user_on_time', array(
+                                'username' => $aReply['user_id'] == 0 ? $aReply['author_name'] : Html::link($aReply['username'], Linko::Url()->make('user:profile', array('username' => $aReply['username']))),
+                                'time' => $aReply['time_created']
+                            )); ?>
+
+                        </h6>
+                        <p class="comment-text">
+                            <?php echo $aReply['comment_text']; ?>
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <?php endforeach; ?>
+        </ol>
+        <?php endif; ?>
+        <?php /**/ ?>
+        </li>
+    <?php endforeach; ?>
+
+</ol>
+<?php endif; ?>

@@ -1,0 +1,48 @@
+.stat-dashboard
+{
+    padding: 10px; 
+}
+
+.stat-chart-container
+{
+    width: 60%;
+    margin-right: 3%;
+    float: right;
+}
+
+.stat-data
+{
+    width: 35%;
+    float: left;
+}
+
+.stat-data ul
+{
+    margin: 0;
+    padding: 0;  
+}
+
+.stat-data li
+{
+    background-color: #F5F5F5;
+    border: 1px solid #DDDDDD;
+    cursor: pointer;
+    margin-top: 10px;
+    padding: 13px 20px 10px;
+    position: relative;  
+}
+
+.stat-data li strong 
+{
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.stat-data li small
+{
+    color: #888888;
+    font-size: 12px;
+    font-style: italic;
+    margin-left: 5px;
+}

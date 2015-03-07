@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<extension:module>
+	<title>Pages</title>
+	<version>1.1.1</version>
+	<description>Enables Addition of custom pages with any content you want. Actually, this is the core of linkoCMS.
+		Every page on your site runs from this module.
+	</description>
+	<core>1</core>
+	<auto_enable>1</auto_enable>
+
+	<author>LinkoDEV Team</author>
+	<author_url>http://linkodev.com</author_url>
+
+	<component>
+		<block label="Page List"
+		       path="page/list"></block>
+	</component>
+
+	<settings>
+		<setting var="page.site_title"
+		         title="Site Title"
+		         type="string"
+		         description="This is the title that is displayed on all pages of your website. ">LinkoCMS
+		</setting>
+
+		<setting var="page.site_slogan"
+		         title="Site Slogan"
+		         type="string"
+		         description="A short text preferably 40 characters long describing your site.">CMS Simplified
+		</setting>
+
+		<setting var="page.on_guest_permission_denied_action"
+		         title="Guest Page permission denied action."
+		         description="Select an action to perform when you deny a guest from viewing a page."
+		         type="select"
+		         data="redirect, display_denied_message">redirect</setting>
+
+		<setting var="page.guest_permission_denied_redirect_url"
+		         title="Guests Permission denied redirect url."
+		         description="Page to redirect guest to if you selected the 'redirect' option above. Note: The page you are redirecting the user to should not be a page that also denies guest, or you'll get an 'infinite' redirect problem. You will probably want to select the login page from the user module for this."
+		         type="select"
+		         data="Page/Helper:getPagesForSettings"></setting>
+
+		<setting var="page.permission_denied_message"
+		         title="Permission Denied Message."
+		         description="If you disabled a user role from viewing a page, this is the message that gets displayed to them." type="longstring">You cannot view this page.</setting>
+
+	</settings>
+
+	<table>
+		<![CDATA[a:1:{s:4:"page";a:16:{s:7:"page_id";a:4:{s:4:"type";s:7:"int(10)";s:8:"unsigned";b:1;s:14:"auto_increment";b:1;s:11:"primary_key";b:1;}s:8:"page_url";a:2:{s:4:"type";s:11:"varchar(60)";s:3:"key";b:1;}s:10:"page_title";a:3:{s:4:"type";s:12:"varchar(255)";s:7:"default";N;s:4:"null";b:1;}s:9:"page_type";a:2:{s:4:"type";s:24:"enum('module','content')";s:7:"default";s:7:"content";}s:12:"page_content";a:1:{s:4:"type";s:10:"mediumtext";}s:12:"component_id";a:4:{s:4:"type";s:7:"int(10)";s:8:"unsigned";b:1;s:7:"default";N;s:4:"null";b:1;}s:11:"page_status";a:3:{s:4:"type";s:10:"tinyint(1)";s:8:"unsigned";b:1;s:7:"default";s:1:"0";}s:11:"page_layout";a:3:{s:4:"type";s:11:"varchar(60)";s:7:"default";N;s:4:"null";b:1;}s:16:"dissallow_access";a:1:{s:4:"type";s:12:"varchar(255)";}s:10:"meta_title";a:1:{s:4:"type";s:12:"varchar(255)";}s:13:"meta_keywords";a:1:{s:4:"type";s:8:"char(32)";}s:16:"meta_description";a:1:{s:4:"type";s:4:"text";}s:12:"time_created";a:3:{s:4:"type";s:7:"int(10)";s:8:"unsigned";b:1;s:7:"default";s:1:"0";}s:12:"time_updated";a:3:{s:4:"type";s:7:"int(10)";s:8:"unsigned";b:1;s:7:"default";s:1:"0";}s:11:"is_homepage";a:3:{s:4:"type";s:10:"tinyint(1)";s:8:"unsigned";b:1;s:7:"default";s:1:"0";}s:9:"is_hidden";a:3:{s:4:"type";s:10:"tinyint(1)";s:8:"unsigned";b:1;s:7:"default";s:1:"0";}}}]]></table>
+
+</extension:module>

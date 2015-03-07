@@ -1,0 +1,18 @@
+<?php Linko::Model('messages')->markRead($aContent['message-details']['message_id'])?>
+<div class="message-content clearfix">
+    <a href="#">
+        <div class="avatar">
+
+            <img src="<?php echo $this->getImage(array('user' => $aContent['user-details'], 'size' => 50), 'user_image')?>">
+
+        </div>
+        <div class="message-content-data">
+            <h5><?php echo ($aContent['message-details']['message_from_admin'] == 1) ? Lang::t('messages.administrator-title') : ucwords($aContent['user-details']['firstname']. ' '.$aContent['user-details']['lastname'])?></h5>
+    </a>
+            <span><?php echo nl2br($aContent['message-details']['message_content'])?></span><br/><br/>
+            <span class="message_time_format"><?php echo Date::timeAgo($aContent['message-details']['message_time']);?></span>
+        </div>
+
+
+
+</div>

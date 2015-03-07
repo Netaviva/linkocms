@@ -1,0 +1,40 @@
+<?php
+
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage theme : block_template - setting_form.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+
+
+<?php if($aForm['type'] == 'text' || $aForm['type'] == 'string'): ?>
+    <input type="text" class="span12 focused" name="sett[<?php echo $aForm['var']; ?>]" value="<?php echo Arr::get($aSetting, $aForm['var'], Arr::get($aForm, 'value', '')); ?>" />
+
+<?php elseif($aForm['type'] == 'longtext' || $aForm['type'] == 'longstring'): ?>
+	<textarea name="sett[<?php echo $aForm['var']; ?>]"><?php echo Arr::get($aSetting, $aForm['var'], Arr::get($aForm, 'value', '')); ?></textarea>
+
+<?php elseif($aForm['type'] == 'color'): ?>
+	<input type="text" name="sett[<?php echo $aForm['var']; ?>]" class="js-color-form eleven columns" value="<?php echo Arr::get($aSetting, $aForm['var'], Arr::get($aForm, 'value', '')); ?>" />
+<div id="<?php echo $aForm['var']; ?>" class="js-color-picker one column"><div style="background-color: <?php echo Arr::get($aSetting, $aForm['var'], Arr::get($aForm, 'value', '')); ?>;"></div></div>
+
+
+<?php elseif($aForm['type'] == 'select'): ?>
+    <select name="sett[<?php echo $aForm['var']; ?>]">
+        <option value=""> -- Select -- </option>
+        <?php $this->plugin('option', array(
+            'data' => isset($aForm['data']) ? $aForm['data'] : array(),
+            'value_key' => isset($aForm['data_value_key']) ? $aForm['data_value_key'] : null,
+            'title_key' => isset($aForm['data_title_key']) ? $aForm['data_title_key'] : null,
+            'default' => Arr::get($aSetting, $aForm['var'], Arr::get($aForm, 'value', ''))
+        )); ?>
+    </select>
+
+<?php elseif($aForm['type'] == 'media'): ?>
+	<input type="text" name="sett[<?php echo $aForm['var']; ?>]" class="js-media-form" value="<?php echo Arr::get($aSetting, $aForm['var'], Arr::get($aForm, 'value', '')); ?>" />
+
+<?php endif; ?>

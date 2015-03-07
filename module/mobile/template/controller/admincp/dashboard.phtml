@@ -1,0 +1,96 @@
+<?php defined('LINKO') or exit;
+/**
+ * @package Mobile
+ * @author Morrison Laju <morrelinko@gmail.com>
+ * @var $this Linko_Application_Template
+ */
+?>
+<div class="row-fluid">
+
+    <div class="box span4">
+        <div class="box-header">
+            <h2>Add Dashboard Item</h2>
+        </div>
+        <div class="box-content">
+
+                <form class="linko-ajax-form form-vertical" data-type="json" data-action="mobile/addDashboardItem" data-method="post" data-callback="mobile_add_dashboard_item">
+                    <fieldset>
+                        <?php echo $this->getTemplate('mobile/block/admincp/_item-form', array(
+                            'aModules' => $aModules
+                        )); ?>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary admin-submit-button">Add</button>
+                        </div>
+                    </fieldset>
+                </form>
+        </div>
+    </div>
+
+    <div class="dashboard-list-box box span8">
+        <div class="box-header">
+            <h2>Re-arrange and Edit Dashboard Links</h2>
+        </div>
+        <div class="box-content">
+            <ul class="mobile-dashboard-list" id="js-dashboard-items-wrapper">
+                <?php foreach($aDashboardItems as $aDashboard): ?>
+                <li id="dashboard-item-<?php echo $aDashboard['item_id']; ?>">
+                    <div class="mobile-dashboard-item">
+                        <div class="mobile-dashboard-figure">
+                            <img src="<?php echo $this->getImage('module/toolbar.png', 'module_mobile'); ?>" />
+                        </div>
+                        <div class="mobile-dashboard-content">
+                            <h3><?php echo $aDashboard['item_title']; ?></h3>
+                            <p>
+                                <?php echo $aDashboard['module_id']; ?> :
+                                <?php echo $aDashboard['page_title']; ?>
+                            </p>
+                            <span><?php echo $aDashboard['item_url']; ?></span>
+                        </div>
+                        <div class="mobile-dashboard-action">
+                            <a id="mobile-dashboard-edit" class="btn btn-success" href="#">
+                                Edit
+                            </a>
+                            <a id="mobile-dashboard-delete" class="btn btn-danger" href="#">
+                                Delete
+                            </a>
+                        </div>
+                        <div class="mobile-dashboard-handle">
+                            <img src="<?php echo $this->getImage('module/action-move.png', 'module_mobile'); ?>">
+                        </div>
+                    </div>
+                </li>
+                <?php endforeach; ?>
+            </ul>
+            <div class="no-item" style="display: none;">
+                <h3>No Dashboard Links</h3>
+                <h5><a href="#">Click here</a> to add dashboard link</h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script id="js-dashboard-item-data-copy" type="text/x-linko-data">
+    <li id="dashboard-item-<%= id %>">
+        <div class="mobile-dashboard-item">
+            <div class="mobile-dashboard-figure">
+                <img src="<%= image %>" />
+            </div>
+            <div class="mobile-dashboard-content">
+                <h3><%= title %></h3>
+                <p><%= page %></p>
+                <span><%= link %></span>
+            </div>
+            <div class="mobile-dashboard-action">
+                <a id="mobile-dashboard-edit" class="btn btn-success" href="#">
+                    Edit
+                </a>
+                <a id="mobile-dashboard-delete" class="btn btn-danger" href="#">
+                    Delete
+                </a>
+            </div>
+            <div class="mobile-dashboard-handle">
+                <img src="<?php echo $this->getImage('module/action-move.png', 'module_mobile'); ?>">
+            </div>
+        </div>
+    </li>
+</script>

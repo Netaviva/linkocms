@@ -1,0 +1,111 @@
+<?php
+
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage stat : block_template - dashboard.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+
+<div class="module">
+    <div class="module-header">
+        <h3>Stats</h3>
+    </div>
+    
+    <div class="module-content">
+        <div class="stat-dashboard">
+        
+            <div class="stat-data">
+                <ul>
+                    <li>
+                        <strong><?php echo $iTotalHits; ?></strong>
+                        <small>Total Page Impressions.</small>
+                    </li>
+                    
+                    <li>
+                        <strong><?php echo $iUniqueHits; ?></strong>
+                        <small>Unique Visits.</small>
+                    </li>
+
+	                <li>
+		                <strong><?php echo $iTotalUsers; ?></strong>
+		                <small>Registered Users.</small>
+	                </li>
+                </ul>
+            </div>
+            
+            <div class="stat-chart-container">
+                <div id="js-stat-chart"></div>
+            </div>
+            
+            <div class="clear"></div>
+        </div>   
+    </div>
+</div>
+
+<script type="text/javascript">
+ 
+
+$.jqplot('js-stat-chart', <?php echo $sChart; ?>, {
+    seriesDefaults: 
+    {
+        shadow: false,
+        lineWidth: 2,
+    },
+    series : 
+    [
+        {
+            label: 'Page Impressions',
+            highlighter: 
+            {
+                formatString: "%s - %s Page Impressions"
+            }
+        },
+        {
+            label: 'Unique Visits',
+            css:{background:'#D3E4A0'},
+            highlighter: 
+            {
+                formatString: "%s - %s Unique Visits"
+            }
+        }
+    ],
+    grid: 
+    {
+        drawBorder: true,
+        shadow: false,
+        background: 'rgba(255, 255, 255, 0.0)'
+    },
+    axes: 
+    {
+        xaxis: 
+        {
+            renderer: $.jqplot.DateAxisRenderer,
+            tickInterval: 86400000
+        },
+        yaxis: 
+        {
+            pad: 1.05
+        }
+    },
+    axesDefaults:
+    {
+        tickOptions: 
+        {
+            showGridline: true,
+            showMark: false,
+            show: true,
+            showLabel: true
+        }    
+    },
+    
+    highlighter: 
+    {
+        show: true
+    }
+});
+</script>

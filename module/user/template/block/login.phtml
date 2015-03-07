@@ -1,0 +1,42 @@
+<?php
+
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage user : block_template - change-locale.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+
+<form action="<?php echo Linko::Url()->make('user:login'); ?>" method="post">
+	<div class="controls">
+		<div class="control-item">
+			<div class="control-item-label">
+				<label>
+                    <?php echo Lang::t('user.username'); ?>: <?php echo Html::required(); ?>
+				</label>
+			</div>
+			<div class="control-item-data">
+				<input type="text" name="val[username]" />
+			</div>
+		</div>
+
+		<div class="control-item">
+			<div class="control-item-label">
+				<label>
+                    <?php echo Lang::t('user.password'); ?>: <?php echo Html::required(); ?>
+				</label>
+			</div>
+			<div class="control-item-data">
+				<input type="password" name="val[password]" />
+			</div>
+		</div>
+
+		<div class="control-bottom">
+			<input class="button" type="submit" value="<?php echo Lang::t('user.login'); ?>" />
+		</div>
+	</div>
+</form>

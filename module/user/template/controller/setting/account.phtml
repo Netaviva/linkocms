@@ -1,0 +1,115 @@
+<?php
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage user : controller_template - setting\account.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+
+<div id="user-setting-account">
+    <form id="account-setting" action="<?php echo Linko::Url()->make('self'); ?>" method="post">
+        <div class="controls">
+            <div class="control-item">
+                <div class="control-item-label">
+                    <label><?php echo Lang::t('user.username'); ?>: </label>
+                </div>
+                <div class="control-item-data">
+                    <input type="text" name="val[username]" value="<?php echo $aUser['username']; ?>">
+                </div>
+            </div>
+
+            <div class="control-item">
+                <div class="control-item-label">
+                    <label><?php echo Lang::t('user.email'); ?>: </label>
+                </div>
+                <div class="control-item-data">
+                    <input type="text" name="val[email]" value="<?php echo $aUser['email']; ?>">
+                </div>
+            </div>
+
+            <div class="control-item">
+                <div class="control-item-label">
+                    <label><?php echo Lang::t('user.language'); ?>: </label>
+                </div>
+                <div class="control-item-data">
+                    <select name="val[locale_id]">
+                        <option value=""></option>
+                        <?php
+                        $this->plugin('option', array(
+                            'data' => $aLanguages,
+                            'value_key' => 'locale_id',
+                            'title_key' => 'title',
+                            'default' => $aUser['locale_id']
+                        ));
+                        ?>
+                    </select>
+                </div>
+            </div>
+
+            <div class="control-item">
+                <div class="control-item-label">
+                    <label><?php echo Lang::t('user.timezone'); ?>:</label>
+                </div>
+
+                <div class="control-item-data">
+                    <select name="val[timezone]">
+                        <option value=""></option>
+                        <?php
+                        $this->plugin('option', array(
+                            'data' => $aTimezones,
+                            'default' => $aUser['time_zone']
+                        ));
+                        ?>
+                    </select>
+                </div>
+            </div>
+
+            <div class="control-item">
+                <div class="control-item-label">
+                    &nbsp;
+                </div>
+                <div class="control-item-data no-label">
+                    <a data-modal="change-password" id="change-password" href="#">Change Password</a>
+<?php //echo Linko::Url()->make('self');  ?>
+
+                    <script type="script/x-linko-form" title="Change Password" id="change-password-modal" data-modaltype="form" data-action="user/testUpdatePassword" data-method="post">
+                        <div class="controls">
+                            <div class="control-item">
+                                <div class="control-item-label">
+                                    <label><?php echo Lang::t('user.old_password'); ?>: </label>
+                                </div>
+                                <div class="control-item-data">
+                                    <input type="text" name="val[old_password]" />
+                                </div>
+                            </div>
+                            <div class="control-item">
+                                <div class="control-item-label">
+                                    <label><?php echo Lang::t('user.password'); ?>: </label>
+                                </div>
+                                <div class="control-item-data">
+                                    <input type="text" name="val[password]" />
+                                </div>
+                            </div>
+                            <div class="control-item">
+                                <div class="control-item-label">
+                                    <label><?php echo Lang::t('user.re_enter_password'); ?>: </label>
+                                </div>
+                                <div class="control-item-data">
+                                    <input type="text" name="val[confirm_password]" />
+                                </div>
+                            </div>
+                        </div>
+                        </script>
+                    </div>
+                </div>
+
+                <div class="control-bottom">
+                    <input type="submit" name="update_account" class="button" value="<?php echo Lang::t('user.update'); ?>" />
+                </div>
+            </div>
+        </form>
+    </div>

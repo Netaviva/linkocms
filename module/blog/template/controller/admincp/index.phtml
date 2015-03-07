@@ -1,0 +1,87 @@
+<?php
+defined('LINKO') or exit();
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage blog : controller_template - admincp\index.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+
+<?php if (count($aPosts)): ?>
+    <form class="form-inline" action="<?php echo Linko::Url()->make('self'); ?>" method="post">
+        <a class="btn small" href="<?php echo Linko::Url()->make('blog:admincp:action', array('action' => 'add')); ?>">Add Post</a>
+        <div class="row-fluid sortable">		
+            <div class="box span12">
+                <div class="box-header" data-original-title>
+                    <h2><i class="icon-edit"></i><span class="break"></span>All Post</h2>
+                </div>
+                <div class="box-content">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>   
+                        <tbody>
+                            <?php foreach ($aPosts as $aPost): ?>
+                                <tr>
+                                    <td><input type="checkbox" id="inlineCheckbox1" name="id[<?php echo $aPost['post_id']; ?>]"></td>
+                                    <td class="center"><?php echo $aPost['post_title']; ?></td>
+                                    <td class="center"><?php echo $aPost['username']; ?></td>
+                                    <td class="center">
+                                        <input type="hidden" name="idtest[]" value="<?php echo $aPost['post_id']; ?>" />
+                                        <input name="approve[<?php echo $aPost['post_id']; ?>]" type="hidden"<?php echo($aPost['is_approved'] ? ' checked="checked"' : ''); ?> />
+                                        <?php echo($aPost['is_approved'] ? 'Yes' : 'No'); ?>
+                                    </td>
+                                    <td class="center">
+                                        <a class="btn btn-mini btn-success" href="<?php echo Linko::Url()->make('blog:entry', array('slug' => $aPost['post_slug'])); ?>">
+                                            <i class="">View</i>   
+                                        </a>
+                                        <a class="btn btn-mini btn-inverse" href="<?php echo Linko::Url()->make('blog:admincp:action', array('action' => 'edit', 'id' => $aPost['post_id'])); ?>"">
+                                            <i class="">Edit</i>
+                                        </a>
+                                        <a class="btn btn-mini btn-danger" href="<?php echo Linko::Url()->make('blog:admincp:action', array('action' => 'delete', 'id' => $aPost['post_id'])); ?>">
+                                            <i class="">Delete</i> 
+                                        </a>
+                                    </td>
+                                </tr>  
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>  
+                    <?php $this->plugin('pager'); ?> 
+                    <div class="pull-right action-dropdown">
+                        <select class="" name="post_action">
+                            <option> -- Select Action -- </option>
+                            <option value="approve">Approve Selected</option>
+                            <option value="unapprove">Unapprove Selected</option>
+                            <option value="delete">Delete Selected</option>
+                        </select>
+                        <input type="submit" class="btn btn-primary action-dropdown-submit" value="Submit" />    
+                    </div>
+                </div>
+            </div><!--/span-->                   
+        </div><!--/row-->
+    </form> 
+<?php else: ?>
+    <div class="row-fluid sortable">		
+        <div class="box span12">
+            <div class="box-header" data-original-title>
+                <h2><i class="icon-edit"></i><span class="break"></span>All Post</h2>
+            </div>
+            <div class="box-content">
+                <h4>
+                    No post added yet.
+                </h4>
+                <h6>
+                    <a href="<?php echo Linko::Url()->make('blog:admincp:action', array('action' => 'add')); ?>">Click here</a> to add a new post.
+                </h6>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,9 @@
+<?php foreach($aRecentFollower as $aUser):?>
+
+<div class="each-subscription-user">
+
+    <a title="<?php echo  ucwords($aUser['firstname'].' '.$aUser['lastname'])?>" href="<?php echo Linko::Url()->make('user:profile', array('username' => $aUser['username']));?>" ><img src="<?php echo $this->getImage(array('user' => $aUser, 'size' => 50), 'user_image')?>"/></a>
+</div>
+
+
+<?php endforeach?>

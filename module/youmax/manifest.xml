@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension:module>
+    <title>Youmax 1.0</title>
+    <description>jQuery plugin Show complete Youtube channel on your website using the Youmax plugin</description>
+    <version>1.0</version>
+    <author>Stanley Ojadovwa</author>
+    <author_url>http://linkodev.com</author_url>
+    <auto_enable>0</auto_enable>
+    
+    <component>
+        <controller label="Youtube Video Gallery"
+                            title="Youtube Video Gallery"
+                            path="youmax/index"
+                            route_id="youmax:index"
+                            route_url="youmax/index"/>
+    </component>
+    
+    	<translations>
+		<translation var="youmax.video_gallery">Youtube Video Gallery</translation>
+	</translations>
+	
+    <settings>
+        <setting var="youmax.youTubeChannelURL" type="string" title="Youtube Channel Url" description="Enter you youtube channel URL">http://www.youtube.com/user/Apple</setting>
+        <setting var="youmax.youTubePlaylistURL" type="string" title="Playlist Url to show in the featured Tab" description="Optionally you may specify a playlist on youtube channel to display in the featured tab (Ex: http://www.youtube.com/playlist?list=PLZnxqowr6IKidF63-ybswuiO074g366-Y). If this is not supplied the latest playlist is displayed in the featured tab as the featured playlist.">http://www.youtube.com/playlist?list=PLHFlHpPjgk713fMv5O4s4Fv7k6yTkXwkV</setting>
+        <setting var="youmax.youmaxDefaultTab" type="string" title="Default Tab" description="This lets you choose the tab that will be selected by default.  You may set its value to &quot;uploads&quot; or &quot;playlists&quot; or &quot;featured&quot; and the appropriate tab will be auto-selected.">featured</setting>
+    </settings>
+        
+</extension:module>

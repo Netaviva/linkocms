@@ -1,0 +1,23 @@
+<?php
+
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage blog : block_template - category.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+
+<ul class="module-blog list-item blog-category">
+    <?php foreach($aCategories as $aCategory): ?>
+    <li>
+        <a href="<?php echo Linko::Url()->make('blog:index', array('archive' => 'category', 'slug' => $aCategory['category_slug'])); ?>">
+            <?php echo $aCategory['category_title']; ?>
+            <span><?php echo $aCategory['total_post']; ?></span>
+        </a>
+    </li> 
+    <?php endforeach; ?>
+</ul>

@@ -1,0 +1,11 @@
+.each-subscription-user
+{
+    margin:5px;
+    float: left;
+    border-radius: 5px;
+    width: 100%;
+}
+.each-subscription-user img
+{
+    border-radius: 5px;
+}

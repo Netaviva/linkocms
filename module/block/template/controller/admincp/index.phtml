@@ -1,0 +1,93 @@
+<?php
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage page : controller_template - admincp\block.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+<div class="row-fluid">
+    <div style="display: none" id="page-id"><?php echo $iPageId; ?></div>
+    <div class="page-menu">
+        <ul class="select-blog-categories">
+            <label class="select inline">
+                <select id="page-select" name="">
+                    <option value="<?php echo Linko::Url()->make('block:admincp', array('page_id' => 0)); ?>"> -- All Pages -- </option>
+                    <?php foreach ($aPages as $aPage): ?>
+                        <option value="<?php echo Linko::Url()->make('block:admincp', array('page_id' => $aPage['page_id'])); ?>"<?php echo $aPage['page_id'] == $iPageId ? ' selected="selected"' : ''; ?>><?php echo $aPage['page_title']; ?></option>
+                    <?php endforeach; ?>
+                </select>Select Page</label>
+        </ul>
+    </div>
+</div>
+<div class="row-fluid">
+    <div class="box span6" onTablet="span12" onDesktop="span6">
+        <div class="box-header">
+            <h2><i class="icon-edit"></i><span class="break"></span>Available Blocks</h2>
+        </div>
+        <div class="box-content">
+            <div class="module-content available-blocks">
+                <ul>
+                    <?php foreach ($aBlocks as $aBlock): ?>
+                        <li id="component-<?php echo $aBlock['component_id']; ?>" class="component-item">
+                            <?php echo $aBlock['module_id']; ?>:
+                            <span class="component-label">
+                                <?php echo $aBlock['component_label']; ?>
+                            </span>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="box span6" onTablet="span12" onDesktop="span6">
+        <div class="box-header">
+            <h2><i class="icon-edit"></i><span class="break"></span>Positions</h2>
+        </div>
+        <div class="box-content">
+            <div class="module-content">
+                <?php foreach (array_keys($aPositions) as $sTemplate): ?>
+                    <?php foreach ($aPositions[$sTemplate] as $aPosition): ?>
+                        <div id="position-<?php echo $aPosition['name']; ?>" class="block-position">
+                            <div class="block-position-label">
+                                ::<?php echo $aPosition['value']; ?>
+                            </div>
+                            <div class="block-position-blocks" style="min-height: 40px;">
+                                <ol>
+                                    <?php if (array_key_exists($aPosition['name'], $aPageBlocks)): ?>
+                                        <?php foreach ($aPageBlocks[$aPosition['name']] as $aPageBlock): ?>
+                                            <li class="block-item" id="block-<?php echo $aPageBlock['block_id']; ?>">
+                                                <div>
+                                                    <span class="block-label"><?php echo $aPageBlock['component_label']; ?></span>:
+                                                    <span class="block-title"><?php echo $aPageBlock['block_title']; ?></span>
+                                                    <span class="block-action">
+                                                        <a class="btn btn-info btn-mini block-edit" href="#">Edit</a>
+                                                        <a class="btn btn-danger btn-mini block-remove" href="#">Remove</a>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                                    <li class="drop-block-helper skip-sortable" style="display: none;">
+                                        <div>
+                                            <span class="block-label"></span>:
+                                            <span class="block-title"></span>
+                                            <span class="block-action">
+                                                <a class="block-edit" href="#">Edit</a>
+                                                <a class="block-remove" href="#">Remove</a>
+                                            </span>
+                                        </div>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>    
+</div>

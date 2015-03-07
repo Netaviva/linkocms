@@ -1,0 +1,39 @@
+<?php
+
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage blog : controller_template - index.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+<div id="blog-post-wrapper" class="post">
+	<?php foreach($aPosts as $aPost): ?>
+	<h2 class="title"><span>
+            <a title="Link to <?php echo $aPost['post_title']; ?>" href="<?php echo Linko::Url()->make('blog:entry', array('slug' => $aPost['post_slug'])); ?>">
+                <?php echo $aPost['post_title']; ?>
+            </a>
+        </span></h2>
+        <?php if($aPost['post_image'] != ''): ?>
+                <img src="<?php echo $this->getImage(array('post' => $aPost, 'size' => 700), 'blog_image'); ?>" alt="<?php echo $aPost['post_title']; ?>">
+        <?php endif; ?>
+        <div class="post_info">
+            <?php echo Lang::t('posted_on_time_by_user', array(
+                'time' => Html::tag('a', $aPost['time_created'], array('href' => $aPost['post_url'])),
+                'user' => Html::tag('a', $aPost['username'], array('href' => $aPost['user_url']))
+            )); ?>  
+            <div class="fright">Posted In <?php $iCnt = 0; foreach($aPost['category'] as $aCategory): $iCnt++; ?><a href="<?php echo Linko::Url()->make('blog:index', array('archive' => 'category', 'slug' => $aCategory['category_slug'])); ?>"><?php echo $aCategory['category_title']; ?></a><?php echo $iCnt != count($aPost['category']) ? ', ' : ''; ?> <?php endforeach; ?></div>                                    
+             <div class="clear"></div>
+        </div>
+            <p>
+       	    	<?php echo $aPost['post_text']; ?>
+            </p>
+            <a class="arrow_link" href="<?php echo Linko::Url()->make('blog:entry', array('slug' => $aPost['post_slug'])); ?>">Read More</a>
+           
+    <?php endforeach; ?>
+    </div> 
+    
+    <?php $this->plugin('pager'); ?> 

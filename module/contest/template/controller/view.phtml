@@ -1,0 +1,118 @@
+<?php
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage contest : controller_template - index.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+
+<?php Linko::Plugin()->call('contest.tpl_before_post', $iContestId); ?>
+
+<div id="contest-list-container">
+      <?php Linko::Plugin()->call('contest.tpl_before_contest_text', $iContestId); ?>
+        <div class="each-contest" >
+            <div class="each-main-content">
+                <div class="team_a teams">
+                    <?php echo $aContest['contest_team_a']; ?>
+                    <img src="<?php echo $this->getImage(array('post' => array('post_image' => $aContest['contest_team_a_logo']), 'size' =>150), 'contest_image')?>"/>
+                </div>
+                <div class="versus"><h1><?php echo Lang::t('contest.contest_vs'); ?></h1><br /><?php echo Lang::t('contest.contest_draw_match'); ?><br /></div>
+                <div class="team_b teams">
+                    <?php echo $aContest['contest_team_b']; ?>
+                    <img src="<?php echo $this->getImage(array('post' => array('post_image' => $aContest['contest_team_b_logo']), 'size' =>150), 'contest_image')?>"/>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <?php Linko::Plugin()->call('contest.tpl_after_contest_text', $iContestId); ?>
+        <div class="each-tools" id="my-<?php echo $aContest['contest_id']; ?>">
+            <?php
+            $contest_year = date("Y", strtotime($aContest['contest_end_date']));
+            $contest_month = date("m", strtotime($aContest['contest_end_date']));
+            $contest_month_c = date("M", strtotime($aContest['contest_end_date']));
+            $contest_date = date("d", strtotime($aContest['contest_end_date']));
+            $time_left = date("H,i,s", strtotime($aContest['contest_end_date']));
+            ?>
+            <script>
+                jQuery(document).ready(function(){
+                    var austDay = new Date();
+                    austDay = new Date(<?php echo $contest_year; ?>, <?php echo $contest_month; ?>-1, <?php echo $contest_date; ?>,<?php echo $time_left ?>)
+                    jQuery('#defaultCountdown<?php echo $aContest['contest_id']; ?>').countdown({until: austDay,layout:
+                            '<div id="timer">' + ''+
+                            '<div id="timer_days" class="timer_numbers">{dnn}</div>'+
+                            '<div id="timer_hours" class="timer_numbers">{hnn}</div>'+ 
+                            '<div id="timer_mins" class="timer_numbers">{mnn}</div>'+
+                            '<div id="timer_seconds" class="timer_numbers">{snn}</div>'+
+                            '<div id="timer_labels">'+
+                            '<div id="timer_days_label" class="timer_labels">days</div>'+
+                            '<div id="timer_hours_label" class="timer_labels">hours</div>'+
+                            '<div id="timer_mins_label" class="timer_labels">mins</div>'+
+                            '<div id="timer_seconds_label" class="timer_labels">secs</div>'+
+                            '</div>'+							
+                            '</div>'
+                    });
+                    jQuery('#year').text(austDay.getFullYear());
+                });                
+            </script>
+            <div style="position: absolute;left: 10px; top: 1px;cursor: text;" id="defaultCountdown<?php echo $aContest['contest_id']; ?>"></div>
+            <?php if (!Linko::Model('User/Auth')->isUser()) { ?>
+                <a  href="<?php echo Linko::Url()->make('user:login') ?>" id="my-id-button-<?php echo $aContest['contest_id']; ?>"  class="btn btn-info each-participate-button"><?php echo Lang::t('contest.login_and_participate'); ?></a>
+            <?php } else { ?>
+                <?php if (!Linko::Model('Contest/Contest')->hasParticipated($aContest['contest_id'])) { ?>
+                    <a data-modal="contest-match-form-submit" id="contest-match-form-submit" class="btn btn-info each-participate-button" href="#">Participate</a>
+                        <script type="text/x-template" title="Predict the outcome of the match" id="contest-match-form-submit-modal" data-type="form" data-action="<?php echo Linko::Url()->make('self'); ?>" data-method="post">
+	                    <div class="controls">
+		                    <div class="control-item">
+			                    <div class="control-item-label">
+				                    <label><?php echo Lang::t('user.old_password'); ?>: </label>
+			                    </div>
+			                    <div class="control-item-data">
+				                 <select id='winner'>
+                                                     <option value='a'><?php echo $aContest['contest_team_a']; ?> Wins</option>
+                                                     <option value='b'><?php echo $aContest['contest_team_b']; ?> Wins</option>
+                                                     <option value='c'>Draw Match</option>
+                                                 </select>
+			                    </div>
+		                    </div>
+		                    <div class="control-item">
+			                    <div class="control-item-label">
+				                    <label>Select Point:</label>
+			                    </div>
+			                    <div class="control-item-data">
+				                    <select id='point'>
+                                                        <option  value='100'>100 Points</option>
+                                                        <option value='200'>200 Points</option>
+                                                        <option value='300'>300 Points</option>
+                                                        <option value='400'>400 Points</option>
+                                                        <option value='500'>500 Points</option>
+                                                        <option value='1000'>1000 Points</option>
+                                                        <option value='1500'>1500 Points</option>
+                                                        <option value='2000'>2000 Points</option>
+                                                        <option value='3000'>3000 Points</option>
+                                                </select>
+			                    </div>
+		                    </div>
+	                    </div>
+                    </script>     
+                     <?php } else { ?>
+                    <a class="btn btn-warning each-participate-button">Participated</a>
+                <?php }
+            } ?>
+        </div>
+</div>
+<div style="margin-top: 50px"></div>
+<?php Linko::Plugin()->call('contest.tpl_after_contest', $iContestId); ?>
+
+<?php if(Linko::Model('Contest')->isCommentEnabled()): ?>
+    <?php $this->plugin('comment', array(
+        'module_id' => 'contest',
+        'item_id' => $iContestId,
+        'comment_list' => true,
+        'comment_form' => $bCanComment ? true : $this->getTemplate('contest/block/_comment/not-allowed', array(), true),
+        'comment_form_header' => Lang::t('contest.leave_a_comment'),
+    )); ?>
+<?php endif; ?>

@@ -1,0 +1,38 @@
+<div class="module">
+
+    <div class="module-content">
+
+        <form enctype="multipart/form-data" action="<?php echo Linko::Url()->make('messages:admincp:send')?>"  method="post" >
+            <div class="controls">
+                <div class="control-item ">
+                    <div class="control-item-label">Enter Username</div>
+                    <div class="control-item-data">
+                        <div class="control-data-wrap">
+                            <input type="text" name="val[username]"  class="input" size="40">
+
+
+                        </div>
+                    </div>
+                    <br><br>
+                    <div class="control-item-label">Message Content</div>
+
+                    <div class="control-item-data">
+                        <div class="control-data-wrap">
+
+
+                            <textarea name="val[text]" rows="10"></textarea>
+
+
+                        </div>
+                    </div>
+
+                 </div>
+                <div class="module-footer">
+                    <input class="button" type="submit" value="Send Message" />
+                </div>
+
+            </div>
+
+        </form>
+    </div>
+</div>

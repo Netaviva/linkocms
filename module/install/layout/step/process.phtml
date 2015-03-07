@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * @var $this Linko_Application_Template
+ */
+defined('LINKO') or exit();
+
+?>
+
+<?php if($bTable): ?>
+	<p><b>Database Tables Imported...</b></p>
+<?php else: ?>
+<div class="row">
+	<div>
+		<?php foreach($aInstalled as $sModule): ?>
+		<p>
+			<b><?php echo $sModule; ?></b> Module Installed...
+		</p>
+		<?php endforeach; ?>
+        <h4 class="text-center">
+            Please wait...
+        </h4>
+	</div>
+</div>
+<?php endif; ?>
+
+<script>
+	window.setTimeout(function(){window.location = '<?php echo Linko::Url()->make('self'); ?>';}, 3000)
+</script>

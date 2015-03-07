@@ -1,0 +1,13 @@
+
+
+<h1 class="basic-title"><?php echo Lang::t('profile.basic-info')?></h1>
+
+<div class="user-profile-data">
+    <ul>
+        <?php foreach(Linko::Model('profile')->getBasicInfo() as $sKey => $sValue): ?>
+        <li>
+            <span><?php echo $sKey; ?>:</span> <?php echo $sValue; ?>
+        </li>
+        <?php endforeach; ?>
+    </ul>
+</div>

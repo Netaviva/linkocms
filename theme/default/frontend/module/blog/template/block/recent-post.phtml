@@ -1,0 +1,28 @@
+<?php
+
+defined('LINKO') or exit();
+
+/**
+ * @author LinkoDEV Team
+ * @package linkocms
+ * @subpackage blog : block_template - recent-post.phtml
+ * @version 1.0.0
+ * @copyright Copyright (c) 2013. All Rights Reserved.
+ */
+?>
+
+<?php if(count($aPosts)): ?>
+<div class="widget">
+<ul id="recent_post">
+    <?php foreach($aPosts as $aPost): ?>
+	<li>
+          <?php if($aPost['post_image'] != ''): ?>
+                <img src="<?php echo $this->getImage(array('post' => $aPost, 'size' => 50), 'blog_image'); ?>" alt="<?php echo $aPost['post_title']; ?>">
+            <?php endif; ?>
+             <div><a href="<?php echo Linko::Url()->make('blog:entry', array('slug' => $aPost['post_slug'])); ?>"><?php echo $aPost['post_title']; ?></a></div>
+          <div class="clear"></div>
+        </li>
+    <?php endforeach; ?>
+</ul>
+</div>
+<?php endif; ?>

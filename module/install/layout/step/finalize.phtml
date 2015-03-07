@@ -1,0 +1,66 @@
+<?php
+
+/**
+ * @var $this Linko_Application_Template
+ */
+defined('LINKO') or exit();
+
+?>
+
+<form action="<?php echo Linko::Url()->make('self'); ?>" method="post">
+	<div class="row">
+
+		<div class="six columns">
+			<fieldset>
+				<legend>Administrator Account</legend>
+
+				<div class="five columns">
+					<label>Username:</label>
+				</div>
+				<div class="seven columns">
+					<input type="text" name="user[username]" value="morrelinko" />
+				</div>
+
+				<div class="five columns">
+					<label>Password:</label>
+				</div>
+				<div class="seven columns">
+					<input type="text" name="user[password]" value="123456" />
+				</div>
+
+				<div class="five columns">
+					<label>Email:</label>
+				</div>
+				<div class="seven columns">
+					<input type="text" name="user[email]" value="morrelinko@localinko.com" />
+				</div>
+			</fieldset>
+		</div>
+
+		<div class="six columns">
+			<fieldset>
+				<legend>General Site Settings</legend>
+				<div class="five columns">
+					<label>Site Title:</label>
+				</div>
+				<div class="seven columns">
+					<input type="text" name="sett[page.site_title]" value="LinkoCMS" />
+				</div>
+
+				<div class="five columns">
+					<label>Site Slogan:</label>
+				</div>
+				<div class="seven columns">
+					<input type="text" name="sett[page.site_slogan]" value="The Best CMS" />
+				</div>
+			</fieldset>
+		</div>
+
+	</div>
+
+	<div  class="row">
+		<div class="twelve columns text-right">
+			<input type="submit" class="button" value="Finish" />
+		</div>
+	</div>
+</form>

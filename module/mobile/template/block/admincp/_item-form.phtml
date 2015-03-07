@@ -1,0 +1,37 @@
+<?php defined('LINKO') or exit;
+/**
+ * @package Mobile
+ * @author Morrison Laju <morrelinko@gmail.com>
+ * @var $this Linko_Application_Template
+ */
+
+$bEdit = isset($aDashboard) ? true : false;
+
+?>
+<div>
+    <input type="hidden" name="item_id" value="<?php echo ($bEdit ? $aDashboard['item_id'] : ''); ?>" />
+</div>
+<fieldset>
+    <div class="control-group">
+        <label for="js-input-title" class="control-label">Title:</label>
+        <div class="controls">
+            <input type="text" name="title" value="<?php echo ($bEdit ? $aDashboard['item_title'] : ''); ?>" id="js-input-title" />
+        </div>
+    </div>
+    <div class="control-group">
+        <label for="focusedInput" class="control-label">Page:</label>
+        <div class="controls">
+            <select name="page_id">
+                <?php foreach($aModules as $sModule => $aModule): ?>
+                    <optgroup label="<?php echo $sModule; ?>">
+                        <?php foreach($aModule['pages'] as $aPage): ?>
+                            <option value="<?php echo $aPage['page_id']; ?>"<?php echo(($bEdit && ($aDashboard['page_id'] == $aPage['page_id'])) ? 'selected="selected"': ''); ?>>
+                                <?php echo $aPage['page_title']; ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </optgroup>
+                <?php endforeach; ?>
+            </select>
+        </div>
+    </div>
+</fieldset>

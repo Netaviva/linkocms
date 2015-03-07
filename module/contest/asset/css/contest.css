@@ -1,0 +1,188 @@
+#contest-title
+{
+    font-size:24px;
+    text-align:left;
+    margin-left:5px;
+}
+#contest-list-container
+{
+    width:100%;
+ 
+    position:relative;
+}
+
+#match-history-button
+{
+    position:absolute;
+    top:5px;
+    right:10px;
+}
+
+.each-contest
+{
+    width:95%;
+    margin-left:auto;
+    margin-right:auto;
+    min-height:150px;
+    border-top:solid 1px #F0F0F0;
+    border-bottom:solid 1px #F0F0F0;
+    margin-top:5px;
+    position:relative;
+}
+
+.each-tools
+{
+    position:relative;
+    bottom:0px;
+    width:100%;
+    padding:2px;
+    height:30px;
+    background:#F0F0F0;
+}
+.teams
+{
+    float:left;
+    width:35%;
+    padding: 10px;
+}
+.teams img
+{
+    width:100px;
+    margin-top:5px;
+}
+.teams  span
+{
+    font-weight:bold;
+    
+}
+.versus
+{
+    float:left;
+    width:20%;
+}
+.versus h1
+{
+    margin-top:50px;
+    
+    
+}
+
+#match-participator
+{
+    width:30%;
+    min-height:50px;
+    border:solid 5px gray;
+    background:white;
+    z-index:1000;
+    text-align: left;
+    padding:5px;
+}
+
+#match-participator select
+{
+    width:95%;
+    padding:6px;
+    margin-bottom:5px;
+}
+
+.each-participate-button
+{
+    position:absolute;
+    right:10px;
+    font-weight:bold;
+    top:2px;
+    border-radius:4px;
+}
+.each-contest-stats
+{
+    list-style: none;
+    margin-left:5px;
+    
+}
+.each-contest-stats li
+{
+    float:left;
+    padding:3px;
+    font-weight:bold;
+    margin-left:3px
+}
+
+.the-winner
+{
+    padding:5px;
+    box-shadow: 0px 0px 3px 5px #0099FF;
+}
+
+#timer {
+	position:relative;
+	width:300px;
+}
+/* timer numbers */
+.timer_numbers {
+	font-size:20px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	text-align:left;
+	color:#ffffff;
+}
+#timer_days {
+	background:url(../image/countdown1.png) no-repeat right;
+	float:left;
+	height:28px;
+	padding:5px 0px 0 6px;
+	letter-spacing:11px;
+	margin-right:1px;
+}
+#timer_hours {
+	background:url(../image/countdown1.png) no-repeat right;
+	float:left;
+	height:28px;
+	padding:5px 0 0 7px;
+	letter-spacing:11px;
+	margin-right:1px;
+}
+#timer_mins {
+	background:url(../image/countdown1.png) no-repeat right;
+	float:left;
+	height:28px;
+	padding:5px 0 0 7px;
+	letter-spacing:11px;
+	margin-right:2px;
+}
+#timer_seconds {
+	background:url(../image/countdown2.png) no-repeat;
+	float:left;
+	height:28px;
+	padding:5px 0 0 7px;
+	letter-spacing:11px;
+}
+/* timer labels */
+.timer_labels {
+	font-size:10px;
+	text-align:center;
+	color:#949494;
+	text-transform:uppercase;
+}
+#timer_labels {
+	position:relative;
+}
+#timer_days_label {
+	position:absolute;
+	top:35px;
+	left:10px;
+}
+#timer_hours_label {
+	position:absolute;
+	top:35px;
+	left:60px;
+}
+#timer_mins_label {
+	position:absolute;
+	top:35px;
+	left:116px;
+}
+#timer_seconds_label {
+	position:absolute;
+	top:35px;
+	left:167px;
+}
