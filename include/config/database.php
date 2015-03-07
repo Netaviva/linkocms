@@ -15,9 +15,9 @@ Linko::Config()->set('Database.connection', array(
 		'default' => array(
 			'driver' => 'mysqli',
 			'host' => 'localhost',
-			'username' => 'stanley',
-			'password' => 'warri',
-			'database' => 'linkodev_cms',
+			'username' => '',
+			'password' => '',
+			'database' => 'linko',
 			'prefix' => 'app_',
 			'charset' => 'utf8_bin'
 		),
